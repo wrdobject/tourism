@@ -1,8 +1,6 @@
 package com.sdgl.log;
 
 
-import com.sdgl.controller.IndexController;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
