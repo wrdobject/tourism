@@ -40,6 +40,18 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
+#日志
+  logging:
+      home: "logs"
+      name: "sell"
+      level:
+          root: "info"
+          org.springframework: "info"
+          com.gong: "info"
+
+
+
+
 
 
 
