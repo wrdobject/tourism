@@ -1,10 +1,10 @@
-package com.sdbl.service.impl;
+package com.sdgl.service.impl;
 
 
-import com.sdbl.mapper.UserMapper;
-import com.sdbl.pojo.User;
-import com.sdbl.pojo.UserExample;
-import com.sdbl.service.UserService;
+import com.sdgl.mapper.UserMapper;
+import com.sdgl.pojo.User;
+import com.sdgl.pojo.UserExample;
+import com.sdgl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

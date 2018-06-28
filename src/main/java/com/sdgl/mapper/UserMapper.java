@@ -1,8 +1,8 @@
-package com.sdbl.mapper;
+package com.sdgl.mapper;
 
 
-import com.sdbl.pojo.User;
-import com.sdbl.pojo.UserExample;
+import com.sdgl.pojo.User;
+import com.sdgl.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

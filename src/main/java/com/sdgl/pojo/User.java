@@ -1,4 +1,4 @@
-package com.sdbl.pojo;
+package com.sdgl.pojo;
 
 public class User {
     private Integer id;

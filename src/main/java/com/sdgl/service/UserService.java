@@ -1,7 +1,7 @@
-package com.sdbl.service;
+package com.sdgl.service;
 
 
-import com.sdbl.pojo.User;
+import com.sdgl.pojo.User;
 
 public interface UserService {
     /**

@@ -1,4 +1,4 @@
-package com.sdbl.pojo;
+package com.sdgl.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
