@@ -7,9 +7,11 @@ import com.sdgl.pojo.UserExample;
 import com.sdgl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional //在service层上加，对该类所有的方法添加注解
 @Service
 public class UserServiceImpl implements UserService {
 

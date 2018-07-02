@@ -2,7 +2,6 @@ package com.sdgl.service;
 
 
 import com.sdgl.pojo.User;
-
 public interface UserService {
     /**
      * 用户登陆
