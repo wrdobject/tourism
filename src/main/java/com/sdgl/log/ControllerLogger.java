@@ -1,6 +1,8 @@
 package com.sdgl.log;
 
 
+import org.aopalliance.intercept.Joinpoint;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
@@ -39,14 +41,15 @@ public class ControllerLogger {
         logger.info("调用" + jp.getTarget() + " 的 " + jp.getSignature().getName() + " 方法。方法入参： " + Arrays.toString(jp.getArgs()));
     }*/
 
-    /*后置增强*/
-   /* @AfterReturning(pointcut = "execution(* cn.service.*.*(..))", returning = "returnValue")*/
-   /* public void afterRunturing(JoinPoint jp,  Object returnValue){
+    //后置增强
+
+  /*@AfterReturning(pointcut = "execution(* com.*.*.*.*.*(..)))", returning = "returnValue")
+   public void afterRunturing(Joinpoint  jp, Object returnValue){
         logger.info("调用" + jp.getTarget() + " 的 " + jp.getSignature().getName() + " 方法。方法返回值： " + returnValue );
-    }
-*/
+    }*/
+
     /*最终增强*/
-    /*@After("execution(* cn.service.*.*(..))")
+   /* @After("execution(* com.*.*.*.*(..))")
     public void after(JoinPoint jp){
         logger.info("调用" + jp.getTarget() + " 的 " + jp.getSignature().getName() + " 方法结束执行");
     }*/
