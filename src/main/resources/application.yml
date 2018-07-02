@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boke?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.28.111:3306/boke?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -40,14 +40,7 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
-#日志
-  logging:
-      home: "logs"
-      name: "sell"
-      level:
-          root: "info"
-          org.springframework: "info"
-          com.gong: "info"
+
 
 
 
