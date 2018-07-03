@@ -1,4 +1,4 @@
-package com.sdgl.pojo.suppliers.suppliers;
+package com.sdgl.pojo.suppliers;
 
 public class TicketFare {
     private Integer ticket_fare_id;

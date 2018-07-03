@@ -1,4 +1,4 @@
-package com.sdgl.pojo.suppliers.suppliers;
+package com.sdgl.pojo.suppliers;
 
 import java.util.Date;
 

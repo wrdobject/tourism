@@ -1,4 +1,4 @@
-package com.sdgl.pojo.suppliers.suppliers;
+package com.sdgl.pojo.suppliers;
 
 public class Relation {
     private Integer relation_id;

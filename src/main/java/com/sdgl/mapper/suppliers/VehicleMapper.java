@@ -1,39 +1,37 @@
 package com.sdgl.mapper.suppliers;
 
-
 import com.sdgl.pojo.suppliers.Vehicle;
-import com.sdgl.pojo.suppliers.suppliers.Vehicle;
 
 import java.util.List;
 
 /**
  * @Author: 乔紫阳
  * @Description:
- * @Date: 2018/7/2 14:42
+ * @Date: 2018/7/3 17:15
  */
 public interface VehicleMapper {
     /**
-     * 查询所有公司信息
+     * 查询所有车辆信息
      * @return
      */
     List<Vehicle> selVehicle();
 
     /**
-     * 添加公司信息
+     * 添加车辆信息
      * @param vehicle
      * @return
      */
     int addVehicle(Vehicle vehicle);
 
     /**
-     * 根据id查询公司信息
+     * 根据id查询车辆信息
      * @param id
      * @return
      */
     Vehicle selVehicle(int id);
 
     /**
-     * 动态查询公司信息
+     * 动态查询车辆信息
      * @param vehicle
      * @return
      */
@@ -46,5 +44,4 @@ public interface VehicleMapper {
      * @return
      */
     int upTicketing(Vehicle vehicle);
-
 }
