@@ -1,4 +1,4 @@
-package com.sdgl.pojo;
+package com.sdgl.pojo.op;
 
 public class dept {
 
