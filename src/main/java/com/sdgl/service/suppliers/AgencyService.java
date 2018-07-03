@@ -1,4 +1,4 @@
-﻿package com.sdgl.service.suppliers;
+package com.sdgl.service.suppliers;
 
 import com.sdgl.pojo.suppliers.suppliers.Agency;
 
