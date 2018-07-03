@@ -1,47 +1,48 @@
 package com.sdgl.mapper.suppliers;
 
+import com.sdgl.pojo.suppliers.BusFleet;
+
 import java.util.List;
 
 /**
  * @Author: 乔紫阳
  * @Description:
- * @Date: 2018/7/2 15:23
+ * @Date: 2018/7/3 17:23
  */
-public interface AgencyMapper {
+public interface BusFleetMapper {
+
     /**
-     * 查询所有公司信息
+     * 查询所有车队公司信息
      * @return
      */
-    List<AgencyMapper> selAgency();
+    List<BusFleet> selBusFleet();
 
     /**
      * 添加公司信息
-     * @param agency
+     * @param busFleet
      * @return
      */
-    int addAgency(AgencyMapper agency);
+    int addBusFleet(BusFleet busFleet);
 
     /**
      * 根据id查询公司信息
      * @param id
      * @return
      */
-    AgencyMapper selAgency(int id);
+   BusFleet selBusFleet(int id);
 
     /**
      * 动态查询公司信息
-     * @param agency
+     * @param busFleet
      * @return
      */
-    List<AgencyMapper> AllTicketing(AgencyMapper agency);
+    List<BusFleet> AllBusFleet(BusFleet busFleet);
     /*int delBusFleet();*/
 
     /**
      * 修改信息
-     * @param agency
+     * @param busFleet
      * @return
      */
-    int upTicketing(AgencyMapper agency);
-
-
+    int upBusFleet(BusFleet busFleet);
 }
