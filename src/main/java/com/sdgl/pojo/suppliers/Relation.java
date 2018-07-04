@@ -9,6 +9,16 @@ public class Relation {
     private String relation_phone;
     private String relation_email;
 
+    private Hotel hotel;
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
     public Relation() {
     }
 

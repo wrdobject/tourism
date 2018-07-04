@@ -1,6 +1,7 @@
 package com.sdgl.pojo.suppliers;
 
 import java.util.Date;
+import java.util.List;
 
 public class Hotel {
 
@@ -21,6 +22,26 @@ public class Hotel {
     private String hotel_notice;
     private Date hotel_time;
     private Integer hotel_owner;
+
+    private List<Relation> relationList;
+
+    private List<Image> imageList;
+
+    public List<Relation> getRelationList() {
+        return relationList;
+    }
+
+    public void setRelationList(List<Relation> relationList) {
+        this.relationList = relationList;
+    }
+
+    public List<Image> getImageList() {
+        return imageList;
+    }
+
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
+    }
 
     public Hotel() {
     }
