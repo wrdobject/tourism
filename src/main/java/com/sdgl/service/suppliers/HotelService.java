@@ -1,7 +1,9 @@
 package com.sdgl.service.suppliers;
 
 import com.sdgl.pojo.suppliers.Hotel;
+import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
+import com.sdgl.pojo.suppliers.Relation;
 
 import java.io.File;
 import java.util.List;
@@ -14,4 +16,22 @@ public interface HotelService {
     Integer addHotel(Hotel hotel);
 
     Integer addHotelImg(Image img, List<File> files);
+
+    Integer updateHotel(Hotel hotel);
+
+    Integer addHotelRelation(Relation relation);
+
+    Integer deleteHotelRelation(Relation relation);
+
+    Integer updateHotelRelation(Relation relation);
+
+    List<Relation> selectHotelRelation(Relation relation);
+
+    Integer addHotelPrice(HotelPrice hotelPrice);
+
+    Integer deleteHotelPrice(HotelPrice hotelPrice);
+
+    Integer updateHotelPrice(HotelPrice hotelPrice);
+
+    List<HotelPrice> selectHotelPrice(HotelPrice hotelPrice);
 }

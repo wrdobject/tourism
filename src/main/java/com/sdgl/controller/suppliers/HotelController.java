@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sdgl.pojo.suppliers.Hotel;
+import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
+import com.sdgl.pojo.suppliers.Relation;
 import com.sdgl.service.op.TestService;
 import com.sdgl.service.suppliers.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,5 +79,102 @@ public class HotelController {
         return JSON.toJSONString(files);
     }
 
+    /**
+     * 修改酒店
+     * @param hotel
+     * @return
+     */
+    @RequestMapping("/updateHotel")
+    public String updateHotel(Hotel hotel){
+        Integer updateResult = hotelService.updateHotel(hotel);
+        return JSON.toJSONString(updateResult);
+    }
 
+    /**
+     * 联系人增
+     * @param
+     * @return
+     */
+    @RequestMapping("/addHotelRelation")
+    public String addHotelRelation(Relation relation){
+        Integer addHotelRelationResult = hotelService.addHotelRelation(relation);
+        return JSON.toJSONString(addHotelRelationResult);
+    }
+
+    /**
+     * 联系人删
+     * @param
+     * @return
+     */
+    @RequestMapping("/deleteHotelRelation")
+    public String deleteHotelRelation(Relation relation){
+        Integer deleteHotelRelation = hotelService.deleteHotelRelation(relation);
+        return JSON.toJSONString(deleteHotelRelation);
+    }
+
+    /**
+     * 联系人改
+     * @param
+     * @return
+     */
+    @RequestMapping("/updateHotelRelation")
+    public String updateHotelRelation(Relation relation){
+        Integer updateHotelRelation = hotelService.updateHotelRelation(relation);
+        return JSON.toJSONString(updateHotelRelation);
+    }
+
+    /**
+     * 联系人查
+     * @param
+     * @return
+     */
+    @RequestMapping("/selectHotelRelation")
+    public String selectHotelRelation(Relation relation){
+        List<Relation> selectHotelRelation = hotelService.selectHotelRelation(relation);
+        return JSON.toJSONString(selectHotelRelation);
+    }
+
+    /**
+     * 酒店价格增
+     * @param
+     * @return
+     */
+    @RequestMapping("/addHotelPrice")
+    public String addHotelPrice(HotelPrice hotelPrice){
+        Integer addHotelPrice = hotelService.addHotelPrice(hotelPrice);
+        return JSON.toJSONString(addHotelPrice);
+    }
+
+    /**
+     * 酒店价格删
+     * @param
+     * @return
+     */
+    @RequestMapping("/deleteHotelPrice")
+    public String deleteHotelPrice(HotelPrice hotelPrice){
+        Integer deleteHotelPrice = hotelService.deleteHotelPrice(hotelPrice);
+        return JSON.toJSONString(deleteHotelPrice);
+    }
+
+    /**
+     * 酒店价格改
+     * @param
+     * @return
+     */
+    @RequestMapping("/updateHotelPrice")
+    public String updateHotelPrice(HotelPrice hotelPrice){
+        Integer updateHotelPrice = hotelService.updateHotelPrice(hotelPrice);
+        return JSON.toJSONString(updateHotelPrice);
+    }
+
+    /**
+     * 酒店价格查
+     * @param
+     * @return
+     */
+    @RequestMapping("/selectHotelPrice")
+    public String selectHotelPrice(HotelPrice hotelPrice){
+        List<HotelPrice> selectHotelPrice = hotelService.selectHotelPrice(hotelPrice);
+        return JSON.toJSONString(selectHotelPrice);
+    }
 }
