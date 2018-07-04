@@ -11,6 +11,16 @@ public class Image {
     private Integer img_type;
     private Date img_time;
 
+    private Hotel hotel;//杨恒宾加
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
     public Image() {
     }
 
