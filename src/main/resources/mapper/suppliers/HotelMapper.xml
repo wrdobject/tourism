@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.suppliers.HotelMapper">
+	<!--条件查询-->
+	<resultMap id="HotelAndImageAndRelation" type="Hotel">
+		<id column="hotel_id" property="hotel_id"/>
+		<result column="hotel_name" property="hotel_name"/>
+		<result column="hotel_abbreviation" property="hotel_abbreviation"/>
+		<result column="hotel_type" property="hotel_type"/>
+		<result column="hotel_class" property="hotel_class"/>
+		<result column="hotel_fax" property="hotel_fax"/>
+		<result column="hotel_email" property="hotel_email"/>
+		<result column="hotel_phone" property="hotel_phone"/>
+		<result column="hotel_province" property="hotel_province"/>
+		<result column="hotel_city" property="hotel_city"/>
+		<result column="hotel_county" property="hotel_county"/>
+		<result column="hotel_address" property="hotel_address"/>
+		<result column="hotel_introduce" property="hotel_introduce"/>
+		<result column="hotel_facilities" property="hotel_facilities"/>
+		<result column="hotel_notice" property="hotel_notice"/>
+		<result column="hotel_time" property="hotel_time"/>
+		<result column="hotel_owner" property="hotel_owner"/>
+		<collection property="relationList" ofType="Relation">
+			<id column="relation_id" property="relation_id"/>
+			<result column="relation_type_id" property="relation_type_id"/>
+			<result column="relation_owner" property="relation_owner"/>
+			<result column="relation_name" property="relation_name"/>
+			<result column="relation_phone" property="relation_phone"/>
+			<result column="relation_email" property="relation_email"/>
+		</collection>
+		<collection property="imageList" ofType="Image">
+			<id column="img_id" property="img_id"/>
+			<result column="img_path" property="img_path"/>
+			<result column="other_id" property="other_id"/>
+			<result column="img_type" property="img_type"/>
+			<result column="img_time" property="img_time"/>
+		</collection>
+	</resultMap>
+    <select id="selectAllHotel" resultMap="HotelAndImageAndRelation">
+		select
+		hotel_id,hotel_name,hotel_abbreviation,hotel_type,hotel_class,
+		hotel_fax,hotel_email,hotel_phone,hotel_province,hotel_city,
+		hotel_county,hotel_address,hotel_introduce,hotel_facilities,
+		hotel_notice,hotel_time,hotel_owner
+		,r.relation_id,r.relation_type_id,r.`relation_ owner`,
+		r.relation_name,r.relation_phone,r.relation_email,r.relation_type
+		,i.img_id,i.img_path,i.img_time,i.img_type,i.other_id,i.supplier_type
+		from hotel
+		left join relation r on r.relation_type_id = hotel.hotel_id
+		left join image i on i.other_id = hotel.hotel_id
+		where (i.supplier_type = 2 or i.supplier_type is null)
+		and (r.relation_type = 2 or r.relation_type is null)
+		<where>
+			<if test="hotel_province!=null and hotel_province!=''">
+				and hotel_province = #{hotel_province}
+
+				<if test="hotel_city!=null and hotel_city!=''">
+					and hotel_city = #{hotel_city}
+
+					<if test="hotel_county!=null and hotel_county!=''">
+						and hotel_county = #{hotel_county}
+					</if>
+				</if>
+			</if>
+			<if test="hotel_name!=null and hotel_name!=''">
+				and (hotel_name like CONCAT('%',#{hotel_name},'%') or hotel_abbreviation like CONCAT('%',#{hotel_abbreviation},'%'))
+			</if>
+		</where>
+    </select>
+
+	<select id="selectHotelById" resultMap="HotelAndImageAndRelation">
+		select
+		hotel_id,hotel_name,hotel_abbreviation,hotel_type,hotel_class,
+		hotel_fax,hotel_email,hotel_phone,hotel_province,hotel_city,
+		hotel_county,hotel_address,hotel_introduce,hotel_facilities,
+		hotel_notice,hotel_time,hotel_owner
+		,r.relation_id,r.relation_type_id,r.`relation_ owner`,
+		r.relation_name,r.relation_phone,r.relation_email,r.relation_type
+		,i.img_id,i.img_path,i.img_time,i.img_type,i.other_id,i.supplier_type
+		from hotel
+		left join relation r on r.relation_type_id = hotel.hotel_id
+		left join image i on i.other_id = hotel.hotel_id
+		where (i.supplier_type = 2 or i.supplier_type is null)
+		and (r.relation_type = 2 or r.relation_type is null)
+		and hotel_id = #{hotel_id}
+	</select>
+
+	<insert id="addHotel" parameterType="Hotel">
+		INSERT into hotel(hotel_name,hotel_abbreviation,hotel_type,hotel_class,
+		hotel_fax,hotel_email,hotel_phone,hotel_province,hotel_city,hotel_county,hotel_address,
+		hotel_introduce,hotel_facilities,hotel_notice,hotel_time,hotel_owner) values(
+		#{hotel_name},#{hotel_abbreviation},#{hotel_type},,#{hotel_class},#{hotel_fax},
+		#{hotel_email},#{hotel_phone},#{hotel_province},#{hotel_city},#{hotel_county},
+		#{hotel_address},#{hotel_introduce},#{hotel_facilities},#{hotel_notice},#{hotel_time},
+		#{hotel_owner})
+	</insert>
+
+	<insert id="addHotelImg">
+		insert into image(img_path,supplier_type,other_id,img_type,img_time)values(
+		'/static/',2,2,1,NOW())
+		<foreach collection ="files" item="file" index="index" separator =",">
+			(
+			#{file}, #{img.supplier_type},#{img.other_id},
+			#{img.img_type},now()}
+			)
+		</foreach >
+	</insert>
+</mapper>
