@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+		<style>
+			.suna {
+				width: 400px;
+				height: 220px;
+			}
+			.tr{
+				display: block;
+				margin-top: 9px;
+			}
+					
+		</style>
+	</head>
+
+	<body>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+			<legend>xxx租车公司详情</legend>
+		</fieldset>
+
+		<div class="layui-row layui-col-space6">
+			<div class="layui-col-xs4" style="padding-left: 30px;">
+				<div class="layui-carousel suna" id="test1" lay-filter="test1">
+
+					<div carousel-item="">
+						<div>
+							<img class="suna" src="/layui/images/5-5.jpg"></div>
+						<div>
+							<img class="suna" src="/layui/images/5-5.jpg"></div>
+						<div>
+							<img class="suna" src="/layui/images/5-5.jpg"></div>
+						<div>
+							<img class="suna" src="/layui/images/5-5.jpg"></div>
+						<div>
+							<img class="suna" src="/layui/images/5-5.jpg"></div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-xs4" >
+				<div style="padding-left: 50px;">
+
+		
+
+					<table>
+						<tr class="tr">
+							<td style="width:80px;">邮箱:</td>
+							<td >1227489479@qq.com</td>
+						</tr>
+						<tr  class="tr">
+							<td style="width:80px;">传真:</td>
+							<td >048300</td>
+						</tr>
+						<tr class="tr">
+								<td style="width:80px;">联系方式:</td>
+							<td >15513670042</td>
+						</tr>
+
+						<tr  class="tr">
+							<td style="width:80px;">所在地区:</td>
+							<td >山西太原小店区</td>
+							
+						</tr>
+						<tr class="tr">
+							<td style="width:80px;">录入时间:</td>
+							<td >2018年6月4日</td>
+						</tr>
+
+						<tr  class="tr">
+							<td style="width:80px;">详细地址:</td>
+							<td >龙城大街</td>
+						</tr>
+
+						<tr  class="tr">
+							<td style="width:80px;">负责计调:</td>
+							<td >张计调！</td>
+						</tr>
+
+						<tr  class="tr">
+							<td style="width:80px;">备注信息:</td>
+							<td >花花的世界你不懂！</td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+			<div class="layui-col-xs4" style="padding-left: 30px;">
+				
+
+						<input style="float: right;" type="button" value="修改信息" class="layui-btn layui-btn-warm layui-btn-radius" id="update" />
+
+			</div>
+
+		</div>
+
+		<!--联系人-->
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;">
+			<legend>联系人信息</legend>
+
+			<button style="float: right" data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-btn-radius" onclick="add()">添加联系人
+                            </button>
+
+		</fieldset>
+		<table class="layui-table" lay-skin="line">
+
+			<thead>
+				<tr>
+					<th style="width: 100px; text-align: center;">编号</th>
+					<th style="width: 100px; text-align: center;">联系人姓名</th>
+					<th style="width: 100px; text-align: center;">联系人手机号</th>
+					<th style="width: 100px; text-align: center;">负责人</th>
+					<th style="width: 100px; text-align: center;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;">01</td>
+					<td style="text-align: center;">张三</td>
+					<td style="text-align: center;">18322695211</td>
+					<td style="text-align: center;">李计调</td>
+					<td style="text-align: center;">
+						<button class="layui-btn layui-btn-xs" onclick="add()">编辑</button>
+						<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!--车辆信息-->
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;">
+			<legend>车辆信息</legend>
+
+			<button style="float: right" data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-btn-radius" onclick="addCar()">添加车辆
+                            </button>
+
+		</fieldset>
+		<table class="layui-table" lay-skin="line">
+
+			<thead>
+				<tr>
+					<th style="width: 100px; text-align: center;">编号</th>
+					<th style="width: 100px; text-align: center;">车牌号</th>
+					<th style="width: 100px; text-align: center;">车辆类型</th>
+					<th style="width: 100px; text-align: center;">车辆图</th>
+					<th style="width: 100px; text-align: center;">负责人</th>
+					<th style="width: 100px; text-align: center;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;">01</td>
+					<td style="text-align: center;">晋L6226</td>
+					<td style="text-align: center;">大巴</td>
+					<td style="text-align: center;"><img src="../../images/face/0.gif"></td>
+					<td style="text-align: center;">刘轩计调</td>
+					<td style="text-align: center;">
+						<button class="layui-btn layui-btn-xs" onclick="addCar()">编辑</button>
+						<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!--司机信息-->
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;">
+			<legend>司机信息</legend>
+
+			<button style="float: right" data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-btn-radius" onclick="addPeople()">添加司机
+                            </button>
+
+		</fieldset>
+
+		<table class="layui-table" lay-skin="line">
+
+			<thead>
+				<tr>
+					<th style="width: 100px; text-align: center;">编号</th>
+					<th style="width: 100px; text-align: center;">司机姓名</th>
+					<th style="width: 100px; text-align: center;">性别</th>
+					<th style="width: 100px; text-align: center;">身份证号</th>
+
+					<th style="width: 100px; text-align: center;">照片</th>
+					<th style="width: 100px; text-align: center;">驾龄</th>
+					<th style="width: 100px; text-align: center;">联系方式</th>
+					<th style="width: 100px; text-align: center;">负责人</th>
+					<th style="width: 100px; text-align: center;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;">01</td>
+					<td style="text-align: center;">王小二</td>
+					<td style="text-align: center;">男</td>
+					<td style="text-align: center;">142625199802260773</td>
+
+					<td style="text-align: center;"><img src="../../images/face/1.gif"></td>
+					<td style="text-align: center;">十五年</td>
+					<td style="text-align: center;">15035726226</td>
+					<td style="text-align: center;">李计调</td>
+					<td style="text-align: center;">
+						<button class="layui-btn layui-btn-xs" onclick="addPeople()">编辑</button>
+						<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
+		<script src="/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("#update").click(function() {
+				$('#update_infoTo', parent.document).click();
+			});
+
+			var $ = jQuery.noConflict();
+
+			function queryInfo() {
+
+				alert($("#queryInfoBtn").serialize());
+
+			}
+			layui.use(['carousel', 'form'], function() {
+				var carousel = layui.carousel,
+					form = layui.form;
+
+				//常规轮播
+				carousel.render({
+					elem: '#test1',
+					width: '400px', //设置容器宽度
+					height: '220px',
+					interval: 3000
+				});
+
+			});
+
+			function add() {
+				layui.use('layer', function() {
+					var layer = layui.layer;
+					layer.open({
+						type: 1,
+						content: '<form id="addRelationInfo" method="post" style="margin:30px 0px 0px 20px;" class="layui-form">' +
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">联系人姓名</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input type="text" name="relation_name" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+
+							'</div>' +
+
+							'<div class="layui-form-item">' +
+							'	<td><label class="layui-form-label">QQ/微信</label>' +
+							'		<div class="layui-input-inline">' +
+							'			<input type="tel" name="relation_email" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
+							'		</div>' +
+							'</div>' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">手机号</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="relation_phone" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+							'</form>',
+						area: ['380px', '309px'],
+						btn: ['确认', '取消'],
+						yes: function(index, layero) {
+							//按钮【按钮一】的回调
+							alert($("#addRelationInfo").serialize());
+							/*alert(JSON.stringify());*/
+							layer.close(index);
+						},
+						btn2: function(index, layero) {
+							//按钮【按钮二】的回调
+						},
+						cancel: function() {
+							//右上角关闭回调
+							//return false 开启该代码可禁止点击该按钮关闭
+						},
+						btnAlign: 'c',
+						move: false,
+						resize: false
+					});
+				});
+			}
+
+			function addCar() {
+				layui.use('layer', function() {
+					var layer = layui.layer;
+					layer.open({
+						type: 1,
+						content: '<form id="addRelationInfo" method="post" style="margin:30px 0px 0px 20px;" class="layui-form">' +
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">所属公司</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input type="text" name="bus_fleet_id" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+
+							'</div>' +
+
+							'<div class="layui-form-item">' +
+							'	<td><label class="layui-form-label">车牌号</label>' +
+							'		<div class="layui-input-inline">' +
+							'			<input type="tel" name="vehicle_number" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
+							'		</div>' +
+							'</div>' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">车辆类型</label>' +
+							'	<div class="layui-input-inline">' +
+							'	<select name="modules" lay-verify="required" lay-search="" class="sun">' +
+							'		 <option value="大巴">大巴</option>' +
+          					'		 <option value="中巴">中巴</option>' +		
+          					'		 <option value="面包">面包</option>' +			
+							'	</select>	' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">车辆图</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input type="file" name="Vehicle_img" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">负责人</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="vehicle_owner" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+							'</form>',
+						area: ['420px', '420px'],
+						btn: ['确认', '取消'],
+						yes: function(index, layero) {
+							//按钮【按钮一】的回调
+							alert($("#addRelationInfo").serialize());
+							/*alert(JSON.stringify());*/
+							layer.close(index);
+						},
+						btn2: function(index, layero) {
+							//按钮【按钮二】的回调
+						},
+						cancel: function() {
+							//右上角关闭回调
+							//return false 开启该代码可禁止点击该按钮关闭
+						},
+						btnAlign: 'c',
+						move: false,
+						resize: false
+					});
+				});
+			}
+
+			function addPeople() {
+				layui.use('layer', function() {
+					var layer = layui.layer;
+					layer.open({
+						type: 1,
+						content: '<form id="addRelationInfo" method="post" style="margin:30px 0px 0px 20px;" class="layui-form">' +
+
+							'<div class="layui-form-item">' +
+							'	<td><label class="layui-form-label">司机姓名</label>' +
+							'		<div class="layui-input-inline">' +
+							'			<input type="tel" name="driver_name" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
+							'		</div>' +
+							'</div>' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">性别</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="driver_phone" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">身份证号</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="driver_phone" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">照片</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="file" name="driver_img" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">驾龄</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="driver_driving_age" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">联系方式</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="driver_sex" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">负责人</label>' +
+							'	<div class="layui-input-inline">' +
+							'		<input    type="text" name="driver_owner" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'	</div>' +
+							'</div>	' +
+							'</form>',
+						area: ['420px', '520px'],
+						btn: ['确认', '取消'],
+						yes: function(index, layero) {
+							//按钮【按钮一】的回调
+							alert($("#addRelationInfo").serialize());
+							/*alert(JSON.stringify());*/
+							layer.close(index);
+						},
+						btn2: function(index, layero) {
+							//按钮【按钮二】的回调
+						},
+						cancel: function() {
+							//右上角关闭回调
+							//return false 开启该代码可禁止点击该按钮关闭
+						},
+						btnAlign: 'c',
+						move: false,
+						resize: false
+					});
+				});
+			}
+			//JavaScript代码区域
+
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+			document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30088308' type='text/javascript'%3E%3C/script%3E"));
+
+			layui.use(['form', 'layedit', 'laydate', 'element', 'laypage', 'layer'], function() {
+
+				var element = layui.element;
+				var laypage = layui.laypage,
+					layer = layui.layer;
+				//分页
+				laypage.render({
+					elem: 'demo7',
+					count: 16,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+					jump: function(obj) {
+						console.log(obj)
+					}
+				});
+
+				/*var form = layui.form,
+				 layer = layui.layer,
+				 layedit = layui.layedit,
+				 laydate = layui.laydate;*/
+
+				//日期
+				/*laydate.render({
+				 elem: '#date'
+				 });
+				 laydate.render({
+				 elem: '#date1'
+				 });*/
+
+				//创建一个编辑器
+				/*var editIndex = layedit.build('LAY_demo_editor');*/
+
+				//自定义验证规则
+				/*form.verify({
+				 title: function(value) {
+				 if(value.length < 5) {
+				 return '标题至少得5个字符啊';
+				 }
+				 },
+				 pass: [/(.+){6,12}$/, '密码必须6到12位'],
+				 content: function(value) {
+				 layedit.sync(editIndex);
+				 }
+				 });*/
+
+				//监听指定开关
+				/*	form.on('switch(switchTest)', function(data) {
+				 layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+				 offset: '6px'
+				 });
+				 layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+				 });*/
+
+				//监听提交
+				/*form.on('submit(demo1)', function(data) {
+				 layer.alert(JSON.stringify(data.field), {
+				 title: '最终的提交信息'
+				 })
+				 return false;
+				 });*/
+
+				//表单初始赋值
+				/*form.val('example', {
+				 "username": "贤心" // "name": "value"
+				 ,
+				 "password": "123456",
+				 "interest": 1,
+				 "like[write]": true //复选框选中状态
+				 ,
+				 "close": true //开关状态
+				 ,
+				 "sex": "女",
+				 "desc": "我爱 layui"
+				 })*/
+
+			});
+		</script>
+	</body>
+
+</html>
