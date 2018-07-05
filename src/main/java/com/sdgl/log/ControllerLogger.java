@@ -19,7 +19,7 @@ public class ControllerLogger {
 
     /*环绕增强*/
    /// com.sdgl.controller
-    @Around("execution(* com.*.*.*.*(..))")
+    @Around("execution(* com.sdgl.service..*.*(..))")
     public Object arround(ProceedingJoinPoint jp)throws  Throwable{
         logger.info("调用" + jp.getTarget() + "的" + jp.getSignature().getName() + " 方法。 方法入参： "  + Arrays.toString(jp.getArgs()));
 
