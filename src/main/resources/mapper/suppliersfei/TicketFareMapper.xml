@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.suppliersfei.TicketFareMapper" >
+  <resultMap id="BaseResultMap" type="com.sdgl.pojo.suppliersfei.TicketFares" >
+    <id column="ticket_fare_id" property="ticketFareId" jdbcType="INTEGER" />
+    <result column="ticket_id" property="ticketId" jdbcType="INTEGER" />
+    <result column="ticket_fare_type" property="ticketFareType" jdbcType="INTEGER" />
+    <result column="ticket_fare_costed_pay" property="ticketFareCostedPay" jdbcType="DOUBLE" />
+    <result column="ticket_fare_listed_pay" property="ticketFareListedPay" jdbcType="DOUBLE" />
+    <result column="ticket_fare_owner" property="ticketFareOwner" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ticket_fare_id, ticket_id, ticket_fare_type, ticket_fare_costed_pay, ticket_fare_listed_pay, 
+    ticket_fare_owner
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.suppliersfei.TicketFareExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ticket_fare
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ticket_fare
+    where ticket_fare_id = #{ticketFareId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ticket_fare
+    where ticket_fare_id = #{ticketFareId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sdgl.pojo.suppliersfei.TicketFareExample" >
+    delete from ticket_fare
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sdgl.pojo.suppliersfei.TicketFares" >
+    insert into ticket_fare (ticket_fare_id, ticket_id, ticket_fare_type, 
+      ticket_fare_costed_pay, ticket_fare_listed_pay, 
+      ticket_fare_owner)
+    values (#{ticketFareId,jdbcType=INTEGER}, #{ticketId,jdbcType=INTEGER}, #{ticketFareType,jdbcType=INTEGER}, 
+      #{ticketFareCostedPay,jdbcType=DOUBLE}, #{ticketFareListedPay,jdbcType=DOUBLE}, 
+      #{ticketFareOwner,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdgl.pojo.suppliersfei.TicketFares" >
+    insert into ticket_fare
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ticketFareId != null" >
+        ticket_fare_id,
+      </if>
+      <if test="ticketId != null" >
+        ticket_id,
+      </if>
+      <if test="ticketFareType != null" >
+        ticket_fare_type,
+      </if>
+      <if test="ticketFareCostedPay != null" >
+        ticket_fare_costed_pay,
+      </if>
+      <if test="ticketFareListedPay != null" >
+        ticket_fare_listed_pay,
+      </if>
+      <if test="ticketFareOwner != null" >
+        ticket_fare_owner,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ticketFareId != null" >
+        #{ticketFareId,jdbcType=INTEGER},
+      </if>
+      <if test="ticketId != null" >
+        #{ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="ticketFareType != null" >
+        #{ticketFareType,jdbcType=INTEGER},
+      </if>
+      <if test="ticketFareCostedPay != null" >
+        #{ticketFareCostedPay,jdbcType=DOUBLE},
+      </if>
+      <if test="ticketFareListedPay != null" >
+        #{ticketFareListedPay,jdbcType=DOUBLE},
+      </if>
+      <if test="ticketFareOwner != null" >
+        #{ticketFareOwner,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sdgl.pojo.suppliersfei.TicketFareExample" resultType="java.lang.Integer" >
+    select count(*) from ticket_fare
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ticket_fare
+    <set >
+      <if test="record.ticketFareId != null" >
+        ticket_fare_id = #{record.ticketFareId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ticketId != null" >
+        ticket_id = #{record.ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ticketFareType != null" >
+        ticket_fare_type = #{record.ticketFareType,jdbcType=INTEGER},
+      </if>
+      <if test="record.ticketFareCostedPay != null" >
+        ticket_fare_costed_pay = #{record.ticketFareCostedPay,jdbcType=DOUBLE},
+      </if>
+      <if test="record.ticketFareListedPay != null" >
+        ticket_fare_listed_pay = #{record.ticketFareListedPay,jdbcType=DOUBLE},
+      </if>
+      <if test="record.ticketFareOwner != null" >
+        ticket_fare_owner = #{record.ticketFareOwner,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ticket_fare
+    set ticket_fare_id = #{record.ticketFareId,jdbcType=INTEGER},
+      ticket_id = #{record.ticketId,jdbcType=INTEGER},
+      ticket_fare_type = #{record.ticketFareType,jdbcType=INTEGER},
+      ticket_fare_costed_pay = #{record.ticketFareCostedPay,jdbcType=DOUBLE},
+      ticket_fare_listed_pay = #{record.ticketFareListedPay,jdbcType=DOUBLE},
+      ticket_fare_owner = #{record.ticketFareOwner,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdgl.pojo.suppliersfei.TicketFares" >
+    update ticket_fare
+    <set >
+      <if test="ticketId != null" >
+        ticket_id = #{ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="ticketFareType != null" >
+        ticket_fare_type = #{ticketFareType,jdbcType=INTEGER},
+      </if>
+      <if test="ticketFareCostedPay != null" >
+        ticket_fare_costed_pay = #{ticketFareCostedPay,jdbcType=DOUBLE},
+      </if>
+      <if test="ticketFareListedPay != null" >
+        ticket_fare_listed_pay = #{ticketFareListedPay,jdbcType=DOUBLE},
+      </if>
+      <if test="ticketFareOwner != null" >
+        ticket_fare_owner = #{ticketFareOwner,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ticket_fare_id = #{ticketFareId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdgl.pojo.suppliersfei.TicketFares" >
+    update ticket_fare
+    set ticket_id = #{ticketId,jdbcType=INTEGER},
+      ticket_fare_type = #{ticketFareType,jdbcType=INTEGER},
+      ticket_fare_costed_pay = #{ticketFareCostedPay,jdbcType=DOUBLE},
+      ticket_fare_listed_pay = #{ticketFareListedPay,jdbcType=DOUBLE},
+      ticket_fare_owner = #{ticketFareOwner,jdbcType=INTEGER}
+    where ticket_fare_id = #{ticketFareId,jdbcType=INTEGER}
+  </update>
+</mapper>

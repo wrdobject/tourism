@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.suppliersfei.RelationMapper" >
+  <resultMap id="BaseResultMap" type="com.sdgl.pojo.suppliersfei.Relations" >
+    <id column="relation_id" property="relationId" jdbcType="INTEGER" />
+    <id column="relation_type_id" property="relationTypeId" jdbcType="INTEGER" />
+    <result column="relation_type" property="relationType" jdbcType="INTEGER" />
+    <result column="relation_owner" property="relationOwner" jdbcType="INTEGER" />
+    <result column="relation_name" property="relationName" jdbcType="VARCHAR" />
+    <result column="relation_phone" property="relationPhone" jdbcType="VARCHAR" />
+    <result column="relation_email" property="relationEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    relation_id, relation_type_id, relation_type, relation_owner, relation_name, relation_phone, 
+    relation_email
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.suppliersfei.RelationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from relation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.suppliersfei.RelationKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from relation
+    where relation_id = #{relationId,jdbcType=INTEGER}
+      and relation_type_id = #{relationTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sdgl.pojo.suppliersfei.RelationKey" >
+    delete from relation
+    where relation_id = #{relationId,jdbcType=INTEGER}
+      and relation_type_id = #{relationTypeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sdgl.pojo.suppliersfei.RelationExample" >
+    delete from relation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sdgl.pojo.suppliersfei.Relations" >
+    insert into relation (relation_id, relation_type_id, relation_type, 
+      relation_owner, relation_name, relation_phone, 
+      relation_email)
+    values (#{relationId,jdbcType=INTEGER}, #{relationTypeId,jdbcType=INTEGER}, #{relationType,jdbcType=INTEGER}, 
+      #{relationOwner,jdbcType=INTEGER}, #{relationName,jdbcType=VARCHAR}, #{relationPhone,jdbcType=VARCHAR}, 
+      #{relationEmail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdgl.pojo.suppliersfei.Relations" >
+    insert into relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="relationTypeId != null" >
+        relation_type_id,
+      </if>
+      <if test="relationType != null" >
+        relation_type,
+      </if>
+      <if test="relationOwner != null" >
+        relation_owner,
+      </if>
+      <if test="relationName != null" >
+        relation_name,
+      </if>
+      <if test="relationPhone != null" >
+        relation_phone,
+      </if>
+      <if test="relationEmail != null" >
+        relation_email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="relationId != null" >
+        #{relationId,jdbcType=INTEGER},
+      </if>
+      <if test="relationTypeId != null" >
+        #{relationTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="relationType != null" >
+        #{relationType,jdbcType=INTEGER},
+      </if>
+      <if test="relationOwner != null" >
+        #{relationOwner,jdbcType=INTEGER},
+      </if>
+      <if test="relationName != null" >
+        #{relationName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationPhone != null" >
+        #{relationPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="relationEmail != null" >
+        #{relationEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sdgl.pojo.suppliersfei.RelationExample" resultType="java.lang.Integer" >
+    select count(*) from relation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update relation
+    <set >
+      <if test="record.relationId != null" >
+        relation_id = #{record.relationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.relationTypeId != null" >
+        relation_type_id = #{record.relationTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.relationType != null" >
+        relation_type = #{record.relationType,jdbcType=INTEGER},
+      </if>
+      <if test="record.relationOwner != null" >
+        relation_owner = #{record.relationOwner,jdbcType=INTEGER},
+      </if>
+      <if test="record.relationName != null" >
+        relation_name = #{record.relationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relationPhone != null" >
+        relation_phone = #{record.relationPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relationEmail != null" >
+        relation_email = #{record.relationEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update relation
+    set relation_id = #{record.relationId,jdbcType=INTEGER},
+      relation_type_id = #{record.relationTypeId,jdbcType=INTEGER},
+      relation_type = #{record.relationType,jdbcType=INTEGER},
+      relation_owner = #{record.relationOwner,jdbcType=INTEGER},
+      relation_name = #{record.relationName,jdbcType=VARCHAR},
+      relation_phone = #{record.relationPhone,jdbcType=VARCHAR},
+      relation_email = #{record.relationEmail,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdgl.pojo.suppliersfei.Relations" >
+    update relation
+    <set >
+      <if test="relationType != null" >
+        relation_type = #{relationType,jdbcType=INTEGER},
+      </if>
+      <if test="relationOwner != null" >
+        relation_owner = #{relationOwner,jdbcType=INTEGER},
+      </if>
+      <if test="relationName != null" >
+        relation_name = #{relationName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationPhone != null" >
+        relation_phone = #{relationPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="relationEmail != null" >
+        relation_email = #{relationEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where relation_id = #{relationId,jdbcType=INTEGER}
+      and relation_type_id = #{relationTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdgl.pojo.suppliersfei.Relations" >
+    update relation
+    set relation_type = #{relationType,jdbcType=INTEGER},
+      relation_owner = #{relationOwner,jdbcType=INTEGER},
+      relation_name = #{relationName,jdbcType=VARCHAR},
+      relation_phone = #{relationPhone,jdbcType=VARCHAR},
+      relation_email = #{relationEmail,jdbcType=VARCHAR}
+    where relation_id = #{relationId,jdbcType=INTEGER}
+      and relation_type_id = #{relationTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -35,7 +35,7 @@
 			<div class="layui-col-xs4" style="padding-left: 30px;">
 				<div class="layui-carousel suna" id="test1" lay-filter="test1">
 
-					<div carousel-item="">
+					<div carousel-item="" class="lbtup">
 						<div>
 							<img class="suna" src="/layui/images/5-5.jpg"></div>
 						<div>
@@ -50,48 +50,49 @@
 				</div>
 			</div>
 			<div class="layui-col-xs4">
+				<input type="hidden" class="tickid">
 				<div style="padding-left: 50px;">
 					<table>
 						<tr class="tr">
 							<td width="80px">类别:</td>
-							<td>asdf</td>
+							<td class="lb">asdf</td>
 						</tr>
 							
 						<tr class="tr">	
 							<td width="80px">等级(5A):</td>
-							<td>cxvf</td>
+							<td class="dj">cxvf</td>
 						</tr>
 						<tr class="tr">
 							<td width="80px">传真:</td>
-							<td >asdf</td>
+							<td class="cz">asdf</td>
 						</tr>
 						<tr class="tr">		
 							<td width="80px">邮箱:</td>
-							<td>asdf</td>
+							<td class="yx">asdf</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">电话:</td>
-							<td>asdf</td>
+							<td class="dh">asdf</td>
 						</tr>
 						<tr class="tr">
 							<td width="80px">详细地址:</td>
-							<td >asdf</td>
+							<td class="xxdz">asdf</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">负责计调:</td>
-							<td >asdf</td>
+							<td class="fzjd">asdf</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">修改时间:</td>
-							<td >cxvf花花的世界你不懂！</td>
+							<td class="xgsj">cxvf花花的世界你不懂！</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">景点介绍:</td>
-							<td>cxvf花花的世界你不懂！</td>
+							<td class="jdjs">cxvf花花的世界你不懂！</td>
 						</tr>
 
 
@@ -103,7 +104,7 @@
 
 				<div >
 
-					<input style="float: right;" type="button" value="修改景点信息" class="layui-btn layui-btn-warm layui-btn-radius" id="update" />
+					<input style="float: right;" type="button" value="修改景点信息" class="layui-btn layui-btn-warm layui-btn-radius" id="update"  onclick="showupdate()"/>
 
 				</div>
 			</div>
@@ -128,7 +129,7 @@
 					<th style="width: 100px; text-align: center;">操作</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="lxrlb">
 				<tr>
 					<td style="text-align: center;">01</td>
 					<td style="text-align: center;">张三</td>
@@ -162,7 +163,7 @@
 					<th style="width: 100px; text-align: center;">操作</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="mpxx">
 				<tr>
 					<td style="text-align: center;">01</td>
 					<td style="text-align: center;">成人</td>
@@ -180,6 +181,7 @@
 
 		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 		<script src="/layui/layui.js" charset="utf-8"></script>
+		<script src="/js/suppliersfei/ticketInfo.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$("#update").click(function() {
@@ -202,10 +204,13 @@
 				});
 			});
 
-			function addTicketInfo() {
+			function addTicketInfo(id,cbj,bj) {
+			    if(cbj == undefined){
+			        cbj = 0;
+			        bj = 0;
+				}
 				layui.use('layer', function() {
 					var layer = layui.layer;
-					var $ = jQuery.noConflict();
 					layer.open({
 						type: 1,
 						content: '<form id="addTicketInfo" method="post" style="margin:30px 0px 0px 20px;" >' +
@@ -213,10 +218,10 @@
 							'	<label class="layui-form-label">类型</label>' +
 							'	<div class="layui-input-inline">' +
 							
-							'	<select name="modules" lay-verify="required" lay-search="" class="sun">' +
-							'		 <option value="成人">成人</option>' +
-          					'		 <option value="儿童">儿童</option>' +
-          					'		 <option value="老人">老人</option>' +
+							'	<select name="ticketFareType" lay-verify="required" lay-search="" class="sun">' +
+							'		 <option value="1">成人</option>' +
+          					'		 <option value="2">儿童</option>' +
+          					'		 <option value="3">老人</option>' +
 					
 							'	</select>	' +
 							'	</div>' +
@@ -226,7 +231,7 @@
 							'<div class="layui-form-item">' +
 							'	<td><label class="layui-form-label">成本价</label>' +
 							'		<div class="layui-input-inline">' +
-							'			<input type="text" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
+							'			<input type="number" name="ticketFareCostedPay" lay-verify="required|phone" autocomplete="off" class="layui-input" value="'+cbj+'">' +
 							'		</div>' +
 							'</div>' +
 
@@ -235,7 +240,7 @@
 							'<div class="layui-form-item">' +
 							'	<label class="layui-form-label">报价</label>' +
 							'	<div class="layui-input-inline">' +
-							'		<input    type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'		<input    type="number" name="ticketFareListedPay" lay-verify="title" autocomplete="off" class="layui-input" value="'+bj+'">' +
 							'	</div>' +
 							'</div>	' +
 							'</form>',
@@ -243,13 +248,172 @@
 						btn: ['确认', '取消'],
 						yes: function(index, layero) {
 							//按钮【按钮一】的回调
-							alert(decodeURIComponent($("#addTicketInfo").serialize()));
+							if(id == undefined){
+
+                                $.ajax({
+                                    url:"/insertTicketFare",
+                                    type:'post',
+                                    data:$("#addTicketInfo").serialize()+"&ticketId="+$(".tickid").val(),
+                                    success:function (data) {
+                                        $.ajax({
+                                            url:"/selectAllTickets",
+                                            type:'post',
+                                            data:'ticketId='+$(".tickid").val(),
+                                            success:function (data) {
+                                                $(".tickid").val(data[0].ticketId);
+                                                $(".lb").html(data[0].ticketType);
+                                                $(".dj").html(data[0].ticketClass);
+                                                $(".cz").html(data[0].ticketFax);
+                                                $(".yx").html(data[0].ticketEmail);
+                                                $(".dh").html(data[0].ticketPhone);
+                                                $(".xxdz").html(data[0].ticketProvince+data[0].ticketCity+data[0].ticketCounty);
+                                                $(".fzjd").html(data[0].ticketOwner);
+                                                $(".xgsj").html(data[0].ticketTime);
+                                                $(".jdjs").html(data[0].ticketIntroduce);
+                                                var str = "";
+                                                var name = "";
+                                                var tep = 1;
+                                                var str2 = "";
+                                                for (var i = 0; i < data.length; i++) {
+                                                    if(data[i].relationName == name){
+                                                        continue;
+                                                    }else{
+                                                        name = data[i].relationName;
+                                                    }
+                                                    str += "<tr>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+tep+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationName+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationPhone+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationEmail+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationOwner+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">\n" +
+                                                        "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-xs\" onclick=\"add()\">编辑</button>\n" +
+                                                        "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-danger layui-btn-xs\">删除</button>\n" +
+                                                        "\t\t\t\t\t</td>\n" +
+                                                        "\t\t\t\t</tr>";
+                                                    tep = tep + 1;
+                                                }
+                                                $(".lxrlb").html(str);
+                                                tep = 1;
+                                                for (var i = 0; i < data.length; i++) {
+                                                    name = data[0].relationName;
+                                                    var type = "";
+                                                    if(data[i].ticketFareType == 1){
+                                                        type = "成人";
+                                                    }else if(data[i].ticketFareType == 2){
+                                                        type = "儿童";
+                                                    }else{
+                                                        type = "老人";
+                                                    }
+                                                    if(data[i].relationName != name){
+                                                        break;
+                                                    }
+                                                    str2 += "<tr>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+tep+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+type+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].ticketFareCostedPay+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].ticketFareListedPay+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].ticketFareOwner+"</td>\n" +
+                                                        "\t\t\t\t\t<td style=\"text-align: center;\">\n" +
+                                                        "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-xs\" onclick=\"addTicketInfo("+data[i].ticketFareId+","+data[i].ticketFareCostedPay+","+data[i].ticketFareListedPay+")\">编辑</button>\n" +
+                                                        "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-danger layui-btn-xs\" onclick=\"deletebyfareid("+data[i].ticketFareId+")\">删除</button>\n" +
+                                                        "\t\t\t\t\t</td>\n" +
+                                                        "\t\t\t\t</tr>";
+                                                    tep = tep + 1;
+                                                }
+                                                $(".mpxx").html(str2);
+
+                                            }
+                                        })
+                                    }
+                                })
+                                layer.close(index);
+								return;
+							}
+							$.ajax({
+								url:"/updateTicketFare",
+								type:'post',
+								data:$("#addTicketInfo").serialize()+"&ticketFareId="+id,
+								success:function (data) {
+                                    $.ajax({
+                                        url:"/selectAllTickets",
+                                        type:'post',
+                                        data:'ticketId='+$(".tickid").val(),
+                                        success:function (data) {
+                                            $(".tickid").val(data[0].ticketId);
+                                            $(".lb").html(data[0].ticketType);
+                                            $(".dj").html(data[0].ticketClass);
+                                            $(".cz").html(data[0].ticketFax);
+                                            $(".yx").html(data[0].ticketEmail);
+                                            $(".dh").html(data[0].ticketPhone);
+                                            $(".xxdz").html(data[0].ticketProvince+data[0].ticketCity+data[0].ticketCounty);
+                                            $(".fzjd").html(data[0].ticketOwner);
+                                            $(".xgsj").html(data[0].ticketTime);
+                                            $(".jdjs").html(data[0].ticketIntroduce);
+                                            var str = "";
+                                            var name = "";
+                                            var tep = 1;
+                                            var str2 = "";
+                                            for (var i = 0; i < data.length; i++) {
+                                                if(data[i].relationName == name){
+                                                    continue;
+                                                }else{
+                                                    name = data[i].relationName;
+                                                }
+                                                str += "<tr>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+tep+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationName+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationPhone+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationEmail+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].relationOwner+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">\n" +
+                                                    "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-xs\" onclick=\"add()\">编辑</button>\n" +
+                                                    "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-danger layui-btn-xs\">删除</button>\n" +
+                                                    "\t\t\t\t\t</td>\n" +
+                                                    "\t\t\t\t</tr>";
+                                                tep = tep + 1;
+                                            }
+                                            $(".lxrlb").html(str);
+                                            tep = 1;
+                                            for (var i = 0; i < data.length; i++) {
+                                                name = data[0].relationName;
+                                                var type = "";
+                                                if(data[i].ticketFareType == 1){
+                                                    type = "成人";
+                                                }else if(data[i].ticketFareType == 2){
+                                                    type = "儿童";
+                                                }else{
+                                                    type = "老人";
+                                                }
+                                                if(data[i].relationName != name){
+                                                    break;
+                                                }
+                                                str2 += "<tr>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+tep+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+type+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].ticketFareCostedPay+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].ticketFareListedPay+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">"+data[i].ticketFareOwner+"</td>\n" +
+                                                    "\t\t\t\t\t<td style=\"text-align: center;\">\n" +
+                                                    "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-xs\" onclick=\"addTicketInfo("+data[i].ticketFareId+","+data[i].ticketFareCostedPay+","+data[i].ticketFareListedPay+")\">编辑</button>\n" +
+                                                    "\t\t\t\t\t\t<button class=\"layui-btn layui-btn-danger layui-btn-xs\" onclick=\"deletebyfareid("+data[i].ticketFareId+")\">删除</button>\n" +
+                                                    "\t\t\t\t\t</td>\n" +
+                                                    "\t\t\t\t</tr>";
+                                                tep = tep + 1;
+                                            }
+                                            $(".mpxx").html(str2);
+
+                                        }
+                                    })
+                                }
+							})
 							/*关闭*/
 							layer.close(index);
 
 						},
 						btn2: function(index, layero) {
 							//按钮【按钮二】的回调
+
 						},
 						cancel: function() {
 							//右上角关闭回调
@@ -262,17 +426,21 @@
 				});
 			}
 			
-			function add() {
+			function add(relationName,relationEmail,relationPhone,relationId) {
+			    if(relationName == undefined){
+			        relationName = '';
+			        relationEmail = '';
+			        relationPhone = '';
+				}
 				layui.use('layer', function() {
 					var layer = layui.layer;
-					var $ = jQuery.noConflict();
 					layer.open({
 						type: 1,
 						content: '<form id="addRelationInfo" method="post" style="margin:30px 0px 0px 20px;" class="layui-form">' +
 							'<div class="layui-form-item">' +
 							'	<label class="layui-form-label">联系人姓名</label>' +
 							'	<div class="layui-input-inline">' +
-							'		<input type="text" name="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'		<input type="text" name="relationName" lay-verify="title" autocomplete="off" class="layui-input" value="'+relationName+'">' +
 							'	</div>' +
 
 							'</div>' +
@@ -280,22 +448,42 @@
 							'<div class="layui-form-item">' +
 							'	<td><label class="layui-form-label">QQ/微信</label>' +
 							'		<div class="layui-input-inline">' +
-							'			<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
+							'			<input type="tel" name="relationEmail" lay-verify="required|phone" autocomplete="off" class="layui-input" value="'+relationEmail+'">' +
 							'		</div>' +
 							'</div>' +
 
 							'<div class="layui-form-item">' +
 							'	<label class="layui-form-label">手机号</label>' +
 							'	<div class="layui-input-inline">' +
-							'		<input    type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'		<input    type="text" name="relationPhone" lay-verify="title" autocomplete="off" class="layui-input" value="'+relationPhone+'">' +
 							'	</div>' +
 							'</div>	' +
 							'</form>',
 						area: ['380px', '309px'],
 						btn: ['确认', '取消'],
 						yes: function(index, layero) {
-							//按钮【按钮一】的回调
-							alert(decodeURIComponent($("#addRelationInfo").serialize()));
+							if(relationId == undefined){
+
+                                $.ajax({
+                                    url:'/insertrelation',
+                                    data:$("#addRelationInfo").serialize()+"&relationTypeId="+$(".tickid").val(),
+                                    type:'post',
+                                    success:function (data) {
+                                        showid($(".tickid").val());
+                                    }
+                                })
+
+                                layer.close(index);
+							    return;
+							}
+							$.ajax({
+								url:'/updaterelationbyid',
+								data:$("#addRelationInfo").serialize()+"&relationId="+relationId+"&relationTypeId="+$(".tickid").val(),
+								type:'post',
+								success:function (data) {
+									showid($(".tickid").val());
+                                }
+							})
 							/*关闭*/
 							layer.close(index);
 
@@ -324,6 +512,20 @@
 					layer = layui.layer;
 
 			});
+
+            function deletebyfareid(faceid) {
+                if(!confirm("确定删除?")){
+                    return;
+                }
+                $.ajax({
+                    url:'/deletebyfareid',
+                    data:'ticketFareId='+faceid,
+                    type:'post',
+                    success:function (data) {
+                        showid(id);
+                    }
+                })
+            }
 		</script>
 	</body>
 
