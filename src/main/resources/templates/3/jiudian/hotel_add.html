@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+		<style>
+			/*三级联动样式*/
+			
+			.sun {
+				width: 100%;
+				height: 38px;
+				border: 1px solid #E6E6E6;
+				border-radius: 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+			<legend>酒店添加</legend>
+		</fieldset>
+		*为必填项，为方便信息的完整，其它最好填写
+		<form action="">
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">*酒店名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">
+				</div>
+
+				<label class="layui-form-label">英文简称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<td><label class="layui-form-label">*联系电话</label>
+					<div class="layui-input-inline">
+						<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+					</div>
+
+					<label class="layui-form-label">传真</label>
+					<div class="layui-input-inline">
+						<input type="url" name="hotel_fax" lay-verify="url" autocomplete="off" class="layui-input">
+					</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">邮箱</label>
+				<div class="layui-input-inline">
+					<input type="email" name="hotel_email" lay-verify="email" autocomplete="off" class="layui-input">
+				</div>
+
+			</div>
+
+			<div class="layui-form-item layui-form">
+				<label class="layui-form-label">*酒店星级</label>
+				<div>
+					<input type="radio" name="hotel_class" value="经济/客栈" title="经济/客栈" checked>
+					<input type="radio" name="hotel_class" value="五星/豪华" title="五星/豪华">
+					<input type="radio" name="hotel_class" value="四星/高档" title="四星/高档">
+					<input type="radio" name="hotel_class" value="三星/舒服" title="三星/舒服">
+					<input type="radio" name="hotel_class" value="其他" title="其他">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-form">
+				<label class="layui-form-label">*酒店类型</label>
+				<div>
+					<input type="radio" name="hotel_type" value="顶级豪华" title="顶级豪华" checked>
+					<input type="radio" name="hotel_type" value="乡村别墅" title="乡村别墅">
+					<input type="radio" name="hotel_type" value="主题酒店" title="主题酒店">
+					<input type="radio" name="hotel_type" value="精品酒店" title="精品酒店">
+					<input type="radio" name="hotel_type" value="度假" title="度假">
+					<input type="radio" name="hotel_type" value="客栈" title="客栈">
+					<input type="radio" name="hotel_type" value="招待所" title="招待所">
+					<input type="radio" name="hotel_type" value="连锁" title="连锁">
+					<input type="radio" name="hotel_type" value="商务" title="商务">
+					<input type="radio" name="hotel_type" value="旅馆" title="旅馆">
+					<input type="radio" name="hotel_class" value="其他" title="其他">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+
+				<label class="layui-form-label">所在区域</label>
+				<div class="layui-input-inline ">
+					<select id="cmbProvince" class="sun" lay-filter="province">
+
+					</select>
+				</div>
+				<div class="layui-input-inline ">
+					<select id="cmbCity" class="sun" lay-filter="city">
+
+					</select>
+				</div>
+				<div class="layui-input-inline ">
+					<select id="cmbArea" class="sun" lay-filter="area">
+
+					</select>
+				</div>
+				<label class="layui-form-label">详细地址</label>
+				<div class="layui-input-inline">
+					<input type="text" name="hotel_address" autocomplete="off" class="layui-input" style="width: 300px;">
+				</div>
+			</div>
+			
+			<div class="layui-form-item layui-form">
+				<label class="layui-form-label">酒店设施</label>
+				<div>
+					<input type="checkbox" name="hotel_facilities[chongwu]" value="携带宠物" title="携带宠物">
+					<input type="checkbox" name="hotel_facilities[zuche]" value="租车" title="租车">
+					<input type="checkbox" name="hotel_facilities[child]" value="看护小孩" title="看护小孩">
+					<input type="checkbox" name="hotel_facilities[xingli]" value="行李寄存" title="行李寄存">
+					<input type="checkbox" name="hotel_facilities[xiyi]" value="洗衣服务" title="洗衣服务">
+					<input type="checkbox" name="hotel_facilities[yushi]" value="萨拉浴室" title="萨拉浴室">
+					<input type="checkbox" name="hotel_facilities[spa]" value="spa" title="spa">
+					<input type="checkbox" name="hotel_facilities[car]" value="停车场" title="停车场">
+					<input type="checkbox" name="hotel_facilities[jiuba]" value="酒吧" title="酒吧">
+					<input type="checkbox" name="hotel_facilities[xican]" value="西餐厅" title="西餐厅">
+					<input type="checkbox" name="hotel_facilities[zhongcan]" value="中餐厅" title="中餐厅">
+					<input type="checkbox" name="hotel_facilities[qita]" value="其他" title="其他">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">酒店介绍</label>
+				<div class="layui-input-block">
+					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_introduce"></textarea>
+				</div>
+			</div>
+
+			
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">备注</label>
+				<div class="layui-input-block">
+					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_notice"></textarea>
+				</div>
+			</div>
+
+		
+
+			<div class="layui-upload">
+				<button type="button" class="layui-btn" id="test2">多图片上传</button>
+				<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+					预览图：
+					<div class="layui-upload-list" id="demo2"></div>
+				</blockquote>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+
+		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
+		<script src="/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/layui/lay/3js/city.js"></script>
+		<script>
+			$(function() {
+				//三级联动
+				addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+			})
+
+			layui.use(['form', 'layedit'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					layedit = layui.layedit;
+
+				//创建一个编辑器
+				var editIndex = layedit.build('LAY_demo_editor');
+
+				//自定义验证规则
+				form.verify({
+					title: function(value) {
+						if(value.length < 5) {
+							return '标题至少得5个字符啊';
+						}
+					},
+					pass: [/(.+){6,12}$/, '密码必须6到12位'],
+					content: function(value) {
+						layedit.sync(editIndex);
+					}
+				});
+
+				//监听指定开关
+				form.on('switch(switchTest)', function(data) {
+					layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+						offset: '6px'
+					});
+					layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+				});
+
+				//监听提交
+				form.on('submit(demo1)', function(data) {
+					layer.alert(JSON.stringify(data.field), {
+						title: '最终的提交信息'
+					})
+					return false;
+				});
+			});
+
+			layui.use('upload', function() {
+				var $ = layui.jquery,
+					upload = layui.upload;
+				//多图片上传
+				upload.render({
+					elem: '#test2',
+					url: '/upload/',
+					multiple: true,
+					before: function(obj) {
+						//预读本地文件示例，不支持ie8
+						obj.preview(function(index, file, result) {
+							$('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img" width="100px" height="100px">')
+						});
+					},
+					done: function(res) {
+						//上传完毕
+					}
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

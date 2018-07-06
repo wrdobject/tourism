@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+			<style>
+			/*三级联动样式*/
+			.sun{
+				width:100%;
+				height:38px;
+				border:1px solid #E6E6E6;
+				border-radius: 2px;
+
+			}
+			label{
+				width: 100px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+			<legend>信息添加</legend>
+		</fieldset>
+		*为必填项，为方便信息的完整，其它最好填写
+		<form  action="/wrd_upload" method="post" enctype="multipart/form-data">
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">*航空公司名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="ticketing_name" lay-verify="title" autocomplete="off" class="layui-input">
+				</div>
+
+				<label class="layui-form-label" style="width: 100px;">航空公司简称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="ticketing_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<td><label class="layui-form-label" style="width: 100px;">*联系电话</label>
+					<div class="layui-input-inline">
+						<input type="tel" name="ticketing_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+					</div>
+
+					<label class="layui-form-label">传真</label>
+					<div class="layui-input-inline">
+						<input type="url" name="ticketing_fax" lay-verify="url" autocomplete="off" class="layui-input">
+					</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">邮箱</label>
+				<div class="layui-input-inline">
+					<input type="email" name="ticketing_email" lay-verify="email" autocomplete="off" class="layui-input">
+				</div>
+
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">所在区域</label>
+				<!--三级联动-->
+										<div class="layui-input-inline " >
+											<select  id="cmbProvince" name="ticketing_province" class="sun" lay-filter="province">
+										
+											</select>
+										</div>
+										<div class="layui-input-inline " >
+											<select id="cmbCity" name="ticketing_city" class="sun" lay-filter="city">
+												
+											</select>
+										</div>
+										<div class="layui-input-inline ">
+											<select id="cmbArea" name="ticketing_county" class="sun" lay-filter="area">
+											
+											</select>
+										</div>
+				<label class="layui-form-label" >详细地址</label>
+				<div class="layui-input-inline">
+					<input type="text" style="width: 300px" name="ticketing_address" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label" >简介</label>
+				<div class="layui-input-block">
+					<textarea placeholder="请输入内容" class="layui-textarea" name="ticketing_synopsis"></textarea>
+				</div>
+			</div>
+
+		
+
+			<div class="layui-upload">
+				<button type="button" class="layui-btn" id="test2">多图片上传</button>
+				<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+					预览图：
+					<div class="layui-upload-list" id="demo2" name="a_idPicPath"></div>
+				</blockquote>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+
+		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
+		<script src="/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/layui/lay/3js/city.js"></script>
+	
+		<script>
+				$(function(){
+				//三级联动
+				addressInit('cmbProvince', 'cmbCity', 'cmbArea');    
+			});
+			layui.use(['form', 'layedit', 'laydate', 'element', 'laypage', 'layer'], function() {
+
+				var element = layui.element;
+				var laypage = layui.laypage,
+					layer = layui.layer;
+				//分页
+				laypage.render({
+					elem: 'demo7',
+					count: 16,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+					jump: function(obj) {
+
+					}
+				});
+				layui.use('upload', function() {
+					var $ = layui.jquery,
+						upload = layui.upload;
+					//多图片上传
+					upload.render({
+						elem: '#test2',
+						url: '/upload',
+						multiple: true,
+						before: function(obj) {
+							//预读本地文件示例，不支持ie8
+							obj.preview(function(index, file, result) {
+								$('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img" width="100px" height="100px">')
+							});
+						},
+						done: function(res) {
+							//上传完毕
+						}
+					});
+				});
+				//监听提交
+					form.on('submit(submit)', function(data) {
+						layer.alert(JSON.stringify(data.field), {
+							title: '最终的提交信息'
+						});
+						return false;
+					});
+
+			});
+		</script>
+	</body>
+
+</html>

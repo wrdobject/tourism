@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+#b1{
+	padding-top: 20px;
+	padding-left: 20px;
+}
+#b2{
+	padding-top: 15px;
+}
+#a9{
+	width: 1250px;
+	margin-left: 20px;
+	background-color:#FFFFFF;
+}
+body{
+	background: #EDEDED;
+}
