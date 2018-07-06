@@ -1,4 +1,4 @@
-package com.sdgl.pojo;
+package com.sdgl.pojo.offersline;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -31,7 +31,7 @@ public class Routing implements Serializable {
     private Date routing_modify_time;       //修改时间
     private String routing_modify_people;   //修改人
     private String routing_one;             //冗余字段
-    private String brouting_two;            //冗余字段
+    private String routing_two;             //冗余字段
     private String routing_three;           //冗余字段
 
     public Integer getRouting_id() {
@@ -194,12 +194,12 @@ public class Routing implements Serializable {
         this.routing_one = routing_one;
     }
 
-    public String getBrouting_two() {
-        return brouting_two;
+    public String getRouting_two() {
+        return routing_two;
     }
 
-    public void setBrouting_two(String brouting_two) {
-        this.brouting_two = brouting_two;
+    public void setRouting_two(String routing_two) {
+        this.routing_two = routing_two;
     }
 
     public String getRouting_three() {

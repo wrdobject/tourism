@@ -1,4 +1,4 @@
-package com.sdgl.pojo;
+package com.sdgl.pojo.offersline;
 
 import java.io.Serializable;
 import java.util.Date;
