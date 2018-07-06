@@ -1,6 +1,7 @@
 package com.sdgl.pojo.suppliers;
 
 import java.util.Date;
+import java.util.List;
 
 public class Ticketing {
     private Integer ticketing_id;
@@ -16,11 +17,30 @@ public class Ticketing {
     private String ticketing_synopsis;
     private Date ticketing_time;
     private Integer ticketing_owner;
+    private List<Image> image;
+    private List<Relation> relations;
+
+    public List<Image> getImage() {
+        return image;
+    }
+
+    public void setImage(List<Image> image) {
+        this.image = image;
+    }
+
+    public List<Relation> getRelations() {
+        return relations;
+    }
+
+    public void setRelations(List<Relation> relations) {
+        this.relations = relations;
+    }
+
 
     public Ticketing() {
     }
 
-    public Ticketing(Integer ticketing_id, String ticketing_name, String ticketing_abbreviation, String ticketing_email, String ticketing_fax, String ticketing_phone, String ticketing_province, String ticketing_city, String ticketing_county, String ticketing_address, String ticketing_synopsis, Date ticketing_time, Integer ticketing_owner) {
+    public Ticketing(Integer ticketing_id, String ticketing_name, String ticketing_abbreviation, String ticketing_email, String ticketing_fax, String ticketing_phone, String ticketing_province, String ticketing_city, String ticketing_county, String ticketing_address, String ticketing_synopsis, Date ticketing_time, Integer ticketing_owner, List<Image> image, List<Relation> relations) {
         this.ticketing_id = ticketing_id;
         this.ticketing_name = ticketing_name;
         this.ticketing_abbreviation = ticketing_abbreviation;
@@ -34,6 +54,8 @@ public class Ticketing {
         this.ticketing_synopsis = ticketing_synopsis;
         this.ticketing_time = ticketing_time;
         this.ticketing_owner = ticketing_owner;
+        this.image = image;
+        this.relations = relations;
     }
 
     public Integer getTicketing_id() {
@@ -139,4 +161,25 @@ public class Ticketing {
     public void setTicketing_owner(Integer ticketing_owner) {
         this.ticketing_owner = ticketing_owner;
     }
+    @Override
+    public String toString() {
+        return "Ticketing{" +
+                "ticketing_id=" + ticketing_id +
+                ", ticketing_name='" + ticketing_name + '\'' +
+                ", ticketing_abbreviation='" + ticketing_abbreviation + '\'' +
+                ", ticketing_email='" + ticketing_email + '\'' +
+                ", ticketing_fax='" + ticketing_fax + '\'' +
+                ", ticketing_phone='" + ticketing_phone + '\'' +
+                ", ticketing_province='" + ticketing_province + '\'' +
+                ", ticketing_city='" + ticketing_city + '\'' +
+                ", ticketing_county='" + ticketing_county + '\'' +
+                ", ticketing_address='" + ticketing_address + '\'' +
+                ", ticketing_synopsis='" + ticketing_synopsis + '\'' +
+                ", ticketing_time=" + ticketing_time +
+                ", ticketing_owner=" + ticketing_owner +
+                ", image=" + image +
+                ", relations=" + relations +
+                '}';
+    }
+
 }
