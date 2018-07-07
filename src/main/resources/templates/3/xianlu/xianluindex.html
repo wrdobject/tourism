@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>线路管理</title>
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/layui/css/xianlu/xianluguanli.css">
+</head>
+<body>
+  <div class="zong">
+    
+    <div class="xianlu">
+      <span style="background-color:#F3F3F3;height: 50px ;padding: 0px;text-align: center;line-height: 50px">线路管理</span>
+      <a href="xianlu.html" class="layui-btn" lay-submit lay-filter="formDemo" style="display: inline-block;float: right;margin-top: 5px;margin-right: 5px;"> 发布新路线</a>
+    </div>
+    <div id="suo">
+      <form class="layui-form" action=""> 
+      <span style="margin-left: 20px;">线路名称：</span>
+        <input type="text" name="title" required lay-verify="required" placeholder="线路名称" autocomplete="off" class="layui-input" id="a">
+        <span style="margin-left: 20px;">线路编号：</span>
+      <input type="text" name="title" required lay-verify="required" placeholder="线路编号" autocomplete="off" class="layui-input" id="a">
+           
+          <span style="margin-left: 20px;">行程天数：</span>
+         <input type="text" name="title" required lay-verify="required" placeholder="行程天数" autocomplete="off" class="layui-input" id="a">
+            
+           <button class="layui-btn" lay-submit lay-filter="formDemo" id="c"> 搜索</button>
+       </form> 
+    </div>
+      <div class="xia">
+    <table class="layui-table">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+
+      <th>线路编号</th>   
+      <th>线路名称</th>
+      <th>行程天数</th>
+      <th>出发地</th>     
+      <th>客源地</th>
+      <th>创建人</th> 
+      <th>创建时间</th>
+     <!--  <th>修改人</th>
+     <th>修改时间</th> -->
+      <th>操作</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr>
+      <td>SDGL001</td>
+      <td>山西五日游</td>
+      <td>5</td>  
+      <td>台湾</td>
+      <td>台湾</td>     
+      <td>张三</td>
+      <td>2016-11-29</td>      
+      <!-- <td>李四</td>
+      <td>2016-11-30</td> -->
+     <td>
+      <a class="layui-btn layui-btn-primary layui-btn-xs" >详情</a>
+      <a href="xianlu.html" class="layui-btn layui-btn-primary layui-btn-xs">修改</a>
+     </td>
+    </tr>
+
+  </tbody>
+</table>
+  </div>
+    
+  </div>
+  <script src="/layui/layui.all.js" charset="utf-8"></script>
+ <script>
+layui.use('form',function(){});<!--加载form模块-->
+ </script>
+</body>
+
+</html>

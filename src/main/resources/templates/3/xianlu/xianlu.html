@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线路管理页面</title>
+
+    <script type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="dierzu/layui-v2.3.0/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="dierzu/css/xianluguanli1.css">
+    <style  type="text/css">
+    [v-cloak] {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<form action="">
+    <div class="layui-container">
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;基本信息</h2>
+        <div class="layui-row" style="margin-left: 30px;margin-top: 20px;">
+            <div class="layui-col-md2" style="text-align: center;font-size: 18px;line-height: 34px;">
+                自定义线路编号：
+            </div>
+            <div class="layui-col-md5">
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 0px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                线路名称：
+            </div>
+            <div class="layui-col-md5">
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                客源地：
+            </div>
+            <div class="layui-col-md3">
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;行程安排</h2>
+
+
+
+        <div class="layui-form-item layui-row" style="margin-top: 20px;" id="app" v-cloak>
+            <label class="layui-form-label">行程天数:</label>
+            <div id="kuang">
+                <a href="javascript:;" id="jian" v-on:click="changeMoney(-1)" onclick="del_show()">-</a><span id="shuzi">{{ productQuntity }}</span><a href="javascript:;" id="jia" v-on:click="changeMoney(1)" onclick="show()">+</a>
+            </div>
+        </div>
+            <div class="layui-row" style="margin-left: 0px;margin-top: 20px;" id="xing">
+                <div id="xing1" style="height: 500px;">
+                    <div class="layui-col-md1" id="daykuang">
+                        <div id="day">Day</div>
+                        <div id="time">1</div>
+                    </div>
+                 <!--    行程标题开始 -->
+                    <div class="layui-col-md11" style="height: 350px;margin-top:5px;">
+                        <div class="layui-row" style="margin-left: 50px;">
+                            <div class="layui-col-md1" style="text-align: left;font-size: 14px;line-height: 34px;">
+                                行程标题：
+                            </div>
+                            <div class="layui-col-md5">
+                                <div class="layui-form-item">
+                                    <input type="text" style="height: 30px;" name="" value="" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-row" style="margin-left: 82px;">
+                            <div  class="layui-col-md2">
+                                <div class="layui-row" style="margin-left: 50px;">
+                                    <div class="layui-col-md3" style="text-align: center;font-size: 14px;line-height: 34px;">
+                                        <a href="javascript:;" onclick="chooseSpot(this)" class="layui-btn">选择景点</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="layui-col-md2" style="margin-left: 10px;">
+
+                                <div class="layui-row">
+                                    <div class="layui-col-md2" style="line-height: 34px;">
+                                        <a href="javascript:;" class="layui-btn" onclick="chooseHotel(this)">选择酒店</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="layui-input-block layui-col-md1" style="margin-left:50px;">
+                            用餐：
+                        </div>
+                        <div class="layui-col-md6" style="margin-left: 0px;">
+
+                            <div class="layui-row">
+                                <div class="layui-input-block layui-col-md5" style="margin-left:0px;">
+                                    <div class="layui-form-item" style="margin-top:5px;">
+                                        <select name="city" lay-verify="required" style="width: 170px;height: 36px;">
+                                            <option value="">早餐类型</option>
+                                            <option value="0">中餐</option>
+                                            <option value="1">西餐</option>
+                                            <option value="2">自助</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-input-block layui-col-md3" style="margin-left:5px;">
+                                    <div class="layui-form-item">
+                                        <input type="text" class="layui-input" placeholder="早餐餐标">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-row">
+
+                                <div class="layui-input-block layui-col-md5" style="margin-left:0px;">
+                                    <div class="layui-form-item" style="margin-top:5px;">
+                                        <select name="city" lay-verify="required" style="width: 170px;height: 36px;">
+                                            <option value="">午餐类型</option>
+                                            <option value="0">中餐</option>
+                                            <option value="1">西餐</option>
+                                            <option value="2">自助</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-input-block layui-col-md3" style="margin-left:5px;">
+                                    <div class="layui-form-item">
+                                        <input type="text" class="layui-input" placeholder="午餐餐标">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-row">
+                                <div class="layui-input-block layui-col-md5" style="margin-left:0px;">
+                                    <div class="layui-form-item" style="margin-top:5px;">
+                                        <select name="city" lay-verify="required" style="width: 170px;height: 36px;">
+                                            <option value="">晚餐类型</option>
+                                            <option value="0">中餐</option>
+                                            <option value="1">西餐</option>
+                                            <option value="2">自助</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-input-block layui-col-md3" style="margin-left:5px;">
+                                    <div class="layui-form-item">
+                                        <input type="text" class="layui-input" placeholder="晚餐餐标" onmouseout="wancan(this)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row" style="margin-left: 50px;">
+                            <div  class="layui-col-md1" style="text-align: left;font-size: 14px;line-height: 34px;">
+                                行程内容：
+                            </div>
+                            <div class="layui-col-md8">
+                                <div class="layui-input-block" style="margin-left: 0px;">
+                                    <textarea name="desc" id="desc1"  placeholder="请输入内容" style="height: 150px;" value="" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                             
+                        </div>
+                        <div class="layui-row" style="margin-left: 50px;margin-top:10px;">
+                 			<div class="layui-col-md1" style="text-align: left;font-size: 14px;line-height: 34px;">
+                                离 | 抵：
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-form-item">
+                                    <input type="text" style="height: 30px;" name="" value="" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-col-md1">
+                                <div class="layui-form-item" style="text-align: center;line-height: 28px;">
+                                    ——
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-form-item">
+                                    <input type="text" style="height: 30px;" name="" value="" class="layui-input">
+                                </div>
+                            </div>
+                 		</div>
+                        
+                    </div>
+
+                      <!--    行程标题开始 -->
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="layui-container">
+		<div class="layui-row" style="margin-left: 400px;height: 80px;">
+        <div  class="layui-col-md6">
+            <div class="layui-row" style="margin-left: 0px;">
+              <div class="layui-col-md3" style="text-align: center;font-size: 14px;line-height: 34px;">
+                  <button class="layui-btn layui-btn-warm">保存</button>
+                </div>
+            </div>
+              
+          </div>
+          <div class="layui-col-md6">
+              
+            <div class="layui-row">       
+                <div class="layui-col-md2" style="line-height: 34px;">
+                <button class="layui-btn layui-btn-normal">取消</button>
+                </div>     
+            </div>
+            
+            </div>
+      </div> 
+
+
+        </div>
+ 
+
+</form>
+<script type="text/javascript" src="dierzu/js/jquery-3.3.1.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript" src="dierzu/layui-v2.3.0/layui/layui.js"></script>
+<script type="text/javascript" src="dierzu/js/xianluguanli.js"></script>
+<script type="text/javascript">
+
+    layui.use('form', function(){
+        var form = layui.form;
+        form.render();
+        form.on('select(spot)', function(){
+            var spot = $("#spot").find("option:selected").text()
+            $("#desc").append("  "+spot+" |");
+        });
+    });
+
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: "#test1" //绑定元素
+            ,url: "/upload/" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+</script>
+
+<script type="text/javascript" src="dierzu/js/cart.js"></script>
+
+
+
+</body>
+</html>

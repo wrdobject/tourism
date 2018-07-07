@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>单团报价</title>
+      <link rel="stylesheet" type="text/css" href="dierzu/layui-v2.3.0/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="dierzu/css/baojia.css">
+    
+  </head>
+
+  <body >
+    <div class="zong">
+      <div class="top">
+        <table>
+          <tr>
+            <td><span class="a0">21个</span>
+              <h3>未报价</h3></td>
+            <td><span class="a1">9个</span>
+              <h3>未确认</h3></td>
+            <td><span class="a2">117个</span>
+              <h3>已成团</h3></td>
+            <td><span class="a0">1个</span>
+              <h3>未成团</h3></td>
+              <td><span class="a">92.13%</span>
+              <h3>成团率</h3></td>
+          </tr>
+        </table>
+      </div>
+      <div class="zhong">
+        <form class="layui-form" action="">
+          <span>组团社  :</span><input type="text" name="title" required lay-verify="required" placeholder="客户名称/公司单位" autocomplete="off" class="layui-input">
+          <span>报价人  :</span><input type="text" name="title" required lay-verify="required" placeholder="报价人" autocomplete="off" class="layui-input">
+          <span>录单人  :</span><input type="text" name="title" required lay-verify="required" placeholder="录单人" autocomplete="off" class="layui-input">
+          <a href="baojia.html" class="layui-btn">新增单团报价</a>
+          </br>
+          </br>
+          <span>报价日期：</span>
+         
+        <input type="text" class="layui-input" id="test1">
+          <span>至</span></span>  <input type="text" class="layui-input" id="test2">
+          <span>出游日期：</span>  <input type="text" class="layui-input" id="test3">
+          <span>至</span>  <input type="text" class="layui-input" id="test4">
+         
+          <a href="baojia.html" class="layui-btn">快速搜索</a>
+          <!-- <input type="button" value="快速搜索" class="layui-btn layui-btn-radius" id="inserts"/> -->
+        </form>
+      </div>
+      <div class="xia">
+        <table class="layui-table" style="width: 1298px;">
+          <thead>
+            <tr>
+              <th style="text-align: center;">组团社名称</th>
+              <th style="text-align: center;">出游日期</th>
+              <th style="text-align: center;">散团日期</th>
+              <th style="text-align: center;">行程天数</th>
+               <th style="text-align: center;">总人数</th>
+              <th style="text-align: center;">录单人</th>    
+              <th style="text-align: center;">录单日期</th>
+              <th style="text-align: center;">报价人</th>
+              <th style="text-align: center;">报价日期</th>
+              <th style="text-align: center;">报价状态</th>
+              <th style="text-align: center;">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>阿刁旅行社</td>
+              <td>2016-11-29</td>
+              <td>2016-12-03</td>
+              <td>5</td>
+              <td>20</td>
+              <td>张三</td>
+              <td>2016-11-28</td>
+              <td>李四</td>
+              <td>2016-11-28</td>
+              <td>已成团</td>
+              <td>
+                <a href="" class="layui-btn layui-btn-sm">查看详情</a>
+                <a href="" class="layui-btn layui-btn-sm">打印报价单</a>
+                <a href="" class="layui-btn layui-btn-sm">打印确认书</a>
+            
+            </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div>
+
+<script type="text/javascript" src="dierzu/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="dierzu/layui-v2.3.0/layui/layui.js"></script>
+        <script>
+          layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+          layui.use('laydate', function() {
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+              elem: '#test1' //指定元素
+            });
+               laydate.render({
+              elem: '#test2' //指定元素
+            });
+                  laydate.render({
+              elem: '#test3' //指定元素
+            });
+                         laydate.render({
+              elem: '#test4' //指定元素
+            });
+                           laydate.render({
+              elem: '#test5' //指定元素
+            });
+          });
+        </script>
+  </body>
+
+</html>
