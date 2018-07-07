@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.suppliersfei.TicketsMapper" >
+
+  <select id="selectAllTickets" resultMap="AllTicketsMap" parameterType="Tickets">
+     SELECT *
+      FROM ticket
+      left JOIN relation
+      ON relation.relation_type = 4
+      AND ticket.ticket_id = relation.relation_type_id
+      left JOIN ticket_fare
+      ON ticket_fare.ticket_id = ticket.ticket_id
+          <where>
+            <if test="ticketProvince != null and ticketProvince != ''">
+              and ticket.ticket_province = #{ticketProvince} AND ticket.ticket_city = #{ticketCity} AND ticket.ticket_county = #{ticketCounty}
+            </if>
+            <if test="ticketName != null and ticketName != ''">
+              and ticket.ticket_name like '%${ticketName}%'
+            </if>
+            <if test="ticketAbbreviation != null and ticketAbbreviation != ''">
+              and ticket.ticket_abbreviation like '%${ticketAbbreviation}%'
+            </if>
+            <if test="ticketId != null">
+              and ticket.ticket_id = #{ticketId}
+            </if>
+          </where>
+    ORDER BY relation_name
+  </select>
+
+  <select id="selectMaxId" resultType="int" >
+    select max(ticket_id) from ticket
+  </select>
+
+
+  <resultMap id="BaseResultMap" type="com.sdgl.pojo.suppliersfei.Tickets" >
+    <id column="ticket_id" property="ticketId" jdbcType="INTEGER" />
+    <result column="ticket_name" property="ticketName" jdbcType="VARCHAR" />
+    <result column="ticket_abbreviation" property="ticketAbbreviation" jdbcType="VARCHAR" />
+    <result column="ticket_type" property="ticketType" jdbcType="VARCHAR" />
+    <result column="ticket_class" property="ticketClass" jdbcType="VARCHAR" />
+    <result column="ticket_fax" property="ticketFax" jdbcType="VARCHAR" />
+    <result column="Ticket_email" property="ticketEmail" jdbcType="VARCHAR" />
+    <result column="ticket_phone" property="ticketPhone" jdbcType="VARCHAR" />
+    <result column="ticket_province" property="ticketProvince" jdbcType="VARCHAR" />
+    <result column="ticket_city" property="ticketCity" jdbcType="VARCHAR" />
+    <result column="ticket_county" property="ticketCounty" jdbcType="VARCHAR" />
+    <result column="ticket_address" property="ticketAddress" jdbcType="VARCHAR" />
+    <result column="ticket_introduce" property="ticketIntroduce" jdbcType="VARCHAR" />
+    <result column="ticket_time" property="ticketTime" jdbcType="DATE" />
+    <result column="ticket_owner" property="ticketOwner" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AllTicketsMap" type="com.sdgl.pojo.suppliersfei.AllTickets" >
+    <id column="ticket_id" property="ticketId" jdbcType="INTEGER" />
+
+    <id column="relation_id" property="relationId" jdbcType="INTEGER" />
+    <id column="relation_type_id" property="relationTypeId" jdbcType="INTEGER" />
+
+    <id column="ticket_fare_id" property="ticketFareId" jdbcType="INTEGER" />
+
+    <result column="ticket_name" property="ticketName" jdbcType="VARCHAR" />
+    <result column="ticket_abbreviation" property="ticketAbbreviation" jdbcType="VARCHAR" />
+    <result column="ticket_type" property="ticketType" jdbcType="VARCHAR" />
+    <result column="ticket_class" property="ticketClass" jdbcType="VARCHAR" />
+    <result column="ticket_fax" property="ticketFax" jdbcType="VARCHAR" />
+    <result column="Ticket_email" property="ticketEmail" jdbcType="VARCHAR" />
+    <result column="ticket_phone" property="ticketPhone" jdbcType="VARCHAR" />
+    <result column="ticket_province" property="ticketProvince" jdbcType="VARCHAR" />
+    <result column="ticket_city" property="ticketCity" jdbcType="VARCHAR" />
+    <result column="ticket_county" property="ticketCounty" jdbcType="VARCHAR" />
+    <result column="ticket_address" property="ticketAddress" jdbcType="VARCHAR" />
+    <result column="ticket_introduce" property="ticketIntroduce" jdbcType="VARCHAR" />
+    <result column="ticket_time" property="ticketTime" jdbcType="DATE" />
+    <result column="ticket_owner" property="ticketOwner" jdbcType="INTEGER" />
+
+
+    <result column="relation_type" property="relationType" jdbcType="INTEGER" />
+    <result column="relation_owner" property="relationOwner" jdbcType="INTEGER" />
+    <result column="relation_name" property="relationName" jdbcType="VARCHAR" />
+    <result column="relation_phone" property="relationPhone" jdbcType="VARCHAR" />
+    <result column="relation_email" property="relationEmail" jdbcType="VARCHAR" />
+
+    <result column="ticket_id" property="ticketId" jdbcType="INTEGER" />
+    <result column="ticket_fare_type" property="ticketFareType" jdbcType="INTEGER" />
+    <result column="ticket_fare_costed_pay" property="ticketFareCostedPay" jdbcType="DOUBLE" />
+    <result column="ticket_fare_listed_pay" property="ticketFareListedPay" jdbcType="DOUBLE" />
+    <result column="ticket_fare_owner" property="ticketFareOwner" jdbcType="INTEGER" />
+
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ticket_id, ticket_name, ticket_abbreviation, ticket_type, ticket_class, ticket_fax, 
+    Ticket_email, ticket_phone, ticket_province, ticket_city, ticket_county, ticket_address, 
+    ticket_introduce, ticket_time, ticket_owner
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.suppliersfei.TicketExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ticket
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ticket
+    where ticket_id = #{ticketId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ticket
+    where ticket_id = #{ticketId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sdgl.pojo.suppliersfei.TicketExample" >
+    delete from ticket
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sdgl.pojo.suppliersfei.Tickets" >
+    insert into ticket (ticket_id, ticket_name, ticket_abbreviation, 
+      ticket_type, ticket_class, ticket_fax, 
+      Ticket_email, ticket_phone, ticket_province, 
+      ticket_city, ticket_county, ticket_address, 
+      ticket_introduce, ticket_time, ticket_owner
+      )
+    values (#{ticketId,jdbcType=INTEGER}, #{ticketName,jdbcType=VARCHAR}, #{ticketAbbreviation,jdbcType=VARCHAR}, 
+      #{ticketType,jdbcType=VARCHAR}, #{ticketClass,jdbcType=VARCHAR}, #{ticketFax,jdbcType=VARCHAR}, 
+      #{ticketEmail,jdbcType=VARCHAR}, #{ticketPhone,jdbcType=VARCHAR}, #{ticketProvince,jdbcType=VARCHAR}, 
+      #{ticketCity,jdbcType=VARCHAR}, #{ticketCounty,jdbcType=VARCHAR}, #{ticketAddress,jdbcType=VARCHAR}, 
+      #{ticketIntroduce,jdbcType=VARCHAR}, #{ticketTime,jdbcType=DATE}, #{ticketOwner,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdgl.pojo.suppliersfei.Tickets" >
+    insert into ticket
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ticketId != null" >
+        ticket_id,
+      </if>
+      <if test="ticketName != null" >
+        ticket_name,
+      </if>
+      <if test="ticketAbbreviation != null" >
+        ticket_abbreviation,
+      </if>
+      <if test="ticketType != null" >
+        ticket_type,
+      </if>
+      <if test="ticketClass != null" >
+        ticket_class,
+      </if>
+      <if test="ticketFax != null" >
+        ticket_fax,
+      </if>
+      <if test="ticketEmail != null" >
+        Ticket_email,
+      </if>
+      <if test="ticketPhone != null" >
+        ticket_phone,
+      </if>
+      <if test="ticketProvince != null" >
+        ticket_province,
+      </if>
+      <if test="ticketCity != null" >
+        ticket_city,
+      </if>
+      <if test="ticketCounty != null" >
+        ticket_county,
+      </if>
+      <if test="ticketAddress != null" >
+        ticket_address,
+      </if>
+      <if test="ticketIntroduce != null" >
+        ticket_introduce,
+      </if>
+      <if test="ticketTime != null" >
+        ticket_time,
+      </if>
+      <if test="ticketOwner != null" >
+        ticket_owner,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ticketId != null" >
+        #{ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="ticketName != null" >
+        #{ticketName,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketAbbreviation != null" >
+        #{ticketAbbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketType != null" >
+        #{ticketType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketClass != null" >
+        #{ticketClass,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketFax != null" >
+        #{ticketFax,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketEmail != null" >
+        #{ticketEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketPhone != null" >
+        #{ticketPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketProvince != null" >
+        #{ticketProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketCity != null" >
+        #{ticketCity,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketCounty != null" >
+        #{ticketCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketAddress != null" >
+        #{ticketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketIntroduce != null" >
+        #{ticketIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketTime != null" >
+        #{ticketTime,jdbcType=DATE},
+      </if>
+      <if test="ticketOwner != null" >
+        #{ticketOwner,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sdgl.pojo.suppliersfei.TicketExample" resultType="java.lang.Integer" >
+    select count(*) from ticket
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ticket
+    <set >
+      <if test="record.ticketId != null" >
+        ticket_id = #{record.ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ticketName != null" >
+        ticket_name = #{record.ticketName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketAbbreviation != null" >
+        ticket_abbreviation = #{record.ticketAbbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketType != null" >
+        ticket_type = #{record.ticketType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketClass != null" >
+        ticket_class = #{record.ticketClass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketFax != null" >
+        ticket_fax = #{record.ticketFax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketEmail != null" >
+        Ticket_email = #{record.ticketEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketPhone != null" >
+        ticket_phone = #{record.ticketPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketProvince != null" >
+        ticket_province = #{record.ticketProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketCity != null" >
+        ticket_city = #{record.ticketCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketCounty != null" >
+        ticket_county = #{record.ticketCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketAddress != null" >
+        ticket_address = #{record.ticketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketIntroduce != null" >
+        ticket_introduce = #{record.ticketIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketTime != null" >
+        ticket_time = #{record.ticketTime,jdbcType=DATE},
+      </if>
+      <if test="record.ticketOwner != null" >
+        ticket_owner = #{record.ticketOwner,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ticket
+    set ticket_id = #{record.ticketId,jdbcType=INTEGER},
+      ticket_name = #{record.ticketName,jdbcType=VARCHAR},
+      ticket_abbreviation = #{record.ticketAbbreviation,jdbcType=VARCHAR},
+      ticket_type = #{record.ticketType,jdbcType=VARCHAR},
+      ticket_class = #{record.ticketClass,jdbcType=VARCHAR},
+      ticket_fax = #{record.ticketFax,jdbcType=VARCHAR},
+      Ticket_email = #{record.ticketEmail,jdbcType=VARCHAR},
+      ticket_phone = #{record.ticketPhone,jdbcType=VARCHAR},
+      ticket_province = #{record.ticketProvince,jdbcType=VARCHAR},
+      ticket_city = #{record.ticketCity,jdbcType=VARCHAR},
+      ticket_county = #{record.ticketCounty,jdbcType=VARCHAR},
+      ticket_address = #{record.ticketAddress,jdbcType=VARCHAR},
+      ticket_introduce = #{record.ticketIntroduce,jdbcType=VARCHAR},
+      ticket_time = #{record.ticketTime,jdbcType=DATE},
+      ticket_owner = #{record.ticketOwner,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdgl.pojo.suppliersfei.Tickets" >
+    update ticket
+    <set >
+      <if test="ticketName != null" >
+        ticket_name = #{ticketName,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketAbbreviation != null" >
+        ticket_abbreviation = #{ticketAbbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketType != null" >
+        ticket_type = #{ticketType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketClass != null" >
+        ticket_class = #{ticketClass,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketFax != null" >
+        ticket_fax = #{ticketFax,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketEmail != null" >
+        Ticket_email = #{ticketEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketPhone != null" >
+        ticket_phone = #{ticketPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketProvince != null" >
+        ticket_province = #{ticketProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketCity != null" >
+        ticket_city = #{ticketCity,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketCounty != null" >
+        ticket_county = #{ticketCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketAddress != null" >
+        ticket_address = #{ticketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketIntroduce != null" >
+        ticket_introduce = #{ticketIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketTime != null" >
+        ticket_time = #{ticketTime,jdbcType=DATE},
+      </if>
+      <if test="ticketOwner != null" >
+        ticket_owner = #{ticketOwner,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ticket_id = #{ticketId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdgl.pojo.suppliersfei.Tickets" >
+    update ticket
+    set ticket_name = #{ticketName,jdbcType=VARCHAR},
+      ticket_abbreviation = #{ticketAbbreviation,jdbcType=VARCHAR},
+      ticket_type = #{ticketType,jdbcType=VARCHAR},
+      ticket_class = #{ticketClass,jdbcType=VARCHAR},
+      ticket_fax = #{ticketFax,jdbcType=VARCHAR},
+      Ticket_email = #{ticketEmail,jdbcType=VARCHAR},
+      ticket_phone = #{ticketPhone,jdbcType=VARCHAR},
+      ticket_province = #{ticketProvince,jdbcType=VARCHAR},
+      ticket_city = #{ticketCity,jdbcType=VARCHAR},
+      ticket_county = #{ticketCounty,jdbcType=VARCHAR},
+      ticket_address = #{ticketAddress,jdbcType=VARCHAR},
+      ticket_introduce = #{ticketIntroduce,jdbcType=VARCHAR},
+      ticket_time = #{ticketTime,jdbcType=DATE},
+      ticket_owner = #{ticketOwner,jdbcType=INTEGER}
+    where ticket_id = #{ticketId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -45,17 +45,17 @@
 
 							<!--三级联动-->
 							<div class="layui-input-inline ">
-								<select id="cmbProvince" class="sun" lay-filter="province">
+								<select id="cmbProvince" class="sun" lay-filter="province" name="ticketProvince">
 
 								</select>	
 							</div>
 							<div class="layui-input-inline ">
-								<select id="cmbCity" class="sun" lay-filter="city">
+								<select id="cmbCity" class="sun" lay-filter="city" name="ticketCity">
 
 								</select>
 							</div>
 							<div class="layui-input-inline ">
-								<select id="cmbArea" class="sun" lay-filter="area">
+								<select id="cmbArea" class="sun" lay-filter="area" name="ticketCounty">
 
 								</select>
 							</div>
@@ -63,7 +63,7 @@
 								<div class="layui-input-inline" style="width: 150px;">
 									<input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="公司名称/简拼" class="layui-input">
 								</div>
-								<button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="queryInfoBtn">搜索</button>
+								<button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="queryInfoBtn" onclick="showAll(1,10)">搜索</button>
 
 								<a href="javascript:;" class="layui-btn site-demo-active layui-btn-radius" data-url="ticket_add" data-id="ticket_add" data-title="添加景点信息" data-type="tabAdd"><i class="layui-icon">&#xe654;添加景点信息</i></a>
 							</div>
@@ -160,6 +160,7 @@
 		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 		<script src="/layui/layui.js" charset="utf-8"></script>
 		<script type="text/javascript" src="/layui/lay/3js/city.js"></script>
+		<script src="/js/suppliersfei/ticket.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				//三级联动
@@ -225,30 +226,21 @@
 
 			});
 
-			layui.use(['form', 'layedit', 'laydate', 'element', 'laypage', 'layer'], function() {
-
-				var element = layui.element;
-				var laypage = layui.laypage,
-					layer = layui.layer;
-				//分页
-				laypage.render({
-					elem: 'demo7',
-					count: 16,
-					layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
-					jump: function(obj) {
-			
-					}
-				});
-
-				//监听提交
-				/*	form.on('submit(demo1)', function(data) {
-						layer.alert(JSON.stringify(data.field), {
-							title: '最终的提交信息'
-						})
-						return false;
-					});*/
-
-			});
+            // layui.use(['form',  'laypage'], function() {
+            //
+             //    var element = layui.element;
+             //    var laypage = layui.laypage,
+             //        layer = layui.layer;
+             //    //分页
+             //    laypage.render({
+             //        elem: 'demo7',
+             //        count: 16,
+             //        layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+             //        jump: function(obj) {
+            //
+             //        }
+             //    });
+			// });
 		</script>
 
 	</body>
