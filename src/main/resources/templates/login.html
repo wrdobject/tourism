@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+
+		<link rel="stylesheet" type="text/css" href="css/global.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<link rel="stylesheet" type="text/css" href="css/add.css" />
+		<link rel="stylesheet" href="css/layui.css" media="all">
+
+		<script>
+			
+			//禁用网页右键
+			document.oncontextmenu = new Function("return false");
+
+			//禁用网页的F12
+			document.onkeydown = document.onkeyup = document.onkeypress = function() {
+				if(window.event.keyCode == 123) {
+					window.event.returnValue = false;
+					return(false);
+				}
+			}
+
+			//<背景图片变换开始
+			var currentIndex = 0;
+
+			function changeBg() {
+				//定义要切换的背景图片，双引号里面"1.jpg","2.jpg","3.jpg","4.jpg"，可以放任意多个用,隔开
+				var bgImgs = ["images/shi3.jpeg","images/shi2.jpeg"];
+				if(currentIndex >= bgImgs.length)
+					currentIndex = 0;
+				var obj = document.getElementsByTagName("body")[0];
+				obj.style.backgroundImage = "url(" + bgImgs[currentIndex] + ")";
+				currentIndex += 1;
+			}
+			setInterval("changeBg()", 3000); //设定定时切换，单位为毫秒这里是3000 毫秒
+		</script>
+	</head>
+
+	<body id="loginz">
+
+		<div hidden="hidden">
+			
+			<img src="images/shi2.jpeg">
+			<img src="images/shi3.jpeg">
+		</div>
+
+		<div class="loginContent">
+			<div class="titleText h1">
+				<h1>世达国旅地接社</h1></div>
+
+			<div class="user">
+
+				<form class="formSheet" action="#" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
+
+					<dl>
+						<dd>
+							<div>
+								用户名：<input type="text" class="textStyle" id="userName" name="userName" style="width:300px; height: 40px;" placeholder="请输入账号" />
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dd>
+							<div>
+								密码：&nbsp;&nbsp; <input type="password" class="pwdStyle" style="width:300px;height: 40px;" placeholder="请输入密码" />
+							</div>
+						</dd>
+					</dl>
+					<div><span class="red">&nbsp;</span></div>
+					<div>
+						<div class="loglogin"><input class="checkedStyle" type="checkbox" name="login" /></div>
+						<div class="loginTxt">
+							<a href="#">十天内免登录</a>
+						</div>
+						<div class="loginTxt">
+							<a href="#">忘记密码?</a>
+						</div>
+					</div>
+					<div class="btnLogin">
+						<input type="button" value="登录" onclick="loginabc()" class="button layui-btn" />
+
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src='js/jquery-3.3.1.min.js'></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript">
+			//表单验证   注意：文本提示的信息应在开始的时候全部写在placeholder中
+			function checkForm() {
+				var name = checkUserName();
+				return name;
+			}
+
+			//验证姓名   
+			function checkUserName() {
+				var username = $("#userName");
+				var tsInfo = $(".red");
+				if(username.val() == "") {
+					username.addClass("err");
+					tsInfo.css("display", "block");
+					tsInfo.text("用户名输入有误，请重新输入")
+					return false;
+				} else {
+					username.removeClass("err");
+					return true;
+				}
+			}
+
+			function loginabc() {
+				window.location.href = 'index.html';
+			}
+		</script>
+
+	</body>
+
+</html>
