@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration//代表是置文件
+//@Configuration//代表是置文件
 public class ShiroConfig {
 
     //将自己的验证方式加入容器
