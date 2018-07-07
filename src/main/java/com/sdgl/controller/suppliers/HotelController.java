@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.List;
 
@@ -30,9 +31,11 @@ public class HotelController {
      * @return
      */
     @RequestMapping("/hotelList")
-    public String selectAllHotel(Hotel hotel,@RequestParam(value = "yema") Integer yema){
+    public String selectAllHotel(Hotel hotel, @RequestParam(value = "yema") Integer yema){
+        System.out.println("传入的参数：yema"+yema+"-"+hotel.getHotel_city()+"-"+hotel.getHotel_abbreviation()+"-"+hotel.getHotel_county()+"-"+hotel.getHotel_name());
         PageHelper.startPage(yema, 6);
         List<Hotel> hotelList=hotelService.selectAllHotel(new Hotel());
+        System.out.println("数量："+hotelList.size());
         PageInfo<Hotel> pageInfo = new PageInfo<Hotel>(hotelList);
         return JSON.toJSONString(pageInfo);
     }
@@ -43,8 +46,10 @@ public class HotelController {
      * @return
      */
     @RequestMapping("/hotelById")
-    public String selectHotelById(@RequestParam(value = "hotel_id") Integer hotel_id){
+    public String selectHotelById(@RequestParam(value = "hotel_id") Integer hotel_id,HttpSession session){
         Hotel hotel = hotelService.selectHotelById(hotel_id);
+        session.setAttribute("hotle",hotel);
+        System.out.println("根据id查询出的："+hotel.toString());
         return JSON.toJSONString(hotel);
     }
 
