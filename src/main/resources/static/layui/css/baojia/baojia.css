@@ -1,0 +1,103 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.zong{
+	width: 1298px;
+	height: 640px;
+	background: #DFE6EF;
+}
+/* 头部 */
+.top{
+	width: 1298px;
+	height: 120px;
+	border:1px #DFE6EF solid;
+}
+.top table {
+	background-color: white;
+	width: 1298px;
+}
+.top table tr {
+	width: 1298px;
+	height: 120px;
+}
+.top table tr td {
+	text-align:center
+}
+.top table tr td .a0 {
+	color: red;
+	font-size: 30px;
+}
+.top table tr td .a1 {
+	color: blue;
+	font-size: 30px;
+}
+.top table tr td .a2 {
+	color: green;
+	font-size: 30px;
+}
+.top table tr td .a {
+	font-size: 30px;
+}
+.top table tr td h3{
+	font-size: 16px;
+	font-weight: normal;
+	color: #ccc;
+}
+/* 中间 */
+.zhong {
+	padding: 10px;
+	width: 1276px;
+	height: 100px;
+	border:1px #DFE6EF solid;
+	background-color: white;
+}
+.zhong span{
+	margin-right: 10px;
+	color: #A9A9A9;
+	font-size: 12px;
+	margin-left: 10px;
+}
+.zhong .insert{
+	margin-left: 230px;
+	background-color: #2277DA;
+	color: white;
+}
+.zhong input{
+	width: 150px;
+	display: inline-block;
+}
+
+.zhong .zhuangtai{
+/* 	appearance:none; */
+	/* -moz-appearance:none;
+	-webkit-appearance:none; */
+	width: 100px;
+}
+.option{
+	font-size:14px;
+	font-weight:bold;
+	color: #C9C9C9;
+}
+.zhong #inserts{
+	width: 100px;
+	margin-left: 70px;
+	background-color: #2277DA;
+	color: white;
+}
+#x{
+	display: inline-block;
+	border:1px solid white;
+
+}
+.th-padding{
+	text-align: center;
+	padding: 0px;
+	width:114px;
+}
+.input-padding{
+	margin:0px;
+	width:114px;
+	text-align: center; 
+}

@@ -1,0 +1,26 @@
+#kuang{
+	border: 1px gray solid;width: 98px;height: 34px;margin-left: 120px;position: absolute;
+}
+#jia{
+display: inline-block;width: 34px;height: 34px;border:0px;text-align: center;line-height: 34px;background-color: white;
+}
+#shuzi{
+	display:inline-block;width: 30px;height: 34px;border:0px;line-height: 34px;text-align:center;position: relative;margin-top: -35px;margin-left: 0px;
+}
+#jian{
+	position: relative;text-align: center;width: 34px;height: 20px;border: 0px;background-color: white;display:inline-block;
+}
+#day{
+	text-align: center;font-size: 30px;color: white;line-height: 50px;
+}
+#daykuang{
+	width:80px;height:100px;background-color: #0078D7;
+}
+#time{
+	text-align: center;font-size: 30px;color: white;
+}
+ul { list-style-type: none;}
+li { display: inline-block;float: left;border: 1px yellow solid;width: 100px;height: 30px;}
+li { margin:10px;}
+input{float: left;margin-top: 5px;width:20px;height: 20px;border: 0px;}
+i{line-height: 30px;font-size: 16px;}
