@@ -9,7 +9,7 @@ public class Ticket {
     private String ticket_type;
     private String ticket_class;
     private String ticket_fax;
-    private String Ticket_email;
+    private String ticket_email;
     private String ticket_phone;
     private String ticket_province;
     private String ticket_city;
@@ -29,7 +29,7 @@ public class Ticket {
         this.ticket_type = ticket_type;
         this.ticket_class = ticket_class;
         this.ticket_fax = ticket_fax;
-        Ticket_email = ticket_email;
+        this.ticket_email = ticket_email;
         this.ticket_phone = ticket_phone;
         this.ticket_province = ticket_province;
         this.ticket_city = ticket_city;
@@ -89,11 +89,11 @@ public class Ticket {
     }
 
     public String getTicket_email() {
-        return Ticket_email;
+        return ticket_email;
     }
 
     public void setTicket_email(String ticket_email) {
-        Ticket_email = ticket_email;
+        ticket_email = ticket_email;
     }
 
     public String getTicket_phone() {
@@ -158,5 +158,26 @@ public class Ticket {
 
     public void setTicket_owner(Integer ticket_owner) {
         this.ticket_owner = ticket_owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticket_id=" + ticket_id +
+                ", ticket_name='" + ticket_name + '\'' +
+                ", ticket_abbreviation='" + ticket_abbreviation + '\'' +
+                ", ticket_type='" + ticket_type + '\'' +
+                ", ticket_class='" + ticket_class + '\'' +
+                ", ticket_fax='" + ticket_fax + '\'' +
+                ", Ticket_email='" + ticket_email + '\'' +
+                ", ticket_phone='" + ticket_phone + '\'' +
+                ", ticket_province='" + ticket_province + '\'' +
+                ", ticket_city='" + ticket_city + '\'' +
+                ", ticket_county='" + ticket_county + '\'' +
+                ", ticket_address='" + ticket_address + '\'' +
+                ", ticket_introduce='" + ticket_introduce + '\'' +
+                ", ticket_time=" + ticket_time +
+                ", ticket_owner=" + ticket_owner +
+                '}';
     }
 }

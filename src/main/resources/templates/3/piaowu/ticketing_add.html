@@ -27,8 +27,7 @@
 			<legend>信息添加</legend>
 		</fieldset>
 		*为必填项，为方便信息的完整，其它最好填写
-		<form  action="">
-
+		<form  action="/wrd_upload" method="post" enctype="multipart/form-data">
 			<div class="layui-form-item">
 				<label class="layui-form-label" style="width: 100px;">*航空公司名称</label>
 				<div class="layui-input-inline">
@@ -65,30 +64,30 @@
 				<label class="layui-form-label" style="width: 100px;">所在区域</label>
 				<!--三级联动-->
 										<div class="layui-input-inline " >
-											<select  id="cmbProvince" class="sun" lay-filter="province">
+											<select  id="cmbProvince" name="ticketing_province" class="sun" lay-filter="province">
 										
 											</select>
 										</div>
 										<div class="layui-input-inline " >
-											<select id="cmbCity" class="sun" lay-filter="city">
+											<select id="cmbCity" name="ticketing_city" class="sun" lay-filter="city">
 												
 											</select>
 										</div>
 										<div class="layui-input-inline ">
-											<select id="cmbArea" class="sun" lay-filter="area">
+											<select id="cmbArea" name="ticketing_county" class="sun" lay-filter="area">
 											
 											</select>
 										</div>
 				<label class="layui-form-label" >详细地址</label>
 				<div class="layui-input-inline">
-					<input type="text" style="width: 300px" name="hotel_address" autocomplete="off" class="layui-input">
+					<input type="text" style="width: 300px" name="ticketing_address" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label" >简介</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea" name="ticketing_ synopsis"></textarea>
+					<textarea placeholder="请输入内容" class="layui-textarea" name="ticketing_synopsis"></textarea>
 				</div>
 			</div>
 
@@ -98,13 +97,13 @@
 				<button type="button" class="layui-btn" id="test2">多图片上传</button>
 				<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
 					预览图：
-					<div class="layui-upload-list" id="demo2"></div>
+					<div class="layui-upload-list" id="demo2" name="a_idPicPath"></div>
 				</blockquote>
 			</div>
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+					<button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
@@ -118,7 +117,7 @@
 				$(function(){
 				//三级联动
 				addressInit('cmbProvince', 'cmbCity', 'cmbArea');    
-			})
+			});
 			layui.use(['form', 'layedit', 'laydate', 'element', 'laypage', 'layer'], function() {
 
 				var element = layui.element;
@@ -139,7 +138,7 @@
 					//多图片上传
 					upload.render({
 						elem: '#test2',
-						url: '/upload/',
+						url: '/upload',
 						multiple: true,
 						before: function(obj) {
 							//预读本地文件示例，不支持ie8
@@ -153,12 +152,12 @@
 					});
 				});
 				//监听提交
-				/*	form.on('submit(demo1)', function(data) {
+					form.on('submit(submit)', function(data) {
 						layer.alert(JSON.stringify(data.field), {
 							title: '最终的提交信息'
-						})
+						});
 						return false;
-					});*/
+					});
 
 			});
 		</script>

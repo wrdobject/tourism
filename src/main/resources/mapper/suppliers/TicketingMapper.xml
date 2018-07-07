@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.suppliers.TicketingMapper">
+    <insert id="addTicketing" parameterType="com.sdgl.pojo.suppliers.Ticketing">
+
+INSERT INTO tourism.ticketing
+	(
+	ticketing_name,
+	ticketing_abbreviation,
+	ticketing_email,
+	ticketing_fax,
+	ticketing_phone,
+	ticketing_province,
+	ticketing_city,
+	ticketing_county,
+	ticketing_address,
+	ticketing_synopsis,
+	ticketing_time,
+	ticketing_owner
+	)
+	VALUES
+	(
+	#{ticketing_name},
+	#{ticketing_abbreviation},
+	#{ticketing_email},
+	#{ticketing_fax},
+	#{ticketing_phone},
+	#{ticketing_province},
+	#{ticketing_city},
+	#{ticketing_county},
+	#{ticketing_address},
+	#{ticketing_synopsis},
+	#{ticketing_time},
+	#{ticketing_owner}
+	);
+    </insert>
+    <resultMap id="sel_wrd" type="com.sdgl.pojo.suppliers.Ticketing">
+        <id column="ticketing_id" property="ticketing_id"></id>
+        <result column="ticketing_name" property="ticketing_name"></result>
+        <collection property="relations" column="relation_type_id" ofType="com.sdgl.pojo.suppliers.Relation">
+            <id column="relation_id" property="relation_id"></id>
+            <result column="relation_name" property="relation_name"></result>
+            <result column="relation_phone" property="relation_phone"></result>
+        </collection>
+        <collection property="image" ofType="com.sdgl.pojo.suppliers.Image">
+            <id column="img_id" property="img_id"></id>
+            <result column="img_path" property="img_path"></result>
+        </collection>
+    </resultMap>
+    <select id="selTicketing" resultMap="sel_wrd">
+      SELECT t.ticketing_name,r.relation_name,r.relation_phone,im.img_path FROM ticketing AS t,relation AS r, image AS im
+WHERE r.relation_type=6 AND r.relation_type_id=t.ticketing_id AND im.other_id=t.ticketing_id AND im.supplier_type=6 AND im.img_type=1
+
+    </select>
+</mapper>
