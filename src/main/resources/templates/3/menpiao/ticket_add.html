@@ -24,47 +24,48 @@
 			<legend>景点信息</legend>
 		</fieldset>
 		*为必填项，为方便信息的完整，其它最好填写
-		<form action="">
+		<form action="/addTickets" method="post">
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">*景点名称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">
+					<input type="hidden" name="ticketId" class="ticketId">
+					<input type="text" name="ticketName" lay-verify="title" autocomplete="off" class="layui-input pinyinname ticketName" onblur="pinyin()">
 				</div>
 
 				<label class="layui-form-label">拼音简称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
+					<input type="text" name="ticketAbbreviation" lay-verify="title" autocomplete="off" class="layui-input pinyin ticketAbbreviation">
 				</div>
 			</div>
 
 			<div class="layui-form-item">
 				<td><label class="layui-form-label">*联系电话</label>
 					<div class="layui-input-inline">
-						<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						<input type="tel" name="ticketPhone" lay-verify="required|phone" autocomplete="off" class="layui-input ticketPhone">
 					</div>
 
 					<label class="layui-form-label">传真</label>
 					<div class="layui-input-inline">
-						<input type="url" name="hotel_fax" lay-verify="url" autocomplete="off" class="layui-input">
+						<input type="text" name="ticketFax" lay-verify="url" autocomplete="off" class="layui-input ticketFax">
 					</div>
 			</div>
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">邮箱</label>
 				<div class="layui-input-inline">
-					<input type="email" name="hotel_email" lay-verify="email" autocomplete="off" class="layui-input">
+					<input type="email" name="ticketEmail" lay-verify="email" autocomplete="off" class="layui-input ticketEmail">
 				</div>
 			</div>
 
 			<div class="layui-form-item layui-form">
 				<label class="layui-form-label">*景点等级</label>
 				<div>
-					<input type="radio" name="hotel_class" value="" title="未评级" checked>
-					<input type="radio" name="hotel_class" value="3A" title="3A">
-					<input type="radio" name="hotel_class" value="4A" title="4A">
-					<input type="radio" name="hotel_class" value="5A" title="5A">
-					<input type="radio" name="hotel_class" value="其他" title="其他">
+					<input type="radio" name="ticketClass" value="0" title="未评级" checked>
+					<input type="radio" name="ticketClass" value="3A" title="3A">
+					<input type="radio" name="ticketClass" value="4A" title="4A">
+					<input type="radio" name="ticketClass" value="5A" title="5A">
+					<input type="radio" name="ticketClass" value="其他" title="其他">
 
 				</div>
 			</div>
@@ -72,21 +73,21 @@
 			<div class="layui-form-item layui-form">
 				<label class="layui-form-label">*景点类型</label>
 				<div>
-					<input type="radio" name="hotel_type" value="影视基地" title="影视基地" checked>
-					<input type="radio" name="hotel_type" value="户外拓展" title="户外拓展">
-					<input type="radio" name="hotel_type" value="城市风光" title="城市风光">
-					<input type="radio" name="hotel_type" value="动植物园" title="动植物园">
-					<input type="radio" name="hotel_type" value="主题体验" title="主题体验">
-					<input type="radio" name="hotel_type" value="文化宗教" title="文化宗教">
-					<input type="radio" name="hotel_type" value="休闲娱乐" title="休闲娱乐">
-					<input type="radio" name="hotel_type" value="风景名胜" title="风景名胜">
-					<input type="radio" name="hotel_type" value="旅游景点" title="旅游景点">
-					<input type="radio" name="hotel_type" value="名胜古迹" title="名胜古迹">
-					<input type="radio" name="hotel_type" value="田园古镇" title="田园古镇">
-					<input type="radio" name="hotel_type" value="水上乐园" title="水上乐园">
-					<input type="radio" name="hotel_type" value="漂流" title="漂流">
-					<input type="radio" name="hotel_type" value="海滨海岛" title="海滨海岛">
-					<input type="radio" name="hotel_class" value="其他" title="其他">
+					<input type="radio" name="ticketType" value="影视基地" title="影视基地" checked>
+					<input type="radio" name="ticketType" value="户外拓展" title="户外拓展">
+					<input type="radio" name="ticketType" value="城市风光" title="城市风光">
+					<input type="radio" name="ticketType" value="动植物园" title="动植物园">
+					<input type="radio" name="ticketType" value="主题体验" title="主题体验">
+					<input type="radio" name="ticketType" value="文化宗教" title="文化宗教">
+					<input type="radio" name="ticketType" value="休闲娱乐" title="休闲娱乐">
+					<input type="radio" name="ticketType" value="风景名胜" title="风景名胜">
+					<input type="radio" name="ticketType" value="旅游景点" title="旅游景点">
+					<input type="radio" name="ticketType" value="名胜古迹" title="名胜古迹">
+					<input type="radio" name="ticketType" value="田园古镇" title="田园古镇">
+					<input type="radio" name="ticketType" value="水上乐园" title="水上乐园">
+					<input type="radio" name="ticketType" value="漂流" title="漂流">
+					<input type="radio" name="ticketType" value="海滨海岛" title="海滨海岛">
+					<input type="radio" name="ticketType" value="其他" title="其他">
 				</div>
 			</div>
 
@@ -94,30 +95,30 @@
 				<label class="layui-form-label">所在区域</label>
 				<!--三级联动-->
 				<div class="layui-input-inline ">
-					<select id="cmbProvince" class="sun" lay-filter="province">
+					<select id="cmbProvince" class="sun" lay-filter="province" name="ticketProvince">
 
 					</select>
 				</div>
 				<div class="layui-input-inline ">
-					<select id="cmbCity" class="sun" lay-filter="city">
+					<select id="cmbCity" class="sun" lay-filter="city" name="ticketCity">
 
 					</select>
 				</div>
 				<div class="layui-input-inline ">
-					<select id="cmbArea" class="sun" lay-filter="area">
+					<select id="cmbArea" class="sun" lay-filter="area" name="ticketCounty">
 
 					</select>
 				</div>
 				<label class="layui-form-label">详细地址</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_address" autocomplete="off" class="layui-input" style="width: 300px;">
+					<input type="text" name="ticketAddress" autocomplete="off" class="layui-input ticketAddress" style="width: 300px;">
 				</div>
 			</div>
 
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">景点介绍</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_introduce"></textarea>
+					<textarea placeholder="请输入内容" class="layui-textarea ticketIntroduce" name="ticketIntroduce"></textarea>
 				</div>
 			</div>
 
@@ -132,7 +133,7 @@
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+					<input type="submit" class="layui-btn"/>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
@@ -141,7 +142,8 @@
 		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 		<script src="/layui/layui.js" charset="utf-8"></script>
 		<script type="text/javascript" src="/layui/lay/3js/city.js"></script>
-
+		<script src="/js/suppliersfei/pinying.js"></script>
+		<script src="/js/suppliersfei/ticketadd.js"></script>
 		<script>
 			$(function() {
 				//三级联动
@@ -168,7 +170,8 @@
 					//多图片上传
 					upload.render({
 						elem: '#test2',
-						url: '/upload/',
+						url: '/relationuploadimg/',
+						field:"image",
 						multiple: true,
 						before: function(obj) {
 							//预读本地文件示例，不支持ie8

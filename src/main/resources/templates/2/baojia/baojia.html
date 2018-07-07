@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报价页面</title>
+    <link rel="stylesheet" type="text/css" href="dierzu/layui-v2.3.0/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="dierzu/css/baojia1.css">
+
+
+</head>
+<body>
+
+<form>
+    <div class="layui-container" style="margin-top: 30px;">
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;客户信息</h2>
+        <hr>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="width: 120px;text-align: center;font-size: 18px;line-height: 34px;">
+                组团社名称：
+            </div>
+            <div class="layui-input-block layui-col-md3" style="margin-left: 0px;">
+                <select name="city" lay-verify="required" style="width: 300px;height: 34px;">
+                    <option value="">请选择</option>
+                    <option value="0">A社</option>
+                    <option value="1">B社</option>
+                    <option value="2">C社</option>
+
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="layui-container" style="margin-top: 30px;">
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;包团需求</h2>
+        <hr>
+        <div class="layui-row" style="margin-top: 30px;margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                出游人数：
+            </div>
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+             游客
+            </div>
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                <input type="text" class="layui-input">
+            </div>
+                <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                 +
+            </div>
+              <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+     全陪
+            </div>
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                <input type="text" class="layui-input">
+            </div>
+
+          
+          
+        
+        </div>
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                行程天数：
+            </div>
+            <div class="layui-col-md3">
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input" value="" id="days2">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                出游日期：
+            </div>
+            <div class="layui-col-md3">
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input" id="test1">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                散团日期：
+            </div>
+            <div class="layui-col-md3">
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input" id="test6">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                行程要求：
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                相关文件：
+            </div>
+            <div class="layui-col-md1">
+                <button type="button" class="layui-btn" id="test2">
+                    <i class="layui-icon">&#xe67c;</i>上传文件
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-container" style="margin-top: 30px;">
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;线路行程</h2>
+        <hr>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                线路名称：
+            </div>
+            <div class="layui-col-md5">
+                <div class="layui-form-item">
+                    <select name="city" lay-verify="required" style="width: 300px;height: 34px;">
+                        <option value="">请选择</option>
+                        <option value="0">武汉七日游</option>
+                        <option value="1">长沙七日游</option>
+                        <option value="2">山西三日游</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+    <div class="layui-container" style="margin-top: 30px;">
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;报价</h2>
+        <hr>
+        <div class="layui-row" style="margin-left: 50px;">
+            <div class="layui-col-md5">
+                <div class="layui-row">
+                    <div class="layui-col-md3" style="line-height: 34px;">
+                        车辆报价：
+                    </div>
+                    <div class="layui-input-block layui-col-md6" style="margin-left: 0px;">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" value="">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-row">
+                    <div class="layui-col-md3" style="line-height: 34px;">
+                        加床房间数:
+                    </div>
+                    <div class="layui-input-block layui-col-md6" style="margin-left: 0px;">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" value="" onchange="ddd()">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-md3" style="line-height: 34px;">
+                        不加床房间数:
+                    </div>
+                    <div class="layui-input-block layui-col-md6" style="margin-left: 0px;">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" value="" onchange="ddd()">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th style="text-align: center;">类型</th>
+                    <th style="text-align: center;" colspan="2">门票</th>
+                    <th style="text-align: center;" colspan="2">餐标</th>
+                    <th style="text-align: center;" colspan="2">酒店</th>
+                    <th style="text-align: center;" colspan="2">总计</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center;">日期</th>
+                    <th style="text-align: center;" colspan="1">成本价</th>
+                    <th style="text-align: center;" colspan="1">报价</th>
+                    <th style="text-align: center;" colspan="1">成本价</th>
+                    <th style="text-align: center;" colspan="1">报价</th>
+                    <th style="text-align: center;" colspan="1">成本价</th>
+                    <th style="text-align: center;" colspan="1">报价</th>
+                    <th style="text-align: center;" colspan="1">成本价</th>
+                    <th style="text-align: center;" colspan="1">报价</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <!-- 第一天 -->
+                 <tr>
+                    <th style="text-align: center;">4.11</th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 125px;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;margin:0px;text-align: center;" class="layui-input">
+                    </th>
+                </tr>
+
+
+                <!-- 第二天 -->
+                 <tr>
+                    <th style="text-align: center;">4.12</th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 125px;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;margin:0px;text-align: center;" class="layui-input">
+                    </th>
+                </tr>
+
+                <!-- 第三天 -->
+                 <tr>
+                    <th style="text-align: center;">4.13</th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 125px;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;margin:0px;text-align: center;" class="layui-input">
+                    </th>
+                </tr>
+                <!-- 第四天 -->
+                <tr>
+                    <th style="text-align: center;">4.14</th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 125px;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width:114px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="margin:0px;width: 100%;text-align: center; " class="layui-input">
+                    </th>
+                    <th style="text-align: center;padding: 0px;width: 125px;" colspan="1">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;margin:0px;text-align: center;" class="layui-input">
+                    </th>
+                </tr>
+
+
+                <tr>
+                    <th style="text-align: center;">最终报价</th>
+                    <th colspan="10" style="padding: 0px;">
+                        <input type="text" name="title" lay-verify="title"
+                               style="width: 100%;text-align: center;margin: 0px" class="layui-input">
+                    </th>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                报价备注：
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 800px"></textarea>
+                </div>
+            </div>
+        </div>
+        <h2><span style="display: inline-block;width: 5px;height: 15px;background-color: green;"></span>&nbsp;其他相关</h2>
+        <hr>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                行程特色：
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 800px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                费用包含：
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 800px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                预定须知：
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 800px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                温馨提示：
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 800px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-left: 50px;margin-top: 20px;">
+            <div class="layui-col-md1" style="text-align: center;font-size: 18px;line-height: 34px;">
+                服务项目及标准:
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 800px"></textarea>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="layui-row" style="margin-left: 600px;height: 80px;">
+            <div class="layui-col-md6">
+                <div class="layui-row" style="margin-left: 50px;">
+                    <div class="layui-col-md3" style="text-align: center;font-size: 14px;line-height: 34px;">
+                        <button class="layui-btn layui-btn-warm">保存</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="layui-col-md6">
+
+                <div class="layui-row">
+                    <div class="layui-col-md2" style="line-height: 34px;">
+                        <button class="layui-btn layui-btn-normal">取消</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script type="text/javascript" src="dierzu/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="dierzu/layui-v2.3.0/layui/layui.js"></script>
+<script type="text/javascript">
+    var a = 1;
+
+    layui.use('form', function () {
+        if (a == 1) {
+            $("#desc").append("景点：");
+        }
+        var form = layui.form;
+        form.render();
+        form.on('select(spot)', function () {
+            var spot = $("#spot").find("option:selected").text();
+
+            $("#desc").append("" + spot + "|");
+        });
+
+    });
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+        laydate.render({
+            elem: '#test4' //指定元素
+        });
+        laydate.render({
+            elem: '#test5' //指定元素
+        });
+        laydate.render({
+            elem: '#test6' //指定元素
+        });
+    });
+    layui.use('upload', function () {
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadIns2t = upload.render({
+            elem: "#test2" //绑定元素
+            , url: "/upload/" //上传接口
+            , done: function (res) {
+                //上传完毕回调
+            }
+            , error: function () {
+                //请求异常回调
+            }
+        });
+
+        var uploadInst3 = upload.render({
+            elem: "#test3" //绑定元素
+            , url: "/upload/" //上传接口
+            , done: function (res) {
+                //上传完毕回调
+            }
+            , error: function () {
+                //请求异常回调
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

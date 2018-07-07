@@ -114,7 +114,7 @@ public class Page {
      * 查看门票详情
      * @return
      */
-    @RequestMapping("/ticket_info.do")
+    @RequestMapping("/ticket_info")
     public String ticket_info(){
         return "3/menpiao/ticket_info";
     }
