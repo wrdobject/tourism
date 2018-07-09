@@ -31,66 +31,64 @@
 
 	<body>
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
-			<legend>******酒店详情</legend>
+			<#if hotel??>
+			<legend id="hotelName">${hotel.hotel_name}酒店详情</legend>
+			</if>
 		</fieldset>
 		<div class="layui-row">
 			<div class="layui-col-xs4">
 				<div class="layui-carousel suna" id="test1" lay-filter="test1">
 
 					<div carousel-item="">
-						<div>
-							<img class="suna" src="/layui/images/5-5.jpg"></div>
-						<div>
-							<img class="suna" src="/layui/images/5-5.jpg"></div>
-						<div>
-							<img class="suna" src="/layui/images/5-5.jpg"></div>
-						<div>
-							<img class="suna" src="/layui/images/5-5.jpg"></div>
-						<div>
-							<img class="suna" src="/layui/images/5-5.jpg"></div>
+						<#list hotel.imageList as img>
+						<div><img class="suna" src="/layui/images/${img.img_path}"></div>
+						</list>
+
 					</div>
 				</div>
 			</div>
 			<div class="layui-col-xs4">
 				<div class="layui-row">
+
 				<div class="layui-col-xs6">
 					<table>
+						<#if hotel??>
 						<tr class="tr">
 							<td width="80px">酒店类别:</td>
-							<td>asdf</td>
+							<td>${hotel.hotel_type}</td>
 						</tr>
 						<tr class="tr">	
 							<td width="80px">酒店星级:</td>
-							<td>cxvf</td>
+							<td>${hotel.hotel_class}</td>
 						</tr>
 						<tr class="tr">
 							<td width="80px">传真:</td>
-							<td >asdf</td>
+							<td >${hotel.hotel_fax}</td>
 						</tr>
 						<tr class="tr">		
 							<td width="80px">邮箱:</td>
-							<td>asdf</td>
+							<td>${hotel.hotel_email}</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">电话:</td>
-							<td>asdf</td>
+							<td>${hotel.hotel_phone}</td>
 						</tr>
 						<tr class="tr">
 							<td width="80px">详细地址:</td>
-							<td >asdf</td>
+							<td >${hotel.hotel_address}</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">负责计调:</td>
-							<td >asdf</td>
+							<td >${hotel.hotel_owner}</td>
 						</tr>
 
 						<tr class="tr">
 							<td width="80px">修改时间:</td>
-							<td >2015-01-02</td>
+							<td >${hotel.hotel_time?string("yyyy年MM月dd日")}</td>
 						</tr>
-						
+					</if>
 					</table>
 				</div>
 				<div class="layui-col-xs6">
@@ -139,21 +137,28 @@
 					<th style="width: 100px; text-align: center;">编号</th>
 					<th style="width: 100px; text-align: center;">联系人姓名</th>
 					<th style="width: 100px; text-align: center;">联系人手机号</th>
-					<th style="width: 100px; text-align: center;">负责人</th>
+					<th style="width: 100px; text-align: center;">邮箱</th>
 					<th style="width: 100px; text-align: center;">操作</th>
 				</tr>
 			</thead>
 			<tbody>
+
+				<#list hotel.relationList as rel>
 				<tr>
-					<td style="text-align: center;">01</td>
-					<td style="text-align: center;">张三</td>
-					<td style="text-align: center;">18322695211</td>
-					<td style="text-align: center;">李计调</td>
+					<#if rel.relation_id??>
+					<td style="text-align: center;">${rel.relation_id}</td>
+					</if>
+					<td style="text-align: center;">${rel.relation_name}</td>
+					<td style="text-align: center;">${rel.relation_phone}</td>
+					<td style="text-align: center;">${rel.relation_email}</td>
 					<td style="text-align: center;">
-						<button class="layui-btn layui-btn-xs" onclick="add()">编辑</button>
-						<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+						<button class="layui-btn layui-btn-xs" relation_id="${rel.relation_id}" onclick="add()">编辑</button>
+						<button class="layui-btn layui-btn-danger layui-btn-xs" relation_id="${rel.relation_id}">删除</button>
 					</td>
+
 				</tr>
+				</list>
+
 			</tbody>
 		</table><fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;">
 			<legend>价格</legend>
@@ -173,26 +178,21 @@
 				</tr>
 			</thead>
 			<tbody>
+				<#list hotelPrice as price>
 				<tr>
-					<td style="text-align: center;">01</td>
-					<td style="text-align: center;">是</td>
-					<td style="text-align: center;">100</td>
-					<td style="text-align: center;">120</td>
+					<#if price.hotel_price_id??>
+						<td style="text-align: center;">${price.hotel_price_id}</td>
+					<#if>
+					<td style="text-align: center;">${price.hotel_choice}</td>
+					<td style="text-align: center;">${price.hotel_costed_pay}</td>
+					<td style="text-align: center;">${price.hotel_listed_pay}</td>
 					<td style="text-align: center;">
-						<button class="layui-btn layui-btn-xs" onclick="jiage()">编辑</button>
-						<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+						<button class="layui-btn layui-btn-xs" hotel_price_id="${price.hotel_price_id}" onclick="jiage()">编辑</button>
+						<button class="layui-btn layui-btn-danger layui-btn-xs"  hotel_price_id="${price.hotel_price_id}">删除</button>
 					</td>
 				</tr>
-				<tr>
-					<td style="text-align: center;">02</td>
-					<td style="text-align: center;">否</td>
-					<td style="text-align: center;">80</td>
-					<td style="text-align: center;">100</td>
-					<td style="text-align: center;">
-						<button class="layui-btn layui-btn-xs" onclick="jiage()">编辑</button>
-						<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
-					</td>
-				</tr>
+				<#list>
+
 			</tbody>
 		</table>
 
@@ -203,16 +203,11 @@
 					<a href="javascript:;">dijieshe.com</a> MIT license</p>
 			</div>
 		</div>-->
-
 		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 		<script src="/layui/layui.js" charset="utf-8"></script>
+		<script src="/gongyingshang/jiudian/hotel_show.js"></script>
 		<script>
-			//跳转其它页面
-			$(function() {
-				$("#update-hotel").click(function() {
-					$("#update-index", parent.document).click();
-				});
-			});
+
 
 			function add() {
 				layui.use('layer', function() {

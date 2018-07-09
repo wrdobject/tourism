@@ -30,7 +30,7 @@ function showTrainSchemeTable(pageInfo){
         var enterprise = trainschemes[i];
         html += '<div class="layui-col-md5 san">';
         html += '<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">';
-        html += '<img src="' + enterprise.imageList[1].img_path + '" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />';
+        html += '<img src="/layui/images/' + enterprise.imageList[1].img_path + '" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />';
         html += '<h5 hotel_id="'+enterprise.hotel_id+'">&nbsp;&nbsp;&nbsp;&nbsp;【' + enterprise.hotel_name + '】</h5>';
         html += '<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系人：' + enterprise.relationList[1].relation_name + '</span></p>';
         html += '<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系电话：' + enterprise.hotel_phone + '</span></p>';
@@ -91,19 +91,7 @@ $(function () {
 
     $('#form_page').on('click','.san', function() {
         var hotel_id = $(this).find('h5').attr('hotel_id');
-        alert(hotel_id);
-        $.ajax({
-            url:"hotelById",
-            type:'post',
-            data:{hotel_id:hotel_id},
-            dataType:'json',
-            success:function (data) {
-                alert();
-            },
-            error:function () {
-                
-            }
-        });
+        window.location.href="/hotelById?hotel_id="+hotel_id;
     });
 });
 

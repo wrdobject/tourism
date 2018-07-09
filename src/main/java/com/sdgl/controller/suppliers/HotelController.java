@@ -9,8 +9,10 @@ import com.sdgl.pojo.suppliers.Image;
 import com.sdgl.pojo.suppliers.Relation;
 import com.sdgl.service.suppliers.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.List;
 
-@RestController
+@Controller
 public class HotelController {
     @Autowired
     private HotelService hotelService;
@@ -30,6 +32,7 @@ public class HotelController {
      * @param yema
      * @return
      */
+    @ResponseBody
     @RequestMapping("/hotelList")
     public String selectAllHotel(Hotel hotel, @RequestParam(value = "yema") Integer yema){
         System.out.println("传入的参数：yema"+yema+"-"+hotel.getHotel_city()+"-"+hotel.getHotel_abbreviation()+"-"+hotel.getHotel_county()+"-"+hotel.getHotel_name());
@@ -48,9 +51,14 @@ public class HotelController {
     @RequestMapping("/hotelById")
     public String selectHotelById(@RequestParam(value = "hotel_id") Integer hotel_id,HttpSession session){
         Hotel hotel = hotelService.selectHotelById(hotel_id);
-        session.setAttribute("hotle",hotel);
-        System.out.println("根据id查询出的："+hotel.toString());
-        return JSON.toJSONString(hotel);
+        HotelPrice h = new HotelPrice();
+        h.setHotel_id(hotel_id);
+        List<HotelPrice> hotelPrice = hotelService.selectHotelPrice(h);
+        System.out.println("价钱："+hotelPrice.size());
+        session.setAttribute("hotel",hotel);
+        session.setAttribute("hotelPrice",hotelPrice);
+        System.out.println("根据id查询出的："+hotel.getHotel_name());
+        return "/3/jiudian/hotel_show";
     }
 
     /**
