@@ -2,4 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sdgl.mapper.offersline.OffersLineMapper">
 
+    <!-- 查询全部方法-->
+    <select id="selectBasic" resultType="Basic">
+        SELECT basic_num,basic_name,basic_days,basic_fountain,basic_creation_people,basic_creation_time FROM basic
+        <where>
+            /*如果线路名称不等于空的话,执行查询操作*/
+            <if test="basic_name!=null and basic_name!=''">
+                and basic_name=#{basic_name}
+            </if>
+            /*如果线路编号不等于空的话,执行查询操作*/
+            <if test="basic_num!=null and basic_num!=''">
+                and basic_num=#{basic_num}
+            </if>
+            /*如果行程天数不等于空的话,执行查询操作*/
+            <if test="basic_days!=null and basic_days!=0">
+                and basic_days=#{basic_days}
+            </if>
+        </where>
+
+    </select>
 </mapper>
