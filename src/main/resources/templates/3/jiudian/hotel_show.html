@@ -33,7 +33,7 @@
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
 			<#if hotel??>
 			<legend id="hotelName">${hotel.hotel_name}酒店详情</legend>
-			</if>
+			</#if>
 		</fieldset>
 		<div class="layui-row">
 			<div class="layui-col-xs4">
@@ -42,7 +42,7 @@
 					<div carousel-item="">
 						<#list hotel.imageList as img>
 						<div><img class="suna" src="/layui/images/${img.img_path}"></div>
-						</list>
+						</#list>
 
 					</div>
 				</div>
@@ -52,12 +52,12 @@
 
 				<div class="layui-col-xs6">
 					<table>
-						<#if hotel??>
+					<#if hotel??>
 						<tr class="tr">
 							<td width="80px">酒店类别:</td>
 							<td>${hotel.hotel_type}</td>
 						</tr>
-						<tr class="tr">	
+						<tr class="tr">
 							<td width="80px">酒店星级:</td>
 							<td>${hotel.hotel_class}</td>
 						</tr>
@@ -65,7 +65,7 @@
 							<td width="80px">传真:</td>
 							<td >${hotel.hotel_fax}</td>
 						</tr>
-						<tr class="tr">		
+						<tr class="tr">
 							<td width="80px">邮箱:</td>
 							<td>${hotel.hotel_email}</td>
 						</tr>
@@ -88,7 +88,7 @@
 							<td width="80px">修改时间:</td>
 							<td >${hotel.hotel_time?string("yyyy年MM月dd日")}</td>
 						</tr>
-					</if>
+					</#if>
 					</table>
 				</div>
 				<div class="layui-col-xs6">
@@ -104,8 +104,6 @@
 							<td>cxvf花花的世界你不懂！</td>
 						</tr>
 
-					
-						
 						<tr class="tr">
 							<td width="80px">备注:</td>
 							<td>cxvf花花的世界你不懂！</td>
@@ -118,7 +116,7 @@
 
 				<div class="layui-row layui-col-space6">
 
-					<input style="float: right;" type="button" value="修改信息" class="layui-btn layui-btn-warm layui-btn-radius" id="update-hotel" />
+					<input style="float: right;" type="button" value="修改信息" hotel_id="${hotel.hotel_id}"  class="layui-btn layui-btn-warm layui-btn-radius" id="update-hotel" />
 
 				</div>
 			</div>
@@ -143,24 +141,26 @@
 			</thead>
 			<tbody>
 
-				<#list hotel.relationList as rel>
-				<tr>
-					<#if rel.relation_id??>
-					<td style="text-align: center;">${rel.relation_id}</td>
-					</if>
-					<td style="text-align: center;">${rel.relation_name}</td>
-					<td style="text-align: center;">${rel.relation_phone}</td>
-					<td style="text-align: center;">${rel.relation_email}</td>
-					<td style="text-align: center;">
-						<button class="layui-btn layui-btn-xs" relation_id="${rel.relation_id}" onclick="add()">编辑</button>
-						<button class="layui-btn layui-btn-danger layui-btn-xs" relation_id="${rel.relation_id}">删除</button>
-					</td>
+			<#list hotel.relationList as rel>
 
-				</tr>
-				</list>
+				<#if rel.relation_id??>
+			<tr>
+				<td style="text-align: center;">${rel.relation_id}</td>
 
+				<td style="text-align: center;">${rel.relation_name}</td>
+				<td style="text-align: center;">${rel.relation_phone}</td>
+				<td style="text-align: center;">${rel.relation_email}</td>
+				<td style="text-align: center;">
+					<button class="layui-btn layui-btn-xs" relation_id="${rel.relation_id}" onclick="add()">编辑</button>
+					<button class="layui-btn layui-btn-danger layui-btn-xs" relation_id="${rel.relation_id}">删除</button>
+				</td>
+			</tr>
+			</#if>
+
+			</#list>
 			</tbody>
-		</table><fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;">
+		</table>
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;">
 			<legend>价格</legend>
 
 			<button style="float: right;" data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-btn-radius" onclick="jiage()">添加价格</button>
@@ -178,12 +178,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<#list hotelPrice as price>
+			<#list hotelPrice as price>
+
+
 				<tr>
 					<#if price.hotel_price_id??>
 						<td style="text-align: center;">${price.hotel_price_id}</td>
-					<#if>
-					<td style="text-align: center;">${price.hotel_choice}</td>
+					</#if>
+					<#if price.hotel_choice??>
+						<td style="text-align: center;">${price.hotel_choice}</td>
+					</#if>
 					<td style="text-align: center;">${price.hotel_costed_pay}</td>
 					<td style="text-align: center;">${price.hotel_listed_pay}</td>
 					<td style="text-align: center;">
@@ -191,7 +195,8 @@
 						<button class="layui-btn layui-btn-danger layui-btn-xs"  hotel_price_id="${price.hotel_price_id}">删除</button>
 					</td>
 				</tr>
-				<#list>
+
+			</#list>
 
 			</tbody>
 		</table>
@@ -218,6 +223,7 @@
 							'<div class="layui-form-item">' +
 							'	<label class="layui-form-label">联系人姓名</label>' +
 							'	<div class="layui-input-inline">' +
+                        	'		<input type="hidden" name="hotel_id" value="${hotel.hotel_id}" >' +
 							'		<input type="text" name="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">' +
 							'	</div>' +
 
@@ -278,6 +284,7 @@
 							'<div class="layui-form-item">' +
 							'	<td><label class="layui-form-label">成本价</label>' +
 							'		<div class="layui-input-inline">' +
+                        	'			<input type="hidden" name="hotel_id" value="${hotel.hotel_id}" >' +
 							'			<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
 							'		</div>' +
 							'</div>' +

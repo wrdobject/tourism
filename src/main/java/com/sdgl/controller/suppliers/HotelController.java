@@ -58,7 +58,17 @@ public class HotelController {
         session.setAttribute("hotel",hotel);
         session.setAttribute("hotelPrice",hotelPrice);
         System.out.println("根据id查询出的："+hotel.getHotel_name());
-        return "/3/jiudian/hotel_show";
+        return "/hotel_show.do";
+    }
+
+    /**
+     * 跳到添加酒店页面
+     * @param
+     * @return
+     */
+    @RequestMapping("/tiaoAddHotel")
+    public String tiaoAddHotel(){
+        return "3/jiudian/hotel_add";
     }
 
     /**
@@ -68,6 +78,7 @@ public class HotelController {
      */
     @RequestMapping("/addHotel")
     public String addHotel(Hotel hotel){
+        System.out.println("酒店添加："+hotel.getHotel_name()+"-"+hotel.getHotel_facilities());
         Integer addResult = hotelService.addHotel(hotel);
         return JSON.toJSONString(addResult);
     }

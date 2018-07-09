@@ -38,4 +38,6 @@ public interface HotelMapper {
     Integer updateHotelPrice(HotelPrice hotelPrice);
 
     List<HotelPrice> selectHotelPrice(HotelPrice hotelPrice);
+
+    Integer selectMaxHotelId();
 }

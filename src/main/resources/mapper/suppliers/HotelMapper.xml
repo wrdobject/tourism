@@ -46,10 +46,10 @@
 		r.relation_name,r.relation_phone,r.relation_email,r.relation_type
 		,i.img_id,i.img_path,i.img_time,i.img_type,i.other_id,i.supplier_type
 		from hotel
-		left join relation r on r.relation_type_id = hotel.hotel_id
-		left join image i on i.other_id = hotel.hotel_id
-		where (i.supplier_type = 2 or i.supplier_type is null)
-		and (r.relation_type = 2 or r.relation_type is null)
+		left join relation r on r.relation_type_id = hotel.hotel_id and
+		(r.relation_type = 2 or r.relation_type is null)
+		left join image i on i.other_id = hotel.hotel_id and
+		(i.supplier_type = 2 or i.supplier_type is null)
 		<where>
 			<if test="hotel_province!=null and hotel_province!=''">
 				and hotel_province = #{hotel_province}
@@ -173,8 +173,12 @@
 		WHERE hotel_price_id = #{hotel_price_id} and hotel_id = #{hotel_id}
 	</update>
 
-	<select id="selectHotelPrice" resultType="HotelPrices">
+	<select id="selectHotelPrice" resultType="HotelPrice">
 		select hotel_price_id,hotel_id,hotel_choice,hotel_costed_pay,hotel_listed_pay,
 		hotel_price_owner from hotel_price where hotel_id = #{hotel_id}
+	</select>
+
+	<select id="selectMaxHotelId">
+		select max(hotel_id) from hotel
 	</select>
 </mapper>

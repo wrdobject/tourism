@@ -78,4 +78,9 @@ public class HotelServiceImpl implements HotelService {
     public List<HotelPrice> selectHotelPrice(HotelPrice hotelPrice) {
         return hotelMapper.selectHotelPrice(hotelPrice);
     }
+
+    @Override
+    public Integer selectMaxHotelId() {
+        return hotelMapper.selectMaxHotelId();
+    }
 }

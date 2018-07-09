@@ -34,4 +34,6 @@ public interface HotelService {
     Integer updateHotelPrice(HotelPrice hotelPrice);
 
     List<HotelPrice> selectHotelPrice(HotelPrice hotelPrice);
+
+    Integer selectMaxHotelId();
 }
