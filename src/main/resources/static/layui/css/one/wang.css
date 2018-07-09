@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+table tr:nth-of-type(1){
+	background-color: aqua
+}
+*/
+
+/*
+.d1{
+	margin: 0px auto;
+	width: 1000px;
+	height: 1000px;
+}
+
+table{
+	width: 500px;
+	height: 500px;
+}
+hr{
+	width:700px
+	
+}
+span{
+	margin-left: 100px
+}
+
+p{
+	text-indent: 2em;
+	float: left;
+	width: 400px;
+	
+}*/
+#u1{
+	text-align: center;
+	width: 60px; 
+	height: 35px;
+	border: 1px #F4F4F4 solid;
+	line-height: 35px;
+}
+
+.d2{
+	position:fixed;
+	left:80px;
+	top:100px; 
+	
+}
+
+.d3{
+	position:fixed;
+	left:100px;
+	top:100px;
+	
+}
+
+.d4{
+	position:fixed;
+	left:100px;
+	top:100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

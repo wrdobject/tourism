@@ -1,0 +1,373 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>行程安排表</title>
+		<link rel="stylesheet" href="/layui/css/one/wang.css" />
+		<link rel="stylesheet" href="/layui/css/layui.css" />
+		<script src="/jquery-3.3.1.min.js"></script>
+		<script src="/layui/layui.all.js"></script>
+		<script src="/layui/layui.js"></script>
+		<script src="/layui/js/one/Untitled-3.js"></script>
+		<style type="text/css">
+			/*
+ul>li {
+	position: absolute;
+	left: 100px;
+}
+*/
+			
+			ul li h3 {
+				position: absolute;
+				left: -110px;
+				font-family: Constantia, Lucida Bright, DejaVu Serif, Georgia, serif;
+			}
+			
+			span {
+				font-weight: bolder;
+				position: absolute;
+				top: 0px;
+			}
+			
+			p {
+				width: 350px;
+			}
+			
+			hr {
+				width: 700px
+			}
+			
+			img {
+				width: 400px;
+				height: 200px;
+			}
+			
+			#m1 {
+				width: 700px;
+				margin: 0px auto;
+			}
+			
+			#a {
+				background-color: white;
+			}
+			
+			#b {
+				color: black;
+				font-family: Constantia, Lucida Bright, DejaVu Serif, Georgia, serif;
+				font-size: 20px;
+				border: 1px #000000;
+			}
+			#day a{
+     
+      width: 220px;
+      height: 35px;
+      text-decoration:none ;
+      font-size: 15px;
+      
+
+    }
+    .a1 {
+				background-color: #EDF4FE;
+				height: 400px;
+				border: 2px solid #000000;
+				width: 800px;
+				margin-left:150px;
+			}
+			.one {
+				margin: 20px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<div>
+				<div style="height: 25px;"></div>
+				<div class="layui-container">
+					<div class="a1">
+
+						<span>我团团号--线路名称</span>
+						<br><br>
+						<div class="layui-row one">
+							<div class="layui-col-xs3">
+								<div class="grid-demo">
+									车队公司：
+									<br><br> 车辆类型：
+									<br><br> 车牌号：
+									<br><br><br><br><br> 接团时间：--
+									<br><br> 送团时间：--
+									<br><br>
+								</div>
+							</div>
+							<div class="layui-col-xs3">
+								<div class="grid-demo">
+									总人数：50人
+									<br><br> 全陪姓名：xxx
+									<br><br> 全陪电话：
+									<br> 138888888
+									<br><br><br><br> 接团安排：--
+									<br><br> 送团安排：--
+									<br><br>
+								</div>
+							</div>
+							<div class="layui-col-xs3">
+								<div class="grid-demo">
+									导游名称：xxx
+									<br><br>导游电话
+									<br>138888888
+								</div>
+								<div style="height:100px;"></div>
+							</div>
+
+							<div class="layui-col-xs3">
+								<div class="grid-demo">
+									行程：x天
+									<br><br>
+									<br><br>
+									<br><br>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d2">
+			<ul id="u1">
+				<li>
+					<a href="#one">第1天</a>
+				</li>
+				<li>
+					<a href="#two">第2天</a>
+				</li>
+				<li>
+					<a href="#three">第3天</a>
+				</li>
+				<li>
+					<a href="#four">第4天</a>
+				</li>
+				<li>
+					<a href="#five">第5天</a>
+				</li>
+				<li>
+					<a href="#sex">第6天</a>
+				</li>
+				<li>
+					<a href="#seven">第7天</a>
+				</li>
+				<li>
+					<a href="#eight">第8天</a>
+				</li>
+				<li>
+					<a href="#nue">第9天</a>
+				</li>
+				<li>
+					<a href="#ten">第10天</a>
+				</li>
+			</ul>
+		</div>
+		<div id="m1" style="margin-top: 20px;">
+			<ul class="layui-timeline">
+
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">7.30</h3>
+						<span>上门接</span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+									<thead>
+										<tr> </tr>
+									</thead>
+									<tr>
+										<td>
+											<p>抵达后导游于机场接机。驱车沿着翠绿色的马尔马拉海岸线行驶，沿岸布满着一幢幢度假别墅。之后搭乘大型渡轮通过达达尼尔海峡前往位于海峡旁的古老港口─恰纳卡莱（特洛伊古城）。</p>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+				<ul class="layui-timeline">
+					<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+						<div class="layui-timeline-content layui-text">
+							<h3 class="layui-timeline-title">9.30</h3>
+							<span>交通</span>
+							<p>
+								<div>
+									<table class="layui-table" lay-skin="nob">
+										<colgroup>
+											<col width="100px">
+											<col width="100px">
+											<col>
+										</colgroup>
+										<tr>
+											<td>
+												<p>抵达后导游于机场接机。驱车沿着翠绿色的马尔马拉海岸线行驶，沿岸布满着一幢幢度假别墅。之后搭乘大型渡轮通过达达尼尔海峡前往位于海峡旁的古老港口─恰纳卡莱（特洛伊古城）。</p>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">10.30</h3>
+						<span>旅游景点 </span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+									<tr> <img src="images/01.jpg" /> </tr>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">12.00</h3>
+						<span>午餐：非自理 ,中式</span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">12.30</h3>
+						<span>交通 </span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">13.00</h3>
+						<span>旅游景点 </span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+									<tr> <img src="images/03.jpg" /> </tr>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">15.00</h3>
+						<span>游玩项目 </span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+									<tr> <img src="images/06.jpg" /> </tr>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">15.50</h3>
+						<span>游玩景点： </span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+									<tr> <img src="images/02.jpg" /> </tr>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">18.30</h3>
+						<span>返程送回 </span>
+						<p>
+							<div>
+								<table class="layui-table" lay-skin="nob">
+									<colgroup>
+										<col width="100px">
+										<col width="100px">
+										<col>
+									</colgroup>
+								</table>
+							</div>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="layui-timeline">
+				<li class="layui-timeline-item"> <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<h3 class="layui-timeline-title">19:30</h3>
+						<span>愉快地结束当天的行程！</span>
+
+				</li>
+			</ul>
+
+	</body>
+
+</html>

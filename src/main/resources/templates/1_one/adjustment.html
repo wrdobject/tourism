@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>layui</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+		<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+	</head>
+
+	<body>
+		<div class="container" style="padding: 10px;">
+			<div>
+				<form class="layui-form" action="">
+					<div>
+						<div class="layui-form-item">
+							<div style="height: 20px;"></div>
+							<div class="layui-inline">
+								<label class="layui-form-label">关键字</label>
+								<div class="layui-input-inline">
+									<input type="text" name="number" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">操作人</label>
+								<div class="layui-input-inline">
+									<input type="text" name="number" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+
+							<div class="layui-inline">
+								<a role="button" href="adjustment.html" class="layui-btn layui-btn-normal">搜 索</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div>
+				<table class="layui-table" lay-filter="demo" lay-data="{width: 1200, height:500,page:true,id:'idTest'}">
+					<thead>
+						<tr>
+							<th lay-data="{field:'tuan', width:140,fixed: 'left'}">
+								团号</th>
+							<th lay-data="{field:'lu', width:160}">
+								线路</th>
+							<th lay-data="{field:'time', width:160}">
+								发团日期</th>
+							<th lay-data="{field:'people', width:100}">
+								总人数</th>
+							<th lay-data="{field:'guanli', width:200}">
+								全陪|电话</th>
+							<th lay-data="{field:'tuankong', width:100}">
+								计调</th>
+							<th lay-data="{field:'type1', width:60,fixed: 'right'}">
+								车队</th>
+							<th lay-data="{field:'type2', width:60,fixed: 'right'}">
+								餐厅</th>
+							<th lay-data="{field:'type5', width:60,fixed: 'right'}">
+								导游</th>
+							<th lay-data="{field:'caozuo', width:160,toolbar: '#barDemo',fixed: 'right'}">
+								操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td lay-data="{field:'tuan', width:140}">SX01-001</td>
+							<td lay-data="{field:'lu', width:160}">东山一日游</td>
+							<td lay-data="{field:'time', width:160}">2017-01-01</td>
+							<td lay-data="{field:'people', width:100}">12人</td>
+							<td lay-data="{field:'guanli', width:200}">XXX|123456789</td>
+							<td lay-data="{field:'tuankong', width:100'}">测试001</td>
+							<td lay-data="{field:'type2', width:60}">
+								<a class="layui-btn layui-btn-danger layui-btn-xs" href="car.html">×</a>
+							</td>
+							<td lay-data="{field:'type1', width:60}">
+								<a class="layui-btn layui-btn-danger layui-btn-xs" href="sss.html">×</a>
+							</td>
+							<td lay-data="{field:'type5', width:60}">
+								<a class="layui-btn layui-btn-danger layui-btn-xs" href="rili.html">×</a>
+							</td>
+							<td lay-data="{field:'caozuo', width:200,toolbar: '#barDemo'}"></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<script type="text/html" id="barDemo">
+					<a class="layui-btn layui-btn-primary layui-btn-xs" href="Untitled-1.html">详情</a>
+					<a class="layui-btn layui-btn-xs" lay-event="edit" href="Untitled-1.html">一键打印</a>
+				</script>
+			</div>
+		</div>
+
+		<script src="/layui/layui.js" charset="utf-8"></script>
+		<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+		<script type="text/javascript">
+			layui.use('table', function() {
+				var table = layui.table;
+				//监听表格复选框选择
+				table.on('checkbox(demo)', function(obj) {
+					console.log(obj)
+				});
+				//监听工具条
+				table.on('tool(demo)', function(obj) {
+					var data = obj.data;
+					if(obj.event === 'del') {
+						layer.confirm('真的删除行么', function(index) {
+							obj.del();
+							layer.close(index);
+						});
+					} else if(obj.event === 'edits') {
+						layer.alert('<a class="layui-btn" href="01-1总报价单模板.html">生成报价单</a><br><div style="height: 10px;"></div><a class="layui-btn" href="02-1确认书.html">生成确认单</a>')
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

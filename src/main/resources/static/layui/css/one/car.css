@@ -1,0 +1,57 @@
+@charset "utf-8";-
+/* CSS Document */
+.tabTitle{
+	font-size: 15px;
+	font-weight:bolder;
+}
+#a1{
+	width: 80px;
+	height: 10px;
+	background-color: #FFFFFF;
+}
+#a0{
+	padding-top: 20px;
+	margin-left: 22px;
+}
+#a3{
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 7px;
+	font-weight:bolder;
+	
+}
+#a2{
+	width: 50px;
+}
+#a4{
+	margin-left: -50px;
+}
+#a5{
+	margin-left: -40px;
+}
+#a6{
+	margin-left: -80px;
+}
+#a7{
+	margin-left: -50px;
+}
+#a9{
+	
+	margin-left: 20px;
+	background-color:#FFFFFF;
+	height: 450px;
+}
+body{
+	background: #EDEDED;
+}
+.a10{
+	margin-top: -47px;
+	margin-left:1140px;
+}
+#a11{
+	width: 50px;
+}
+.a12{
+	margin-left: 1200px;
+	margin-top: 10px;
+}
