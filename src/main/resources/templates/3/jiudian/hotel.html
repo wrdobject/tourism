@@ -42,6 +42,8 @@
 
 <body >
 
+<input type="hidden" name="pageNum" id="pageNum">
+<input type="hidden" name="pageSize" id="pageSize">
 <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true">
 	<ul class="layui-tab-title">
 		<li class="layui-this">酒店</li>
@@ -73,9 +75,9 @@
 					</div>
 					<div class="layui-inline">
 						<div class="layui-input-inline" style="width: 150px;">
-							<input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="公司名称/简拼" class="layui-input">
+							<input type="text" name="name" lay-verify="name" id="hotel_name" autocomplete="off" placeholder="公司名称/简拼" class="layui-input">
 						</div>
-						<button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="queryInfoBtn">搜索</button>
+						<div class="layui-btn layui-btn-radius" id="sousuo">搜索</div>
 
 						<a href="javascript:;" class="layui-btn site-demo-active layui-btn-radius" data-url="hotel_add" data-id="hotel-add" data-title="酒店添加" data-type="tabAdd"><i class="layui-icon">&#xe654;添加酒店信息</i></a>
 					</div>
@@ -85,14 +87,12 @@
 			<div style="display: none;">
 				<button href="#" data-url="hotel_add" data-id="11" hidden="hidden" data-title="酒店修改" class="site-demo-active" data-type="tabAdd" id="update-index">详情</button>
 
-
-
 			</div>
 
-			<div class="layui-row ">
+			<div class="layui-row " id="form_page">
 				<div class="layui-col-md5 san">
 
-					<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">
+					<a href="javascript:;" class="site-demo-active" >
 						<img src="/layui/images/5-5.jpg" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />
 						<h5>&nbsp;&nbsp;&nbsp;&nbsp;【酒店：新康隆】</h5>
 						<p>
@@ -100,17 +100,7 @@
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系方式：</span></p>
 					</a>
 				</div>
-				<div class="layui-col-md5 san">
-					<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">
-						<img src="/layui/images/5-5.jpg" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />
-						<h5>&nbsp;&nbsp;&nbsp;&nbsp;【酒店：新康隆】</h5>
-						<p>
-							<span class="tit">联系人：</span>
-							<span class="tit">联系方式：</span>
-						</p>
-						<p style="font-size: 11px; clickInfo">简介：嗯嗯嗯呃</p>
-					</a>
-				</div>
+
 				<div class="layui-col-md5 san">
 					<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">
 						<img src="/layui/images/5-5.jpg" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />
@@ -138,33 +128,7 @@
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系方式：</span></p>
 					</a>
 				</div>
-				<div class="layui-col-md5 san">
-					<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">
-						<img src="/layui/images/5-5.jpg" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />
-						<h5>&nbsp;&nbsp;&nbsp;&nbsp;【酒店：新康隆】</h5>
-						<p>
-							&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系人：</span></p>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系方式：</span></p>
-					</a>
-				</div>
-				<div class="layui-col-md5 san">
-					<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">
-						<img src="/layui/images/5-5.jpg" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />
-						<h5>&nbsp;&nbsp;&nbsp;&nbsp;【酒店：新康隆】</h5>
-						<p>
-							&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系人：</span></p>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系方式：</span></p>
-					</a>
-				</div>
-				<div class="layui-col-md5 san">
-					<a href="javascript:;" class="site-demo-active" data-url="hotel_show" data-id="hotel_show" data-title="酒店详情" data-type="tabAdd">
-						<img src="/layui/images/5-5.jpg" style="width: 250px; height: 110px; margin: 2px 3px 1px 16px; border: 1px solid silver;" />
-						<h5>&nbsp;&nbsp;&nbsp;&nbsp;【酒店：新康隆】</h5>
-						<p>
-							&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系人：</span></p>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tit">联系方式：</span></p>
-					</a>
-				</div>
+
 
 			</div>
 
@@ -176,11 +140,10 @@
 </div>
 
 
-
 <script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 <script src="/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="/layui/lay/3js/city.js"></script>
-
+<script type="text/javascript" src="/gongyingshang/jiudian/hotel.js"></script>
 <script type="text/javascript">
     $(function() {
         //三级联动
@@ -208,7 +171,7 @@
                 element.tabChange('demo', id); //根据传入的id传入到指定的tab项
             },
         };
-        $('.site-demo-active').on('click', function() {
+        $('#form_page').on('click','.site-demo-active', function() {
             var dataid = $(this);
 
             //这时会判断右侧.layui-tab-title属性下的有lay-id属性的li的数目，即已经打开的tab项数目
@@ -245,30 +208,6 @@
 
     });
 
-    layui.use(['form', 'layedit', 'laydate', 'element', 'laypage', 'layer'], function() {
-
-        var element = layui.element;
-        var laypage = layui.laypage,
-            layer = layui.layer;
-        //分页
-        laypage.render({
-            elem: 'demo7',
-            count: 16,
-            layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
-            jump: function(obj) {
-
-            }
-        });
-
-        //监听提交
-        /*	form.on('submit(demo1)', function(data) {
-                layer.alert(JSON.stringify(data.field), {
-                    title: '最终的提交信息'
-                })
-                return false;
-            });*/
-
-    });
 </script>
 
 </body>

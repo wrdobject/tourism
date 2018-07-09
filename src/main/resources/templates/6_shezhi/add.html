@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="layui/css/layui.css"/>
+<link rel="stylesheet" href="layui/css/layui.mobile.css"/>
+
+
+<title>add</title>
+<style>
+	.sun {
+				width: 100%;
+				height: 38px;
+				border: 1px solid #E6E6E6;
+				border-radius: 2px;
+			}
+</style>
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title layui-clear" style="margin-top: 15px;">
+			<legend>银行信息</legend>
+
+			
+
+		</fieldset>
+<div class="layui-form-item">
+  <label class="layui-form-label">开户行</label>
+  <div class="layui-input-inline">
+    <input type="text" name="text" required lay-verify="required" placeholder="请输入开户行" autocomplete="off" class="layui-input">
+  </div>
+</div>
+<div class="layui-form-item">
+  <label class="layui-form-label">开户名</label>
+  <div class="layui-input-inline">
+    <input type="text" name="text" required lay-verify="required" placeholder="请输入开户名" autocomplete="off" class="layui-input">
+  </div>
+</div>
+<div class="layui-form-item">
+  <label class="layui-form-label">账号</label>
+  <div class="layui-input-inline">
+    <input type="text" name="text" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+  </div>
+</div>
+
+<button class="layui-btn" style="margin-left:200px">增加</button>
+<table class="layui-table">
+  <colgroup>
+  <col width="150">
+  <col width="200">
+  <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th style="text-align:center;">序号</th>
+      <th style="text-align:center;">开户行</th>
+      <th style="text-align:center;">开户名</th>
+      <th style="text-align:center;">账号</th>
+      <th style="text-align:center;">操作</th>
+    </tr>
+  </thead>
+  <tbody style="text-align:center;">
+    <tr>
+    	<td>1</td>
+      <td>渤海银行</td>
+      <td>张三</td>
+      <td>1524849756465415464</td>
+      <td>
+      <button class="layui-btn layui-btn-xs" onclick="addBankInfo()">删除</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<script src="jquery-3.3.1.min.js"></script>
+	<script src="layui/layui.js" charset="utf-8"></script>
+	<script>
+
+//编辑模态框
+function addBankInfo() {
+				layui.use('layer', function() {
+					var layer = layui.layer;
+					var $ = jQuery.noConflict();
+					layer.open({
+						type: 1,
+						content: '<form id="addTicketInfo" method="post" style="margin:30px 0px 0px 20px;" >' +
+							'<div class="layui-form-item">' +
+							'	<label class="layui-form-label">所属部门</label>' +
+							'	<div class="layui-input-inline">' +
+							
+							'	<select name="modules" lay-verify="required" lay-search="" class="sun">' +
+							'		 <option value="启用">启用</option>' +
+          					'		 <option value="停用">停用</option>' +
+							'	</select>	' +
+							'	</div>' +
+
+							'</div>' +
+							'</form>',
+						area: ['380px', '209px'],
+						btn: ['确认', '取消'],
+						yes: function(index, layero) {
+							//按钮【按钮一】的回调
+							alert(decodeURIComponent($("#addTicketInfo").serialize()));
+							/*关闭*/
+							layer.close(index);
+
+						},
+						btn2: function(index, layero) {
+							//按钮【按钮二】的回调
+						},
+						cancel: function() {
+							//右上角关闭回调
+							//return false 开启该代码可禁止点击该按钮关闭
+						},
+						btnAlign: 'c',
+						move: false,
+						resize: false
+					});
+				});
+			}
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.set.UserMapper" >
+
+   <!-- 新增账号-->
+    <insert id="insert" parameterType="User">
+        insert into user(userName,userPwd,userRole,create_date,userAddress,user_QQ,user_Dept,Sex,phoneNo,userState)
+        values(#{userName},#{userPwd},#{userRole},#{create_date},#{userAddress},#{user_QQ},#{user_Dept},#{Sex},#{phoneNo},#{userState})
+    </insert>
+
+    <!--通过用户名获取密码-->
+    <select id="getPwdByUserName" resultType="String">
+        select userPwd from `user` where userName=#{userName}
+    </select>
+
+    <!--通过用户名获取权限信息-->
+    <select id="getPermissionByUserName" resultType="String">
+        SELECT permission_name from user_per
+        INNER JOIN `user` on `user`.uid=user_per.uid
+        INNER JOIN `permission` on `permission`.pid=user_per.pid
+        where `user`.userName=#{userName}
+    </select>
+</mapper>

@@ -1,0 +1,53 @@
+body{
+	background-color: #F9F6F3;
+}
+.top{
+	width: 1500px;
+	height: 50px;
+	background-color: white;
+}
+#z{
+	display: inline-block;
+	width:80px;
+}
+#x{
+	width: 50px;
+}
+ul{
+	display: inline-block;
+	margin-top: 10px;
+	position: relative;
+	bottom:-5px;
+
+}
+ ul li{
+	float: left;
+	margin-right: 10px;
+	display: inline-block;
+
+	
+}
+ ul li:hover {
+	background-color: #279AA1;
+}
+ #test1{
+	display: inline-block;
+	width: 100px;
+}
+#zhuangtai{
+	margin-left: 10px;
+}
+#f{
+	display: inline-block;
+	width: 100px;
+	margin-left: 20px;
+}
+.bbb{
+	display: block;
+	background-color: #F2F2F2;
+	text-align: center;
+	font-weight: bold;
+	height:30px;
+	line-height:30px;
+
+}

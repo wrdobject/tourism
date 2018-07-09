@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+		<style>
+			h1{
+				
+				margin-top: 0px;
+			}
+			img{
+				padding-top: 0px;
+				margin-right: 10px;
+			}
+			#qq{
+				padding-top: 0px;
+			}
+			#aaa{
+				  position: relative;
+				  left: 300px;
+				  top: -38px;
+			}
+			#www{
+				 position: relative;
+				  left: 650px;
+				  top: -92px;
+			}
+			#vvv{
+				margin-top:0px ;
+				
+			}
+			#nnn{
+				margin-bottom: 0px;
+				
+				height: 80px;
+			}
+			table{
+				text-align: center;
+			}
+			#demo1{
+				margin-left: 800px;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset class="layui-elem-field layui-field-title layui-clear" style="margin-top: 15px;">
+			<legend>日志管理</legend>
+
+			
+
+		</fieldset>
+		<!--<h1><img src="images/xjt.png"/><span style="font-size: 18px;" id="qq">操作日志</span></h1>-->
+		<form id="nnn">
+			
+  <div class="layui-inline">
+      <label class="layui-form-label">日期选择</label>
+      <div class="layui-input-block">
+        <input type="text" name="date" id="date1" autocomplete="off" class="layui-input" placeholder="年/月/日">
+        
+      </div>
+    </div>
+    <div class="layui-form-item" id="aaa">
+    	<label class="layui-form-label">操作人</label>
+    		<div class="layui-input-inline">
+    	  		<input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+    		</div>
+  	</div>	
+  	<div class="layui-btn-group" id="www">
+		    <button class="layui-btn">搜索</button>
+	</div>
+    </form>
+    <div class="layui-form" id="vvv">
+  <table class="layui-table">
+    <colgroup>
+      <col width="150">
+      <col width="150">
+      <col width="200">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: center;">日志编号</th>
+        <th style="text-align: center;">操作日期</th>
+        <th style="text-align: center;">操作人</th>
+        <th style="text-align: center;">操作内容</th>
+      </tr> 
+    </thead>
+    <tbody>
+      <tr>
+        <td>贤心</td>
+        <td>汉族</td>
+        <td>1989-10-14</td>
+        <td>人生似修行</td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+				<div id="demo1" ></div>
+	</body>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="layui/layui.js" charset="utf-8"></script>
+	<script>
+		layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+});
+layui.use(['laypage', 'layer'], function(){
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+  
+   //总页数大于页码总数
+  laypage.render({
+    elem: 'demo1'
+    ,count: 70 //数据总数
+    ,jump: function(obj){
+      console.log(obj)
+    }
+  });
+});
+	</script>
+</html>
