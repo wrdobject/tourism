@@ -104,19 +104,19 @@
     <update id="updateHotel" parameterType="Hotel">
         UPDATE hotel
         <trim prefix="set" suffixOverrides=",">
-            <if test="hotel_type!=null">hotel_type=#{hotel_type},</if>
-            <if test="hotel_class!=null">hotel_class=#{hotel_class},</if>
-            <if test="hotel_fax!=null">hotel_fax=#{hotel_fax},</if>
-            <if test="hotel_email!=null">hotel_email=#{hotel_email},</if>
-            <if test="hotel_phone!=null">hotel_phone=#{hotel_phone},</if>
-            <if test="hotel_province!=null">hotel_province=#{hotel_province},</if>
-            <if test="hotel_city!=null">hotel_city=#{hotel_city},</if>
-            <if test="hotel_county!=null">hotel_county=#{hotel_county},</if>
-            <if test="hotel_address!=null">hotel_address=#{hotel_address},</if>
-            <if test="hotel_introduce!=null">hotel_introduce=#{hotel_introduce},</if>
-            <if test="hotel_facilities!=null">hotel_facilities=#{hotel_facilities},</if>
-            <if test="hotel_notice!=null">hotel_notice=#{hotel_notice},</if>
-            <if test="hotel_owner!=null">hotel_owner=#{hotel_owner},</if>
+            <if test="hotel_type!=null and hotel_type!=''">hotel_type=#{hotel_type},</if>
+            <if test="hotel_class!=null and hotel_class!=''">hotel_class=#{hotel_class},</if>
+            <if test="hotel_fax!=null and hotel_fax!=''">hotel_fax=#{hotel_fax},</if>
+            <if test="hotel_email!=null and hotel_email!=''">hotel_email=#{hotel_email},</if>
+            <if test="hotel_phone!=null and hotel_phone!=''">hotel_phone=#{hotel_phone},</if>
+            <if test="hotel_province!=null and hotel_province!=''">hotel_province=#{hotel_province},</if>
+            <if test="hotel_city!=null and hotel_city!=''">hotel_city=#{hotel_city},</if>
+            <if test="hotel_county!=null and hotel_county!=''">hotel_county=#{hotel_county},</if>
+            <if test="hotel_address!=null and hotel_address!=''">hotel_address=#{hotel_address},</if>
+            <if test="hotel_introduce!=null and hotel_introduce!=''">hotel_introduce=#{hotel_introduce},</if>
+            <if test="hotel_facilities!=null and hotel_facilities!=''">hotel_facilities=#{hotel_facilities},</if>
+            <if test="hotel_notice!=null and hotel_notice!=''">hotel_notice=#{hotel_notice},</if>
+            <if test="hotel_owner!=null and hotel_owner!=''">hotel_owner=#{hotel_owner},</if>
         </trim>
         WHERE hotel_id=#{hotel_id}
     </update>

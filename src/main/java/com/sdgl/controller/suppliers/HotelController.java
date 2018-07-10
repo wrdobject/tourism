@@ -58,24 +58,50 @@ public class HotelController {
         System.out.println("价钱："+hotelPrice.size());
         session.setAttribute("hotel",hotel);
         session.setAttribute("hotelPrice",hotelPrice);
-        System.out.println("根据id查询出的："+hotel.getHotel_name());
+        System.out.println("根据id查询出的："+hotel.getHotel_id());
         return "/hotel_show.do";
     }
 
     /**
-     * 添加酒店
+     * 根据id查询某酒店相关信息
+     * @param hotel_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/hotelById1")
+    public Object selectHotelById1(@RequestParam(value = "hotel_id") Integer hotel_id){
+        Hotel hotel = hotelService.selectHotelById(hotel_id);
+        System.out.println(JSON.toJSONString(hotel));
+        return hotel;
+    }
+
+    /**
+     * 添加或修改酒店
      * @param hotel
      * @return
      */
     @RequestMapping("/addHotel")
     public String addHotel(Hotel hotel){
-        if("请选择省份".equals(hotel.getHotel_province())){
-            hotel.setHotel_province(null);
+        System.out.println("修改的id："+hotel.getHotel_id());
+        if(hotel.getHotel_id()!=null && !"".equals(hotel.getHotel_id())){
+            int re = hotelService.updateHotel(hotel);
+            if(re>0){
+                System.out.println("修改成功");
+                return "redirect:/jiudian";
+            }
+            System.out.println("错误1");
+            return "/hotelById?hotel_id="+hotel.getHotel_id();
+        }else{
+            System.out.println("没走修改");
+            if("请选择省份".equals(hotel.getHotel_province())){
+                hotel.setHotel_province(null);
+            }
+            System.out.println("酒店添加："+hotel.getHotel_name()+"-"+hotel.getHotel_facilities());
+            Integer addResult = hotelService.addHotel(hotel);
+            System.out.println("添加结果"+addResult);
+            return "redirect:/jiudian";
         }
-        System.out.println("酒店添加："+hotel.getHotel_name()+"-"+hotel.getHotel_facilities());
-        Integer addResult = hotelService.addHotel(hotel);
-        System.out.println("添加结果"+addResult);
-        return "redirect:/jiudian";
+
     }
 
     /**
@@ -108,15 +134,16 @@ public class HotelController {
     }
 
 
+
     /**
-     * 修改酒店
-     * @param hotel
+     * 跳修改页面
+     * @param
      * @return
      */
-    @RequestMapping("/updateHotel")
-    public String updateHotel(Hotel hotel){
-        Integer updateResult = hotelService.updateHotel(hotel);
-        return JSON.toJSONString(updateResult);
+    @RequestMapping("/tiaoXiuGai/{hotel_id}")
+    public String tiaoXiuGai(){
+        System.out.println("进来了吗");
+        return "/hotel_add.do";
     }
 
     /**
@@ -124,10 +151,13 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/addHotelRelation")
-    public String addHotelRelation(Relation relation){
+    public Object addHotelRelation(Relation relation){
+        System.out.println("名字"+relation.getRelation_name());
+        relation.setRelation_owner(1);
         Integer addHotelRelationResult = hotelService.addHotelRelation(relation);
-        return JSON.toJSONString(addHotelRelationResult);
+        return addHotelRelationResult;
     }
 
     /**

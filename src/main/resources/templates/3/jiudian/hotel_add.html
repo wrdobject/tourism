@@ -30,31 +30,32 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">*酒店名称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">
+					<input type="hidden" name="hotel_id" id="hotel_id">
+					<input type="text" name="hotel_name" id="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">
 				</div>
 
 				<label class="layui-form-label">英文简称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
+					<input type="text" name="hotel_abbreviation" id="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 
 			<div class="layui-form-item">
 				<td><label class="layui-form-label">*联系电话</label>
 					<div class="layui-input-inline">
-						<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						<input type="tel" name="hotel_phone" id="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
 					</div>
 
 					<label class="layui-form-label">传真</label>
 					<div class="layui-input-inline">
-						<input type="url" name="hotel_fax" lay-verify="url" autocomplete="off" class="layui-input">
+						<input type="url" name="hotel_fax" id="hotel_fax" lay-verify="url" autocomplete="off" class="layui-input">
 					</div>
 			</div>
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">邮箱</label>
 				<div class="layui-input-inline">
-					<input type="email" name="hotel_email" lay-verify="email" autocomplete="off" class="layui-input">
+					<input type="email" name="hotel_email" id="hotel_email" lay-verify="email" autocomplete="off" class="layui-input">
 				</div>
 
 			</div>
@@ -107,7 +108,7 @@
 				</div>
 				<label class="layui-form-label">详细地址</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_address" autocomplete="off" class="layui-input" style="width: 300px;">
+					<input type="text" name="hotel_address" id="hotel_address" autocomplete="off" class="layui-input" style="width: 300px;">
 				</div>
 			</div>
 			
@@ -140,7 +141,7 @@
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">酒店介绍</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_introduce"></textarea>
+					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_introduce" id="hotel_introduce"></textarea>
 				</div>
 			</div>
 
@@ -149,7 +150,7 @@
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">备注</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_notice"></textarea>
+					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_notice" id="hotel_notice"></textarea>
 				</div>
 			</div>
 
@@ -173,7 +174,8 @@
 
 		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 		<script src="/layui/layui.js" charset="utf-8"></script>
-		<script type="text/javascript" src="/layui/lay/3js/city.js"></script>
+        <script src="/gongyingshang/jiudian/hotel_add.js"></script>
+        <script type="text/javascript" src="/layui/lay/3js/city.js"></script>
 		<script>
 			$(function() {
 				//三级联动
