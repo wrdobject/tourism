@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+  <style type="text/css">
+    #div{
+      width: 1350px;
+      height: 800px;
+      margin-left:50px;
+      margin-top:50px;
+    }
+    .sun{
+      width: 140px;
+      height: 38px;
+      border-radius: 2px;
+      text-align: center;
+      font-style: italic;
+      font-size: 17px;
+
+    }
+  </style>
+
+</head>
+<body>
+
+
+<div id="div">
+  <form action="">
+<table class="layui-table" id="table">
+<colgroup>
+<col width="200">
+<col width="410">
+<col width="410">
+<col width="410">
+<col width="100">
+<col width="100">
+<col width="600">
+<col width="280">
+<col width="600">
+<col>
+</colgroup>
+  <div class="layui-input-block" style="display: inline-block;margin-left: 1100px; ">
+      <input class="layui-btn layui-btn-normal" id="insert" value="新增天数">
+  </div>
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>餐厅名称</th>
+      <th>餐厅类型</th>
+      <th>类别</th>
+      <th>用餐日期</th>
+      <th>单价</th>
+      <th>用餐餐数</th>
+      <th>人数</th>
+      <th>金额</th>
+    </tr> 
+  </thead>
+<tbody>
+ <div>
+     <tr class="kl">
+    <td id="a1">第1天</td>
+    <td>
+      <select name="city" lay-verify="" class="sun">
+        <option value="">请选择</option>
+        <option value="010">北京</option>
+        <option value="021">上海</option>
+        <option value="0571">杭州</option>
+      </select>  
+    </td>
+     <td>
+      <select name="city" lay-verify="" class="sun">
+        <option value="">请选择</option>
+        <option value="010">北京</option>
+        <option value="021">上海</option>
+        <option value="0571">杭州</option>
+      </select>  
+    </td>
+     <td>
+      <select name="city" lay-verify="" class="sun">
+        <option value="">请选择</option>
+        <option value="010">北京</option>
+        <option value="021">上海</option>
+        <option value="0571">杭州</option>
+      </select>  
+    </td>
+    <td>
+       <div class="layui-inline">
+      <div class="layui-input-inline">
+        <input type="text" class="form-control sun" name="date" id="date" onclick="WdatePicker()">
+      </div>
+    </div>
+    </td>
+    <td><input type="text" class="sun"></td>
+    <td><input type="text" class="sun"></td>
+    <td><input type="text" class="sun"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>第1天</td>
+
+    <td id="c">
+      <select name="city" lay-verify="" class="sun">
+        <option value="">请选择</option>
+        <option value="010">北京</option>
+        <option value="021">上海</option>
+        <option value="0571">杭州</option>
+      </select>  
+    </td>
+     <td>
+      <select name="city" lay-verify="" class="sun">
+        <option value="">请选择</option>
+        <option value="010">北京</option>
+        <option value="021">上海</option>
+        <option value="0571">杭州</option>
+      </select>  
+    </td>
+     <td>
+      <select name="city" lay-verify="" class="sun">
+        <option value="">请选择</option>
+        <option value="010">北京</option>
+        <option value="021">上海</option>
+        <option value="0571">杭州</option>
+      </select>  
+    </td>
+    <td id="c1">
+        <div class="layui-inline">
+        <div class="layui-input-inline">
+        <input type="text" class="form-control sun" name="date" id="date" onclick="WdatePicker()">
+      </div>
+    </div>
+
+    </td>
+    <td id="c2"><input type="text" class="sun"></td>
+    <td><input type="text" class="sun"></td>
+    <td><input type="text" class="sun"></td>
+    <td></td>
+  </tr>
+  
+
+
+  
+</div>
+
+ </tbody>
+<form>
+ </table>
+ 
+</div>
+
+<script src="/layui/layui.js" charset="utf-8"></script>
+<script src="/jquery-3.3.1.min.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 --> 
+<script src="/layui/js/one/forms.js" charset="utf-8"></script>
+<script type="text/javascript" src="/layui/js/one/calendar/WdatePicker.js"></script>
+<script type="text/javascript">
+
+   $(function(){
+    var jia=1;
+    var jias=parseInt(jia);
+    $("#insert").click(function(){
+        jias=jias+1;
+      var c =$("#c").html();
+      var c1 =$("#c1").html();
+      var c2 =$("#c2").html();
+
+      var obj="<td>"+c+"</td>"+"<td>"+c+"</td>"+"<td>"+c+"</td>"+"<td>"+c1+"</td>"+"<td>"+c2+"</td>"+"<td>"+c2+"</td>"+"<td>"+c2+"</td>"+"<td></td>";
+      
+      $("#table").append("<tr>"+"<td>第"+jias+"天</td>"+obj+"</tr>");
+      $("#table").append("<tr>"+"<td>第"+jias+"天</td>"+obj+"</tr>");
+    })    
+  });
+    
+</script>
+
+</body>
+</html>
