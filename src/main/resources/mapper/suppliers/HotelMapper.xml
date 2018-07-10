@@ -173,7 +173,7 @@
 		WHERE hotel_price_id = #{hotel_price_id} and hotel_id = #{hotel_id}
 	</update>
 
-	<select id="selectHotelPrice" resultType="HotelPrices">
+	<select id="selectHotelPrice" parameterType="HotelPrice" resultType="HotelPrice">
 		select hotel_price_id,hotel_id,hotel_choice,hotel_costed_pay,hotel_listed_pay,
 		hotel_price_owner from hotel_price where hotel_id = #{hotel_id}
 	</select>
