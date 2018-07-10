@@ -130,7 +130,7 @@
     </insert>
 
     <delete id="deleteHotelRelation">
-        delete from relation where relation_type = #{relation_type} and relation_id = #{relation_id}
+        delete from relation where relation_id = #{relation_id}
     </delete>
 
     <update id="updateHotelRelation" parameterType="Relation">

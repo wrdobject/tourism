@@ -40,10 +40,11 @@
 				<div class="layui-carousel suna" id="test1" lay-filter="test1">
 
 					<div carousel-item="">
+						<#if hotel.imageList??>
 						<#list hotel.imageList as img>
 						<div><img class="suna" src="/layui/images/${img.img_path}"></div>
 						</#list>
-
+						</#if>
 					</div>
 				</div>
 			</div>
@@ -152,7 +153,7 @@
 				<td style="text-align: center;">${rel.relation_email}</td>
 				<td style="text-align: center;">
 					<button class="layui-btn layui-btn-xs" hotel_id="${hotel.hotel_id}" relation_id="${rel.relation_id}" onclick="add('${rel.relation_id}','${hotel.hotel_id}')">编辑</button>
-					<button class="layui-btn layui-btn-danger layui-btn-xs" relation_id="${rel.relation_id}">删除</button>
+					<button class="layui-btn layui-btn-danger layui-btn-xs" relation_id="${rel.relation_id}" onclick="delRelation('${rel.relation_id}')">删除</button>
 				</td>
 			</tr>
 			</#if>
@@ -192,7 +193,7 @@
 					<td style="text-align: center;">${price.hotel_listed_pay}</td>
 					<td style="text-align: center;">
 						<button class="layui-btn layui-btn-xs" onclick="jiage('${price.hotel_price_id}','${hotel.hotel_id}')">编辑</button>
-						<button class="layui-btn layui-btn-danger layui-btn-xs"  hotel_price_id="${price.hotel_price_id}">删除</button>
+						<button class="layui-btn layui-btn-danger layui-btn-xs"  hotel_price_id="${price.hotel_price_id}"  onclick="delHotelPrice('${price.hotel_price_id}')">删除</button>
 					</td>
 				</tr>
 
@@ -214,8 +215,8 @@
 		<script>
 
 
-			function add(hotel_price_id,hotel_id) {
-				alert(hotel_price_id);
+			function add(relation_id,hotel_id) {
+				alert(relation_id);
 				alert(hotel_id);
 				layui.use('layer', function() {
 					var layer = layui.layer;
@@ -258,10 +259,12 @@
                                     success:function (data) {
 										if(data>0){
 										    alert("成功");
-										    window.location.href="hotelById?hotel_id="+hotel_id;
+                                            window.location.reload();
 										}
 									}
 								});
+							}else{
+
 							}
 
 
@@ -285,18 +288,20 @@
 				});
 			}
 			
-			function jiage() {
+			function jiage(hotel_price_id,hotel_id) {
+			    alert(hotel_price_id);
+			    alert(hotel_id);
 				layui.use('layer', function() {
 					var layer = layui.layer;
 					layer.open({
 						type: 1,
-						content: '<form id="addRelationInfo" method="post" style="margin:30px 0px 0px 20px;" >' +
+						content: '<form id="addHotelPrice" method="post" style="margin:30px 0px 0px 20px;" >' +
 							'<div class="layui-form-item">' +
 							'	<label class="layui-form-label">是否加床</label>' +
 							'	<div class="layui-input-inline">' +
-							'	<select name="modules" lay-verify="required" lay-search="" class="sun">' +
-							'		 <option value="否">否</option>' +
-          					'		 <option value="是">是</option>' +					
+							'	<select name="hotel_choice" lay-verify="required" lay-search="" class="sun">' +
+							'		 <option value="0">否</option>' +
+          					'		 <option value="1">是</option>' +
 							'	</select>	' +
 							'	</div>' +
 
@@ -306,14 +311,14 @@
 							'	<td><label class="layui-form-label">成本价</label>' +
 							'		<div class="layui-input-inline">' +
                         	'			<input type="hidden" name="hotel_id" value="${hotel.hotel_id}" >' +
-							'			<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
+							'			<input type="tel" name="hotel_costed_pay" lay-verify="required|phone" autocomplete="off" class="layui-input">' +
 							'		</div>' +
 							'</div>' +
 
 							'<div class="layui-form-item">' +
 							'	<label class="layui-form-label">报价</label>' +
 							'	<div class="layui-input-inline">' +
-							'		<input    type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">' +
+							'		<input    type="text" name="hotel_listed_pay" lay-verify="title" autocomplete="off" class="layui-input">' +
 							'	</div>' +
 							'</div>	' +
 							'</form>',
@@ -321,7 +326,25 @@
 						btn: ['确认', '取消'],
 						yes: function(index, layero) {
 							//按钮【按钮一】的回调
-							alert($("#addRelationInfo").serialize());
+							alert($("#addHotelPrice").serialize());
+
+                            if(hotel_price_id == undefined){
+                                alert($("#addRelationInfo").serialize());
+                                $.ajax({
+                                    url:"/addHotelPrice",
+                                    type:'post',
+                                    data:$("#addHotelPrice").serialize(),
+                                    success:function (data) {
+                                        if(data>0){
+                                            alert("成功");
+                                            window.location.reload();
+                                        }
+                                    }
+                                });
+                            }else{
+
+                            }
+
 							/*alert(JSON.stringify());*/
 						},
 						btn2: function(index, layero) {
@@ -357,6 +380,37 @@
                 var hotel_id = $(this).attr("hotel_id");
                 window.location.href="tiaoXiuGai/"+hotel_id;
             });
+
+            function delRelation(hotel_price_id) {
+                alert(hotel_price_id);
+                $.ajax({
+                    url:"/deleteHotelRelation",
+                    type:'post',
+                    data:{hotel_price_id:hotel_price_id},
+                    success:function (data) {
+                        if(data>0){
+                            alert("成功");
+                            window.location.reload();
+                        }
+                    }
+                })
+            };
+
+            function delHotelPrice(hotel_price_id) {
+                alert(hotel_price_id);
+                $.ajax({
+                    url:"/deleteHotelPrice",
+                    type:'post',
+                    data:{hotel_price_id:hotel_price_id},
+                    success:function (data) {
+                        if(data>0){
+                            alert("成功");
+                            window.location.reload();
+                        }
+                    }
+                })
+            };
+
 		</script>
 
 	</body>

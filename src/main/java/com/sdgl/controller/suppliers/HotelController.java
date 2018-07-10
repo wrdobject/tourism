@@ -35,13 +35,13 @@ public class HotelController {
      */
     @ResponseBody
     @RequestMapping("/hotelList")
-    public String selectAllHotel(Hotel hotel, @RequestParam(value = "yema") Integer yema){
+    public Object selectAllHotel(Hotel hotel, @RequestParam(value = "yema") Integer yema){
         System.out.println("传入的参数：yema"+yema+"-"+hotel.getHotel_city()+"-"+hotel.getHotel_abbreviation()+"-"+hotel.getHotel_county()+"-"+hotel.getHotel_name());
         PageHelper.startPage(yema, 6);
         List<Hotel> hotelList=hotelService.selectAllHotel(new Hotel());
         System.out.println("数量："+hotelList.size());
         PageInfo<Hotel> pageInfo = new PageInfo<Hotel>(hotelList);
-        return JSON.toJSONString(pageInfo);
+        return pageInfo;
     }
 
     /**
@@ -51,18 +51,24 @@ public class HotelController {
      */
     @RequestMapping("/hotelById")
     public String selectHotelById(@RequestParam(value = "hotel_id") Integer hotel_id,HttpSession session){
+
+
         Hotel hotel = hotelService.selectHotelById(hotel_id);
+
         HotelPrice h = new HotelPrice();
+
         h.setHotel_id(hotel_id);
+
         List<HotelPrice> hotelPrice = hotelService.selectHotelPrice(h);
+
         System.out.println("价钱："+hotelPrice.size());
         session.setAttribute("hotel",hotel);
         session.setAttribute("hotelPrice",hotelPrice);
-        System.out.println("根据id查询出的："+hotel.getHotel_id());
+        //System.out.println("根据id查询出的："+hotel.getHotel_id());
         return "/hotel_show.do";
     }
 
-    /**
+     /**
      * 根据id查询某酒店相关信息
      * @param hotel_id
      * @return
@@ -165,10 +171,11 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/deleteHotelRelation")
-    public String deleteHotelRelation(Relation relation){
+    public Object deleteHotelRelation(Relation relation){
         Integer deleteHotelRelation = hotelService.deleteHotelRelation(relation);
-        return JSON.toJSONString(deleteHotelRelation);
+        return deleteHotelRelation;
     }
 
     /**
@@ -198,10 +205,12 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/addHotelPrice")
-    public String addHotelPrice(HotelPrice hotelPrice){
+    public Object addHotelPrice(HotelPrice hotelPrice){
+        hotelPrice.setHotel_price_owner(1);
         Integer addHotelPrice = hotelService.addHotelPrice(hotelPrice);
-        return JSON.toJSONString(addHotelPrice);
+        return addHotelPrice;
     }
 
     /**
@@ -209,10 +218,13 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/deleteHotelPrice")
-    public String deleteHotelPrice(HotelPrice hotelPrice){
+    public Object deleteHotelPrice(HotelPrice hotelPrice){
+        hotelPrice.setHotel_price_owner(1);
+        System.out.println(hotelPrice.getHotel_price_id());
         Integer deleteHotelPrice = hotelService.deleteHotelPrice(hotelPrice);
-        return JSON.toJSONString(deleteHotelPrice);
+        return deleteHotelPrice;
     }
 
     /**
