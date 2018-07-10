@@ -7,17 +7,18 @@ import com.sdgl.pojo.suppliers.Hotel;
 import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
 import com.sdgl.pojo.suppliers.Relation;
+import com.sdgl.pojo.suppliersfei.Images;
 import com.sdgl.service.suppliers.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.ClassUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -62,43 +63,50 @@ public class HotelController {
     }
 
     /**
-     * 跳到添加酒店页面
-     * @param
-     * @return
-     */
-    @RequestMapping("/tiaoAddHotel")
-    public String tiaoAddHotel(){
-        return "3/jiudian/hotel_add";
-    }
-
-    /**
      * 添加酒店
      * @param hotel
      * @return
      */
     @RequestMapping("/addHotel")
     public String addHotel(Hotel hotel){
+        if("请选择省份".equals(hotel.getHotel_province())){
+            hotel.setHotel_province(null);
+        }
         System.out.println("酒店添加："+hotel.getHotel_name()+"-"+hotel.getHotel_facilities());
         Integer addResult = hotelService.addHotel(hotel);
-        return JSON.toJSONString(addResult);
+        System.out.println("添加结果"+addResult);
+        return "redirect:/jiudian";
     }
 
     /**
      * 添加图片，还是多图片哦
-     * @param hotel_id
+     * @param
      * @return
      */
-    @RequestMapping("/addImage")
-    public String addImage(@RequestParam("hotel_id")Integer hotel_id,HttpServletRequest request){
-        String filePath = request.getSession().getServletContext().getRealPath("/")+ "static/img/";
-        List<File> files = FileUtil.getInstance(filePath).upload(request);
-        Image image = new Image();
-        image.setSupplier_type(2);
-        image.setImg_type(1);
-        image.setOther_id(hotel_id);
-        Integer addImageResult = hotelService.addHotelImg(image,files);
-        return JSON.toJSONString(files);
+    @PostMapping("/addImage")
+    public int relationuploadimg(@RequestParam(value ="image") MultipartFile multipartFile, HttpServletRequest request){
+        System.out.println("");
+        Images images = new Images();
+        if(!multipartFile.isEmpty()){
+
+            String url = ClassUtils.getDefaultClassLoader().getResource("static/img").getPath();
+            String name = multipartFile.getOriginalFilename();
+            File file = new File(url,name);
+            try {
+                multipartFile.transferTo(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            images.setImgPath(name);
+            images.setImgTime(new Date());
+            images.setSupplierType(2);
+            int id = hotelService.selectMaxHotelId();
+            images.setOtherId(id+1);
+            images.setImgType(1);
+        }
+        return hotelService.addHotelImg(images);
     }
+
 
     /**
      * 修改酒店

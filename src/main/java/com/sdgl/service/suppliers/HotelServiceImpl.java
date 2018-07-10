@@ -5,6 +5,7 @@ import com.sdgl.pojo.suppliers.Hotel;
 import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
 import com.sdgl.pojo.suppliers.Relation;
+import com.sdgl.pojo.suppliersfei.Images;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +28,6 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public Integer addHotel(Hotel hotel) {
         return hotelMapper.addHotel(hotel);
-    }
-
-    @Override
-    public Integer addHotelImg(Image img, List<File> files) {
-        return hotelMapper.addHotelImg(img,files);
     }
 
     @Override
@@ -82,5 +78,10 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public Integer selectMaxHotelId() {
         return hotelMapper.selectMaxHotelId();
+    }
+
+    @Override
+    public int addHotelImg(Images images) {
+        return hotelMapper.addHotelImg(images);
     }
 }

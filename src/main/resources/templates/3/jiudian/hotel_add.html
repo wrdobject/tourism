@@ -25,7 +25,7 @@
 			<legend>酒店添加</legend>
 		</fieldset>
 		*为必填项，为方便信息的完整，其它最好填写
-		<form action="">
+		<form action="/addHotel" method="post">
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">*酒店名称</label>
@@ -114,18 +114,18 @@
 			<div class="layui-form-item layui-form">
 				<label class="layui-form-label" >酒店设施</label>
 				<div>
-					<input type="checkbox" name="hotel_facilities[chongwu]" value="携带宠物" title="携带宠物">
-					<input type="checkbox" name="hotel_facilities[zuche]" value="租车" title="租车">
-					<input type="checkbox" name="hotel_facilities[child]" value="看护小孩" title="看护小孩">
-					<input type="checkbox" name="hotel_facilities[xingli]" value="行李寄存" title="行李寄存">
-					<input type="checkbox" name="hotel_facilities[xiyi]" value="洗衣服务" title="洗衣服务">
-					<input type="checkbox" name="hotel_facilities[yushi]" value="萨拉浴室" title="萨拉浴室">
-					<input type="checkbox" name="hotel_facilities[spa]" value="spa" title="spa">
-					<input type="checkbox" name="hotel_facilities[car]" value="停车场" title="停车场">
-					<input type="checkbox" name="hotel_facilities[jiuba]" value="酒吧" title="酒吧">
-					<input type="checkbox" name="hotel_facilities[xican]" value="西餐厅" title="西餐厅">
-					<input type="checkbox" name="hotel_facilities[zhongcan]" value="中餐厅" title="中餐厅">
-					<input type="checkbox" name="hotel_facilities[qita]" value="其他" title="其他">
+					<input type="checkbox" name="hotel_facilities" value="携带宠物" title="携带宠物">
+					<input type="checkbox" name="hotel_facilities" value="租车" title="租车">
+					<input type="checkbox" name="hotel_facilities" value="看护小孩" title="看护小孩">
+					<input type="checkbox" name="hotel_facilities" value="行李寄存" title="行李寄存">
+					<input type="checkbox" name="hotel_facilities" value="洗衣服务" title="洗衣服务">
+					<input type="checkbox" name="hotel_facilities" value="萨拉浴室" title="萨拉浴室">
+					<input type="checkbox" name="hotel_facilities" value="spa" title="spa">
+					<input type="checkbox" name="hotel_facilities" value="停车场" title="停车场">
+					<input type="checkbox" name="hotel_facilities" value="酒吧" title="酒吧">
+					<input type="checkbox" name="hotel_facilities" value="西餐厅" title="西餐厅">
+					<input type="checkbox" name="hotel_facilities" value="中餐厅" title="中餐厅">
+					<input type="checkbox" name="hotel_facilities" value="其他" title="其他">
 				</div>
 			</div>
 
@@ -165,7 +165,7 @@
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+					<input type="submit" class="layui-btn"/>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
@@ -225,6 +225,7 @@
 				upload.render({
 					elem: '#test2',
 					url: '/addImage/',
+                    field:"image",
 					multiple: true,
 					before: function(obj) {
 						//预读本地文件示例，不支持ie8

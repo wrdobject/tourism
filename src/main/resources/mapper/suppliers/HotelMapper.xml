@@ -88,22 +88,17 @@
 	<insert id="addHotel" parameterType="Hotel">
 		INSERT into hotel(hotel_name,hotel_abbreviation,hotel_type,hotel_class,
 		hotel_fax,hotel_email,hotel_phone,hotel_province,hotel_city,hotel_county,hotel_address,
-		hotel_introduce,hotel_facilities,hotel_notice,hotel_time,hotel_owner) values(
-		#{hotel_name},#{hotel_abbreviation},#{hotel_type},,#{hotel_class},#{hotel_fax},
+		hotel_introduce,hotel_facilities,hotel_notice,hotel_time,hotel_owner,zhiFuFangShi) values(
+		#{hotel_name},#{hotel_abbreviation},#{hotel_type},#{hotel_class},#{hotel_fax},
 		#{hotel_email},#{hotel_phone},#{hotel_province},#{hotel_city},#{hotel_county},
-		#{hotel_address},#{hotel_introduce},#{hotel_facilities},#{hotel_notice},#{hotel_time},
-		#{hotel_owner})
+		#{hotel_address},#{hotel_introduce},#{hotel_facilities},#{hotel_notice},now(),
+		#{hotel_owner},#{zhiFuFangShi})
 	</insert>
 
 	<insert id="addHotelImg">
 		insert into image(img_path,supplier_type,other_id,img_type,img_time)values(
-		'/static/',2,2,1,NOW())
-		<foreach collection ="files" item="file" index="index" separator =",">
-			(
-			#{file}, #{img.supplier_type},#{img.other_id},
-			#{img.img_type},now()}
-			)
-		</foreach >
+		#{img_path},#{supplier_type},#{other_id},#{img_type},now()
+		)
 	</insert>
 
     <update id="updateHotel" parameterType="Hotel">
@@ -178,7 +173,7 @@
 		hotel_price_owner from hotel_price where hotel_id = #{hotel_id}
 	</select>
 
-	<select id="selectMaxHotelId">
+	<select id="selectMaxHotelId" resultType="Integer">
 		select max(hotel_id) from hotel
 	</select>
 </mapper>

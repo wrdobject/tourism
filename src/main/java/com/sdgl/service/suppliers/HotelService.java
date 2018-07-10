@@ -4,6 +4,7 @@ import com.sdgl.pojo.suppliers.Hotel;
 import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
 import com.sdgl.pojo.suppliers.Relation;
+import com.sdgl.pojo.suppliersfei.Images;
 
 import java.io.File;
 import java.util.List;
@@ -14,8 +15,6 @@ public interface HotelService {
     Hotel selectHotelById(Integer hotel_id);
 
     Integer addHotel(Hotel hotel);
-
-    Integer addHotelImg(Image img, List<File> files);
 
     Integer updateHotel(Hotel hotel);
 
@@ -36,4 +35,6 @@ public interface HotelService {
     List<HotelPrice> selectHotelPrice(HotelPrice hotelPrice);
 
     Integer selectMaxHotelId();
+
+    int addHotelImg(Images images);
 }
