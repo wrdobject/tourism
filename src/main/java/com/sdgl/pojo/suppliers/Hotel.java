@@ -22,6 +22,15 @@ public class Hotel {
     private String hotel_notice;
     private Date hotel_time;
     private Integer hotel_owner;
+    private String zhiFuFangShi;
+
+    public String getZhiFuFangShi() {
+        return zhiFuFangShi;
+    }
+
+    public void setZhiFuFangShi(String zhiFuFangShi) {
+        this.zhiFuFangShi = zhiFuFangShi;
+    }
 
     private List<Relation> relationList;
 

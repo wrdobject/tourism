@@ -7,17 +7,18 @@ import com.sdgl.pojo.suppliers.Hotel;
 import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
 import com.sdgl.pojo.suppliers.Relation;
+import com.sdgl.pojo.suppliersfei.Images;
 import com.sdgl.service.suppliers.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.ClassUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -34,13 +35,13 @@ public class HotelController {
      */
     @ResponseBody
     @RequestMapping("/hotelList")
-    public String selectAllHotel(Hotel hotel, @RequestParam(value = "yema") Integer yema){
+    public Object selectAllHotel(Hotel hotel, @RequestParam(value = "yema") Integer yema){
         System.out.println("传入的参数：yema"+yema+"-"+hotel.getHotel_city()+"-"+hotel.getHotel_abbreviation()+"-"+hotel.getHotel_county()+"-"+hotel.getHotel_name());
         PageHelper.startPage(yema, 6);
         List<Hotel> hotelList=hotelService.selectAllHotel(new Hotel());
         System.out.println("数量："+hotelList.size());
         PageInfo<Hotel> pageInfo = new PageInfo<Hotel>(hotelList);
-        return JSON.toJSONString(pageInfo);
+        return pageInfo;
     }
 
     /**
@@ -50,54 +51,105 @@ public class HotelController {
      */
     @RequestMapping("/hotelById")
     public String selectHotelById(@RequestParam(value = "hotel_id") Integer hotel_id,HttpSession session){
+
+
         Hotel hotel = hotelService.selectHotelById(hotel_id);
+
         HotelPrice h = new HotelPrice();
+
         h.setHotel_id(hotel_id);
+
         List<HotelPrice> hotelPrice = hotelService.selectHotelPrice(h);
+
         System.out.println("价钱："+hotelPrice.size());
         session.setAttribute("hotel",hotel);
         session.setAttribute("hotelPrice",hotelPrice);
-        System.out.println("根据id查询出的："+hotel.getHotel_name());
-        return "/3/jiudian/hotel_show";
+        //System.out.println("根据id查询出的："+hotel.getHotel_id());
+        return "/hotel_show.do";
+    }
+
+     /**
+     * 根据id查询某酒店相关信息
+     * @param hotel_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/hotelById1")
+    public Object selectHotelById1(@RequestParam(value = "hotel_id") Integer hotel_id){
+        Hotel hotel = hotelService.selectHotelById(hotel_id);
+        System.out.println(JSON.toJSONString(hotel));
+        return hotel;
     }
 
     /**
-     * 添加酒店
+     * 添加或修改酒店
      * @param hotel
      * @return
      */
     @RequestMapping("/addHotel")
     public String addHotel(Hotel hotel){
-        Integer addResult = hotelService.addHotel(hotel);
-        return JSON.toJSONString(addResult);
+        System.out.println("修改的id："+hotel.getHotel_id());
+        if(hotel.getHotel_id()!=null && !"".equals(hotel.getHotel_id())){
+            int re = hotelService.updateHotel(hotel);
+            if(re>0){
+                System.out.println("修改成功");
+                return "redirect:/jiudian";
+            }
+            System.out.println("错误1");
+            return "/hotelById?hotel_id="+hotel.getHotel_id();
+        }else{
+            System.out.println("没走修改");
+            if("请选择省份".equals(hotel.getHotel_province())){
+                hotel.setHotel_province(null);
+            }
+            System.out.println("酒店添加："+hotel.getHotel_name()+"-"+hotel.getHotel_facilities());
+            Integer addResult = hotelService.addHotel(hotel);
+            System.out.println("添加结果"+addResult);
+            return "redirect:/jiudian";
+        }
+
     }
 
     /**
      * 添加图片，还是多图片哦
-     * @param hotel_id
+     * @param
      * @return
      */
-    @RequestMapping("/addImage")
-    public String addImage(@RequestParam("hotel_id")Integer hotel_id,HttpServletRequest request){
-        String filePath = request.getSession().getServletContext().getRealPath("/")+ "static/img/";
-        List<File> files = FileUtil.getInstance(filePath).upload(request);
-        Image image = new Image();
-        image.setSupplier_type(2);
-        image.setImg_type(1);
-        image.setOther_id(hotel_id);
-        Integer addImageResult = hotelService.addHotelImg(image,files);
-        return JSON.toJSONString(files);
+    @PostMapping("/addImage")
+    public int relationuploadimg(@RequestParam(value ="image") MultipartFile multipartFile, HttpServletRequest request){
+        System.out.println("");
+        Images images = new Images();
+        if(!multipartFile.isEmpty()){
+
+            String url = ClassUtils.getDefaultClassLoader().getResource("static/img").getPath();
+            String name = multipartFile.getOriginalFilename();
+            File file = new File(url,name);
+            try {
+                multipartFile.transferTo(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            images.setImgPath(name);
+            images.setImgTime(new Date());
+            images.setSupplierType(2);
+            int id = hotelService.selectMaxHotelId();
+            images.setOtherId(id+1);
+            images.setImgType(1);
+        }
+        return hotelService.addHotelImg(images);
     }
 
+
+
     /**
-     * 修改酒店
-     * @param hotel
+     * 跳修改页面
+     * @param
      * @return
      */
-    @RequestMapping("/updateHotel")
-    public String updateHotel(Hotel hotel){
-        Integer updateResult = hotelService.updateHotel(hotel);
-        return JSON.toJSONString(updateResult);
+    @RequestMapping("/tiaoXiuGai/{hotel_id}")
+    public String tiaoXiuGai(){
+        System.out.println("进来了吗");
+        return "/hotel_add.do";
     }
 
     /**
@@ -105,10 +157,13 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/addHotelRelation")
-    public String addHotelRelation(Relation relation){
+    public Object addHotelRelation(Relation relation){
+        System.out.println("名字"+relation.getRelation_name());
+        relation.setRelation_owner(1);
         Integer addHotelRelationResult = hotelService.addHotelRelation(relation);
-        return JSON.toJSONString(addHotelRelationResult);
+        return addHotelRelationResult;
     }
 
     /**
@@ -116,10 +171,11 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/deleteHotelRelation")
-    public String deleteHotelRelation(Relation relation){
+    public Object deleteHotelRelation(Relation relation){
         Integer deleteHotelRelation = hotelService.deleteHotelRelation(relation);
-        return JSON.toJSONString(deleteHotelRelation);
+        return deleteHotelRelation;
     }
 
     /**
@@ -149,10 +205,12 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/addHotelPrice")
-    public String addHotelPrice(HotelPrice hotelPrice){
+    public Object addHotelPrice(HotelPrice hotelPrice){
+        hotelPrice.setHotel_price_owner(1);
         Integer addHotelPrice = hotelService.addHotelPrice(hotelPrice);
-        return JSON.toJSONString(addHotelPrice);
+        return addHotelPrice;
     }
 
     /**
@@ -160,10 +218,13 @@ public class HotelController {
      * @param
      * @return
      */
+    @ResponseBody
     @RequestMapping("/deleteHotelPrice")
-    public String deleteHotelPrice(HotelPrice hotelPrice){
+    public Object deleteHotelPrice(HotelPrice hotelPrice){
+        hotelPrice.setHotel_price_owner(1);
+        System.out.println(hotelPrice.getHotel_price_id());
         Integer deleteHotelPrice = hotelService.deleteHotelPrice(hotelPrice);
-        return JSON.toJSONString(deleteHotelPrice);
+        return deleteHotelPrice;
     }
 
     /**

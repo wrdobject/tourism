@@ -9,6 +9,15 @@ public class HotelPrice {
     private double hotel_costed_pay;
     private Integer hotel_listed_pay;
     private Integer hotel_price_owner;
+    private Integer hotel_choice;
+
+    public Integer getHotel_choice() {
+        return hotel_choice;
+    }
+
+    public void setHotel_choice(Integer hotel_choice) {
+        this.hotel_choice = hotel_choice;
+    }
 
     public HotelPrice() {
     }
