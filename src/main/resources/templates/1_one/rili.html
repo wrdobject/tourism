@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>使用 layDate 独立版</title>
+
+		<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+		<script language="javascript" src="/jquery-3.3.1.min.js"></script>
+		<script language="javascript" src="/layui/js/one/LodopFuncs.js"></script>
+		<!--<link rel="stylesheet" href="statics/css/rili.css" media="all">-->
+		<style type="text/css" id="rili">
+			body {
+				background-color: #F9F6F3;
+			}
+			
+			th {
+				padding: px;
+			}
+			
+			td {
+				padding: 5px;
+			}
+			
+			.top {
+				width: 1500px;
+				height: 50px;
+				background-color: white;
+			}
+			
+			#z {
+				display: inline-block;
+				width: 80px;
+			}
+			
+			#x {
+				width: 50px;
+			}
+			
+			ul {
+				display: inline-block;
+				margin-top: 10px;
+				position: relative;
+				bottom: -5px;
+			}
+			
+			ul li {
+				float: left;
+				margin-right: 10px;
+				display: inline-block;
+			}
+			
+			ul li:hover {
+				background-color: #279AA1;
+			}
+			
+			#test1 {
+				display: inline-block;
+				width: 100px;
+			}
+			
+			#zhuangtai {
+				margin-left: 10px;
+			}
+			
+			#f {
+				display: inline-block;
+				width: 100px;
+				margin-left: 20px;
+			}
+			
+			.bbb {
+				display: block;
+				background-color: #F2F2F2;
+				text-align: center;
+				font-weight: bold;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			#da {
+				position: relative;
+				top: -38px;
+				left: 1220px;
+			}
+			
+			table {
+				text-align: center;
+			}
+			.suna {
+				width: 400px;
+				height: 320px;
+			}
+			
+			.sun {
+				width: 100%;
+				height: 38px;
+				border: 1px solid #E6E6E6;
+				border-radius: 2px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="top">
+			<form class="layui-form" action="">
+				<span>年</span></span>
+				<div class="layui-input-inline" id="z">
+					<select name="modules" lay-verify="required" lay-search="" id="x" class="year">
+						<option value="2018">2018</option>
+						<option value="2017">2017</option>
+						<option value="2016">2016</option>
+						<option value="2015">2015</option>
+					</select>
+				</div>
+
+				<ul>
+					<li>
+						<a class="yue">1月</a>
+					</li>
+					<li>
+						<a class="yue">2月</a>
+					</li>
+					<li>
+						<a class="yue">3月</a>
+					</li>
+					<li>
+						<a class="yue">4月</a>
+					</li>
+					<li>
+						<a class="yue">5月</a>
+					</li>
+					<li>
+						<a class="yue">6月</a>
+					</li>
+					<li>
+						<a class="yue">7月</a>
+					</li>
+					<li>
+						<a class="yue">8月</a>
+					</li>
+					<li>
+						<a class="yue">9月</a>
+					</li>
+					<li>
+						<a class="yue">10月</a>
+					</li>
+					<li>
+						<a class="yue">11月</a>
+					</li>
+					<li>
+						<a class="yue">12月</a>
+					</li>
+				</ul>
+				<span>时间：</span><input type="text" id="test1" class="layui-input test1" placeholder="年/月/日">
+				<span>----</span><input type="text" id="test1" class="layui-input test2" placeholder="年/月/日">
+
+				<input type="text" name="title" required lay-verify="required" placeholder="导游名称" autocomplete="off" class="layui-input" id="f">
+				<i class="layui-icon">&#xe640;</i><span>清除全部</span>
+				<a class="layui-btn" lay-event="edit" onclick="addTicketInfo()">选择</a>
+
+			</form>
+			<button class="layui-btn " onclick="printview()" id="da">打印</button>
+		</div>
+		<div id="rr">
+			<div class="tab">
+				<span class="bbb"><span class="nians">2018</span>年-<span class="yues">1月</span><span class="ris">01</span>到<span class="nians" id="nians">2018</span>年-<span class="yues" id="yues">1月</span><span class="riss">30</span>导游调度时间段</span>
+
+				<table class="layui-table">
+					<colgroup>
+						<col width="10">
+						<col width="80">
+						<col width="100">
+					</colgroup>
+					<thead>
+						<tr class="tabs">
+
+						</tr>
+					</thead>
+					<tr class="tabss">
+
+					</tr>
+			</div>
+		</div>
+		<script src="/layui/layui.js"></script>
+		<script src="/layui/layui.all.js" charset="utf-8"></script>
+		<script language="javascript" src="/layui/js/one/rili.js"></script>
+		<script>
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+
+				//执行一个laydate实例
+				laydate.render({
+					elem: '.test1',
+					done: function(value, date, endDate) {
+						$('.test1').change(); // 一定要加上这句！！！不然没有回调！！！
+						console.log(value); //得到日期生成的值，如：2017-08-18
+						console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+						console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+					}
+				});
+				laydate.render({
+					elem: '.test2',
+					done: function(value, date, endDate) {
+						$('.test2').change(); // 一定要加上这句！！！不然没有回调！！！
+						console.log(value); //得到日期生成的值，如：2017-08-18
+						console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+						console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+					}
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(function() {
+
+				$(".tabs").html("");
+				$(".tabss").html("");
+				var myDate = new Date();
+				var years = myDate.getFullYear();
+				var months = myDate.getMonth() + 1;
+				var curMonthDayss = new Date(years, months, 0).getDate();
+				$(".nians").html(years);
+				$(".yues").html(months + "月");
+				$(".riss").html(curMonthDayss);
+				var ths = "";
+				var tds = "";
+				for(var t = 0; t < curMonthDayss; t++) {
+					var das = years + "-" + months + "-" + (t + 1);
+					var a = ["日", "一", "二", "三", "四", "五", "六"];
+					var weeks = new Date(das).getDay();
+					if(weeks == 0 || weeks == 6) {
+						ths += "<th style='background-color:#FFA2A5;padding-left: 1px;padding-right: 1px;width=28' >0" + (t + 1) + "周" + a[weeks] + "</th>";
+						tds += "<td style='padding: 1px;'>√</td>";
+					} else {
+						ths += "<th style='padding: 1px;'>0" + (t + 1) + "周" + a[weeks] + "</th>";
+						tds += "<td style='padding: 1px;'>√</td>";
+					}
+
+				}
+				$(".tabs").append("<th>序</th><th>导游</th><th>上团天数</th>" + ths);
+				$(".tabss").append("<td>D-01</td><td>XXX</td><td>30</td>" + tds);
+				$(".yue").click(function() {
+					$(".tabs").html("");
+					$(".tabss").html("");
+					var yue = $(this).text();
+					var W = $(".yues").html();
+					$(".yues").html(yue);
+					var year = $("#x").val();
+					$(".nians").html(year);
+					var month = parseInt(yue);
+					var curMonthDays = new Date(year, month, 0).getDate();
+					$(".riss").html(curMonthDays);
+
+					var th = "";
+					var td = "";
+					for(var i = 0; i < curMonthDays; i++) {
+						var da = year + "-" + month + "-" + (i + 1);
+						var a = ["日", "一", "二", "三", "四", "五", "六"];
+						var week = new Date(da).getDay();
+						if(week == 0 || week == 6) {
+							th += "<th style='background-color:#FFA2A5;padding-left: 1px;padding-right: 1px;width=28'>0" + (i + 1) + "周" + a[week] + "</th>";
+							td += "<td style='padding: 1px;'>√</td>";
+						} else {
+							th += "<th style='padding: 1px;'>0" + (i + 1) + "周" + a[week] + "</th>";
+							td += "<td style='padding: 1px;'>√</td>";
+						}
+					}
+
+					$(".tabs").append("<th>序</th><th>导游</th><th>上团天数</th>" + th);
+					$(".tabss").append("<td>D-01</td><td>XXX</td><td>30</td>" + td);
+				});
+
+				/*按时间插件进行变化*/
+				$(".test1").change(function() {
+					var datetest1 = $(".test1").val();
+					alert(datetest1);
+					$(".test2").change(function() {
+						var datetest2 = $(".test2").val();
+						var date1Str = datetest1.split("-"); //将日期字符串分隔为数组,数组元素分别为年.月.日
+						//根据年 . 月 . 日的值创建Date对象
+						var date1Obj = new Date(date1Str[0], (date1Str[1] - 1), date1Str[2]);
+						var date2Str = datetest2.split("-");
+						var date2Obj = new Date(date2Str[0], (date2Str[1] - 1), date2Str[2]);
+						var t1 = date1Obj.getTime();
+						var t2 = date2Obj.getTime();
+						var dateTime = 1000 * 60 * 60 * 24; //每一天的毫秒数
+						var minusDays = Math.floor(((t2 - t1) / dateTime)); //计算出两个日期的天数差
+						var days = Math.abs(minusDays); //取绝对值
+						/*第一个时间*/
+						var yearss = date1Obj.getFullYear();
+						var monthss = date1Obj.getMonth() + 1;
+						var days1 = date1Obj.getDate();
+
+						$(".nians").html("");
+						$(".yues").html("");
+						$(".ris").html("");
+						$(".nians").html(yearss);
+						$(".yues").html(monthss + "月");
+						$(".ris").html(days1);
+						/*第二个时间*/
+						var yearsss = date2Obj.getFullYear();
+						var monthsss = date2Obj.getMonth() + 1;
+						var days2 = date2Obj.getDate();
+						$("#nians").html("");
+						$("#yues").html("");
+						$(".riss").html("");
+						$("#nians").html(yearsss);
+						$("#yues").html(monthsss + "月");
+						$(".riss").html(days2);
+						/*循环第二个月*/
+						var curMonthDaysss = new Date(yearsss, monthsss, 0).getDate();
+						/*循环第一个月*/
+						var curMonthDaysss1 = new Date(yearss, monthss, 0).getDate();
+						alert(curMonthDaysss1);
+						$(".tabs").html("");
+						$(".tabss").html("");
+						var thsss1 = "";
+						var tdsss1 = "";
+						if(monthsss == monthss) {
+							for(var z = days1; z <= days2; z++) {
+								var das1 = yearsss + "-" + monthsss + "-" + z;
+								var a = ["日", "一", "二", "三", "四", "五", "六"];
+								var weekss1 = new Date(das1).getDay();
+								if(weekss1 == 0 || weekss1 == 6) {
+									thsss1 += "<th  style='background-color:#FFA2A5;padding-left: 1px;padding-right: 1px;width=28'>0" + z + "周" + a[weekss1] + "</th>";
+									tdsss1 += "<td style='padding: 1px;'>√</td>";
+								} else {
+									thsss1 += "<th style='padding: 1px;'>0" + z + "周" + a[weekss1] + "</th>";
+									tdsss1 += "<td style='padding: 1px;'>√</td>";
+								}
+							}
+						} else {
+							for(var z = days1; z <= curMonthDaysss1; z++) {
+								var das1 = yearsss + "-" + monthsss + "-" + z;
+								var a = ["日", "一", "二", "三", "四", "五", "六"];
+								var weekss1 = new Date(das1).getDay();
+								if(weekss1 == 0 || weekss1 == 6) {
+									thsss1 += "<th style='background-color:#FFA2A5'>0" + z + "周" + a[weekss1] + "</th>";
+									tdsss1 += "<td style='padding: 1px;'>√</td>";
+								} else {
+									thsss1 += "<th style='padding: 1px;'>0" + z + "周" + a[weekss1] + "</th>";
+									tdsss1 += "<td style='padding: 1px;'>√</td>";
+								}
+							}
+
+						}
+
+						$(".tabs").append("<th>序</th><th>导游</th><th>上团天数</th>" + thsss1);
+						$(".tabss").append("<td>D-01</td><td>XXX</td><td>30</td>" + tdsss1);
+					});
+				});
+
+			});
+
+			function addTicketInfo() {
+				layui.use('layer', function() {
+					var layer = layui.layer;
+					var $ = jQuery.noConflict();
+					layer.open({
+						type: 1,
+						content: '<form id="addTicketInfo" method="post" style="margin:30px 0px 0px 20px;" >' +
+							'<div class="layui-form-item">' +
+							' <label class="layui-form-label">选择路线</label>' +
+							' <div class="layui-input-inline">' +
+							' <select name="modules" lay-verify="required" lay-search="" class="sun">' +
+							'    <option value="路线1">路线1</option>' +
+							'    <option value="路线2">路线2</option>' +
+							'    <option value="路线3">路线3</option>' +
+							' </select> ' +
+							' </div>' +
+							'</div>' +
+							
+							'<div class="layui-form-item">' +
+							' <label class="layui-form-label">选择导游</label>' +
+							' <div class="layui-input-inline">' +
+							' <select name="modules" lay-verify="required" lay-search="" class="sun">' +
+							'    <option value="导游1">导游1</option>' +
+							'    <option value="导游2">导游2</option>' +
+							'    <option value="导游3">导游3</option>' +
+							' </select> ' +
+							' </div>' +
+							' </div>' +
+
+							'</form>',
+						area: ['380px', '260px'],
+						btn: ['确认', '取消'],
+						yes: function(index, layero) {
+							//按钮【按钮一】的回调
+							/*关闭*/
+							layer.close(index);
+
+						},
+						btn2: function(index, layero) {
+							//按钮【按钮二】的回调
+						},
+						cancel: function() {
+							//右上角关闭回调
+							//return false 开启该代码可禁止点击该按钮关闭
+						},
+						btnAlign: 'c',
+						move: false,
+						resize: false
+					});
+				});
+			}
+		</script>
+	</body>
+
+</html>

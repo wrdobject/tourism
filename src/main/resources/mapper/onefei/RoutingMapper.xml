@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.onefei.RoutingMapper" >
+
+  <select id="selectAllRout" resultMap="BaseResultMap" parameterType="int">
+   SELECT * FROM routing
+  JOIN ticket ON ticket.ticket_id = routing.routing_via_id
+  JOIN hotel ON hotel.hotel_id = routing.routing_hotel_id
+  WHERE r_basic_id = #{basicId}
+  ORDER BY routing_days asc
+  </select>
+
+  <resultMap id="BaseResultMap" type="com.sdgl.pojo.onefei.Routings" >
+    <id column="routing_id" property="routingId" jdbcType="INTEGER" />
+
+    <id column="ticket_id" property="ticketId" jdbcType="INTEGER" />
+
+    <id column="hotel_id" property="hotelId" jdbcType="INTEGER" />
+
+    <result column="r_basic_id" property="rBasicId" jdbcType="INTEGER" />
+    <result column="routing_days" property="routingDays" jdbcType="INTEGER" />
+    <result column="routing_title" property="routingTitle" jdbcType="VARCHAR" />
+    <result column="routing_via_id" property="routingViaId" jdbcType="VARCHAR" />
+    <result column="routing_hotel_id" property="routingHotelId" jdbcType="INTEGER" />
+    <result column="routing_content" property="routingContent" jdbcType="VARCHAR" />
+    <result column="routing_breakfast_type" property="routingBreakfastType" jdbcType="VARCHAR" />
+    <result column="routing_breakfast_price" property="routingBreakfastPrice" jdbcType="DOUBLE" />
+    <result column="routing_lunch_type" property="routingLunchType" jdbcType="VARCHAR" />
+    <result column="routing_lunch_price" property="routingLunchPrice" jdbcType="DOUBLE" />
+    <result column="routing_dinner_type" property="routingDinnerType" jdbcType="VARCHAR" />
+    <result column="routing_dinner_price" property="routingDinnerPrice" jdbcType="DOUBLE" />
+    <result column="routing_departure" property="routingDeparture" jdbcType="VARCHAR" />
+    <result column="routing_arrival" property="routingArrival" jdbcType="VARCHAR" />
+    <result column="routing_creation_time" property="routingCreationTime" jdbcType="DATE" />
+    <result column="routing_creation_people" property="routingCreationPeople" jdbcType="VARCHAR" />
+    <result column="routing_modify_time" property="routingModifyTime" jdbcType="DATE" />
+    <result column="routing_modify_people" property="routingModifyPeople" jdbcType="VARCHAR" />
+    <result column="routing_one" property="routingOne" jdbcType="VARCHAR" />
+    <result column="routing_two" property="routingTwo" jdbcType="VARCHAR" />
+    <result column="routing_three" property="routingThree" jdbcType="VARCHAR" />
+
+
+    <result column="ticket_name" property="ticketName" jdbcType="VARCHAR" />
+    <result column="ticket_abbreviation" property="ticketAbbreviation" jdbcType="VARCHAR" />
+    <result column="ticket_type" property="ticketType" jdbcType="VARCHAR" />
+    <result column="ticket_class" property="ticketClass" jdbcType="VARCHAR" />
+    <result column="ticket_fax" property="ticketFax" jdbcType="VARCHAR" />
+    <result column="Ticket_email" property="ticketEmail" jdbcType="VARCHAR" />
+    <result column="ticket_phone" property="ticketPhone" jdbcType="VARCHAR" />
+    <result column="ticket_province" property="ticketProvince" jdbcType="VARCHAR" />
+    <result column="ticket_city" property="ticketCity" jdbcType="VARCHAR" />
+    <result column="ticket_county" property="ticketCounty" jdbcType="VARCHAR" />
+    <result column="ticket_address" property="ticketAddress" jdbcType="VARCHAR" />
+    <result column="ticket_introduce" property="ticketIntroduce" jdbcType="VARCHAR" />
+    <result column="ticket_time" property="ticketTime" jdbcType="DATE" />
+    <result column="ticket_owner" property="ticketOwner" jdbcType="INTEGER" />
+
+
+    <result column="hotel_name" property="hotelName" jdbcType="VARCHAR" />
+    <result column="hotel_abbreviation" property="hotelAbbreviation" jdbcType="VARCHAR" />
+    <result column="hotel_type" property="hotelType" jdbcType="VARCHAR" />
+    <result column="hotel_class" property="hotelClass" jdbcType="VARCHAR" />
+    <result column="hotel_fax" property="hotelFax" jdbcType="VARCHAR" />
+    <result column="hotel_email" property="hotelEmail" jdbcType="VARCHAR" />
+    <result column="hotel_phone" property="hotelPhone" jdbcType="VARCHAR" />
+    <result column="hotel_province" property="hotelProvince" jdbcType="VARCHAR" />
+    <result column="hotel_city" property="hotelCity" jdbcType="VARCHAR" />
+    <result column="hotel_county" property="hotelCounty" jdbcType="VARCHAR" />
+    <result column="hotel_address" property="hotelAddress" jdbcType="VARCHAR" />
+    <result column="hotel_introduce" property="hotelIntroduce" jdbcType="VARCHAR" />
+    <result column="hotel_facilities" property="hotelFacilities" jdbcType="VARCHAR" />
+    <result column="hotel_notice" property="hotelNotice" jdbcType="VARCHAR" />
+    <result column="hotel_time" property="hotelTime" jdbcType="DATE" />
+    <result column="hotel_owner" property="hotelOwner" jdbcType="INTEGER" />
+    <result column="zhiFuFangShi" property="zhifufangshi" jdbcType="VARCHAR" />
+
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    routing_id, r_basic_id, routing_days, routing_title, routing_via_id, routing_hotel_id, 
+    routing_content, routing_breakfast_type, routing_breakfast_price, routing_lunch_type, 
+    routing_lunch_price, routing_dinner_type, routing_dinner_price, routing_departure, 
+    routing_arrival, routing_creation_time, routing_creation_people, routing_modify_time, 
+    routing_modify_people, routing_one, routing_two, routing_three
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.onefei.RoutingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from routing
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from routing
+    where routing_id = #{routingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from routing
+    where routing_id = #{routingId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sdgl.pojo.onefei.RoutingExample" >
+    delete from routing
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sdgl.pojo.onefei.Routings" >
+    insert into routing (routing_id, r_basic_id, routing_days, 
+      routing_title, routing_via_id, routing_hotel_id, 
+      routing_content, routing_breakfast_type, routing_breakfast_price, 
+      routing_lunch_type, routing_lunch_price, routing_dinner_type, 
+      routing_dinner_price, routing_departure, routing_arrival, 
+      routing_creation_time, routing_creation_people, 
+      routing_modify_time, routing_modify_people, routing_one, 
+      routing_two, routing_three)
+    values (#{routingId,jdbcType=INTEGER}, #{rBasicId,jdbcType=INTEGER}, #{routingDays,jdbcType=INTEGER}, 
+      #{routingTitle,jdbcType=VARCHAR}, #{routingViaId,jdbcType=VARCHAR}, #{routingHotelId,jdbcType=INTEGER}, 
+      #{routingContent,jdbcType=VARCHAR}, #{routingBreakfastType,jdbcType=VARCHAR}, #{routingBreakfastPrice,jdbcType=DOUBLE}, 
+      #{routingLunchType,jdbcType=VARCHAR}, #{routingLunchPrice,jdbcType=DOUBLE}, #{routingDinnerType,jdbcType=VARCHAR}, 
+      #{routingDinnerPrice,jdbcType=DOUBLE}, #{routingDeparture,jdbcType=VARCHAR}, #{routingArrival,jdbcType=VARCHAR}, 
+      #{routingCreationTime,jdbcType=DATE}, #{routingCreationPeople,jdbcType=VARCHAR}, 
+      #{routingModifyTime,jdbcType=DATE}, #{routingModifyPeople,jdbcType=VARCHAR}, #{routingOne,jdbcType=VARCHAR}, 
+      #{routingTwo,jdbcType=VARCHAR}, #{routingThree,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdgl.pojo.onefei.Routings" >
+    insert into routing
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="routingId != null" >
+        routing_id,
+      </if>
+      <if test="rBasicId != null" >
+        r_basic_id,
+      </if>
+      <if test="routingDays != null" >
+        routing_days,
+      </if>
+      <if test="routingTitle != null" >
+        routing_title,
+      </if>
+      <if test="routingViaId != null" >
+        routing_via_id,
+      </if>
+      <if test="routingHotelId != null" >
+        routing_hotel_id,
+      </if>
+      <if test="routingContent != null" >
+        routing_content,
+      </if>
+      <if test="routingBreakfastType != null" >
+        routing_breakfast_type,
+      </if>
+      <if test="routingBreakfastPrice != null" >
+        routing_breakfast_price,
+      </if>
+      <if test="routingLunchType != null" >
+        routing_lunch_type,
+      </if>
+      <if test="routingLunchPrice != null" >
+        routing_lunch_price,
+      </if>
+      <if test="routingDinnerType != null" >
+        routing_dinner_type,
+      </if>
+      <if test="routingDinnerPrice != null" >
+        routing_dinner_price,
+      </if>
+      <if test="routingDeparture != null" >
+        routing_departure,
+      </if>
+      <if test="routingArrival != null" >
+        routing_arrival,
+      </if>
+      <if test="routingCreationTime != null" >
+        routing_creation_time,
+      </if>
+      <if test="routingCreationPeople != null" >
+        routing_creation_people,
+      </if>
+      <if test="routingModifyTime != null" >
+        routing_modify_time,
+      </if>
+      <if test="routingModifyPeople != null" >
+        routing_modify_people,
+      </if>
+      <if test="routingOne != null" >
+        routing_one,
+      </if>
+      <if test="routingTwo != null" >
+        routing_two,
+      </if>
+      <if test="routingThree != null" >
+        routing_three,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="routingId != null" >
+        #{routingId,jdbcType=INTEGER},
+      </if>
+      <if test="rBasicId != null" >
+        #{rBasicId,jdbcType=INTEGER},
+      </if>
+      <if test="routingDays != null" >
+        #{routingDays,jdbcType=INTEGER},
+      </if>
+      <if test="routingTitle != null" >
+        #{routingTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="routingViaId != null" >
+        #{routingViaId,jdbcType=VARCHAR},
+      </if>
+      <if test="routingHotelId != null" >
+        #{routingHotelId,jdbcType=INTEGER},
+      </if>
+      <if test="routingContent != null" >
+        #{routingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="routingBreakfastType != null" >
+        #{routingBreakfastType,jdbcType=VARCHAR},
+      </if>
+      <if test="routingBreakfastPrice != null" >
+        #{routingBreakfastPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="routingLunchType != null" >
+        #{routingLunchType,jdbcType=VARCHAR},
+      </if>
+      <if test="routingLunchPrice != null" >
+        #{routingLunchPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="routingDinnerType != null" >
+        #{routingDinnerType,jdbcType=VARCHAR},
+      </if>
+      <if test="routingDinnerPrice != null" >
+        #{routingDinnerPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="routingDeparture != null" >
+        #{routingDeparture,jdbcType=VARCHAR},
+      </if>
+      <if test="routingArrival != null" >
+        #{routingArrival,jdbcType=VARCHAR},
+      </if>
+      <if test="routingCreationTime != null" >
+        #{routingCreationTime,jdbcType=DATE},
+      </if>
+      <if test="routingCreationPeople != null" >
+        #{routingCreationPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="routingModifyTime != null" >
+        #{routingModifyTime,jdbcType=DATE},
+      </if>
+      <if test="routingModifyPeople != null" >
+        #{routingModifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="routingOne != null" >
+        #{routingOne,jdbcType=VARCHAR},
+      </if>
+      <if test="routingTwo != null" >
+        #{routingTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="routingThree != null" >
+        #{routingThree,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sdgl.pojo.onefei.RoutingExample" resultType="java.lang.Integer" >
+    select count(*) from routing
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update routing
+    <set >
+      <if test="record.routingId != null" >
+        routing_id = #{record.routingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rBasicId != null" >
+        r_basic_id = #{record.rBasicId,jdbcType=INTEGER},
+      </if>
+      <if test="record.routingDays != null" >
+        routing_days = #{record.routingDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.routingTitle != null" >
+        routing_title = #{record.routingTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingViaId != null" >
+        routing_via_id = #{record.routingViaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingHotelId != null" >
+        routing_hotel_id = #{record.routingHotelId,jdbcType=INTEGER},
+      </if>
+      <if test="record.routingContent != null" >
+        routing_content = #{record.routingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingBreakfastType != null" >
+        routing_breakfast_type = #{record.routingBreakfastType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingBreakfastPrice != null" >
+        routing_breakfast_price = #{record.routingBreakfastPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.routingLunchType != null" >
+        routing_lunch_type = #{record.routingLunchType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingLunchPrice != null" >
+        routing_lunch_price = #{record.routingLunchPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.routingDinnerType != null" >
+        routing_dinner_type = #{record.routingDinnerType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingDinnerPrice != null" >
+        routing_dinner_price = #{record.routingDinnerPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.routingDeparture != null" >
+        routing_departure = #{record.routingDeparture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingArrival != null" >
+        routing_arrival = #{record.routingArrival,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingCreationTime != null" >
+        routing_creation_time = #{record.routingCreationTime,jdbcType=DATE},
+      </if>
+      <if test="record.routingCreationPeople != null" >
+        routing_creation_people = #{record.routingCreationPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingModifyTime != null" >
+        routing_modify_time = #{record.routingModifyTime,jdbcType=DATE},
+      </if>
+      <if test="record.routingModifyPeople != null" >
+        routing_modify_people = #{record.routingModifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingOne != null" >
+        routing_one = #{record.routingOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingTwo != null" >
+        routing_two = #{record.routingTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routingThree != null" >
+        routing_three = #{record.routingThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update routing
+    set routing_id = #{record.routingId,jdbcType=INTEGER},
+      r_basic_id = #{record.rBasicId,jdbcType=INTEGER},
+      routing_days = #{record.routingDays,jdbcType=INTEGER},
+      routing_title = #{record.routingTitle,jdbcType=VARCHAR},
+      routing_via_id = #{record.routingViaId,jdbcType=VARCHAR},
+      routing_hotel_id = #{record.routingHotelId,jdbcType=INTEGER},
+      routing_content = #{record.routingContent,jdbcType=VARCHAR},
+      routing_breakfast_type = #{record.routingBreakfastType,jdbcType=VARCHAR},
+      routing_breakfast_price = #{record.routingBreakfastPrice,jdbcType=DOUBLE},
+      routing_lunch_type = #{record.routingLunchType,jdbcType=VARCHAR},
+      routing_lunch_price = #{record.routingLunchPrice,jdbcType=DOUBLE},
+      routing_dinner_type = #{record.routingDinnerType,jdbcType=VARCHAR},
+      routing_dinner_price = #{record.routingDinnerPrice,jdbcType=DOUBLE},
+      routing_departure = #{record.routingDeparture,jdbcType=VARCHAR},
+      routing_arrival = #{record.routingArrival,jdbcType=VARCHAR},
+      routing_creation_time = #{record.routingCreationTime,jdbcType=DATE},
+      routing_creation_people = #{record.routingCreationPeople,jdbcType=VARCHAR},
+      routing_modify_time = #{record.routingModifyTime,jdbcType=DATE},
+      routing_modify_people = #{record.routingModifyPeople,jdbcType=VARCHAR},
+      routing_one = #{record.routingOne,jdbcType=VARCHAR},
+      routing_two = #{record.routingTwo,jdbcType=VARCHAR},
+      routing_three = #{record.routingThree,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdgl.pojo.onefei.Routings" >
+    update routing
+    <set >
+      <if test="rBasicId != null" >
+        r_basic_id = #{rBasicId,jdbcType=INTEGER},
+      </if>
+      <if test="routingDays != null" >
+        routing_days = #{routingDays,jdbcType=INTEGER},
+      </if>
+      <if test="routingTitle != null" >
+        routing_title = #{routingTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="routingViaId != null" >
+        routing_via_id = #{routingViaId,jdbcType=VARCHAR},
+      </if>
+      <if test="routingHotelId != null" >
+        routing_hotel_id = #{routingHotelId,jdbcType=INTEGER},
+      </if>
+      <if test="routingContent != null" >
+        routing_content = #{routingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="routingBreakfastType != null" >
+        routing_breakfast_type = #{routingBreakfastType,jdbcType=VARCHAR},
+      </if>
+      <if test="routingBreakfastPrice != null" >
+        routing_breakfast_price = #{routingBreakfastPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="routingLunchType != null" >
+        routing_lunch_type = #{routingLunchType,jdbcType=VARCHAR},
+      </if>
+      <if test="routingLunchPrice != null" >
+        routing_lunch_price = #{routingLunchPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="routingDinnerType != null" >
+        routing_dinner_type = #{routingDinnerType,jdbcType=VARCHAR},
+      </if>
+      <if test="routingDinnerPrice != null" >
+        routing_dinner_price = #{routingDinnerPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="routingDeparture != null" >
+        routing_departure = #{routingDeparture,jdbcType=VARCHAR},
+      </if>
+      <if test="routingArrival != null" >
+        routing_arrival = #{routingArrival,jdbcType=VARCHAR},
+      </if>
+      <if test="routingCreationTime != null" >
+        routing_creation_time = #{routingCreationTime,jdbcType=DATE},
+      </if>
+      <if test="routingCreationPeople != null" >
+        routing_creation_people = #{routingCreationPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="routingModifyTime != null" >
+        routing_modify_time = #{routingModifyTime,jdbcType=DATE},
+      </if>
+      <if test="routingModifyPeople != null" >
+        routing_modify_people = #{routingModifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="routingOne != null" >
+        routing_one = #{routingOne,jdbcType=VARCHAR},
+      </if>
+      <if test="routingTwo != null" >
+        routing_two = #{routingTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="routingThree != null" >
+        routing_three = #{routingThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where routing_id = #{routingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdgl.pojo.onefei.Routings" >
+    update routing
+    set r_basic_id = #{rBasicId,jdbcType=INTEGER},
+      routing_days = #{routingDays,jdbcType=INTEGER},
+      routing_title = #{routingTitle,jdbcType=VARCHAR},
+      routing_via_id = #{routingViaId,jdbcType=VARCHAR},
+      routing_hotel_id = #{routingHotelId,jdbcType=INTEGER},
+      routing_content = #{routingContent,jdbcType=VARCHAR},
+      routing_breakfast_type = #{routingBreakfastType,jdbcType=VARCHAR},
+      routing_breakfast_price = #{routingBreakfastPrice,jdbcType=DOUBLE},
+      routing_lunch_type = #{routingLunchType,jdbcType=VARCHAR},
+      routing_lunch_price = #{routingLunchPrice,jdbcType=DOUBLE},
+      routing_dinner_type = #{routingDinnerType,jdbcType=VARCHAR},
+      routing_dinner_price = #{routingDinnerPrice,jdbcType=DOUBLE},
+      routing_departure = #{routingDeparture,jdbcType=VARCHAR},
+      routing_arrival = #{routingArrival,jdbcType=VARCHAR},
+      routing_creation_time = #{routingCreationTime,jdbcType=DATE},
+      routing_creation_people = #{routingCreationPeople,jdbcType=VARCHAR},
+      routing_modify_time = #{routingModifyTime,jdbcType=DATE},
+      routing_modify_people = #{routingModifyPeople,jdbcType=VARCHAR},
+      routing_one = #{routingOne,jdbcType=VARCHAR},
+      routing_two = #{routingTwo,jdbcType=VARCHAR},
+      routing_three = #{routingThree,jdbcType=VARCHAR}
+    where routing_id = #{routingId,jdbcType=INTEGER}
+  </update>
+</mapper>

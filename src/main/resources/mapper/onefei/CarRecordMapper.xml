@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.onefei.CarRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.sdgl.pojo.onefei.CarRecord" >
+    <id column="q_id" property="qId" jdbcType="INTEGER" />
+    <result column="q_r_id" property="qRId" jdbcType="INTEGER" />
+    <result column="q_car_name" property="qCarName" jdbcType="VARCHAR" />
+    <result column="q_type" property="qType" jdbcType="VARCHAR" />
+    <result column="q_start_time" property="qStartTime" jdbcType="TIMESTAMP" />
+    <result column="q_end_time" property="qEndTime" jdbcType="TIMESTAMP" />
+    <result column="q_plate_num" property="qPlateNum" jdbcType="VARCHAR" />
+    <result column="q_price" property="qPrice" jdbcType="DOUBLE" />
+    <result column="q_driver_name" property="qDriverName" jdbcType="VARCHAR" />
+    <result column="q_iphone" property="qIphone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    q_id, q_r_id, q_car_name, q_type, q_start_time, q_end_time, q_plate_num, q_price, 
+    q_driver_name, q_iphone
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.onefei.CarRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from car_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from car_record
+    where q_id = #{qId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from car_record
+    where q_id = #{qId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sdgl.pojo.onefei.CarRecordExample" >
+    delete from car_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sdgl.pojo.onefei.CarRecord" >
+    insert into car_record (q_id, q_r_id, q_car_name, 
+      q_type, q_start_time, q_end_time, 
+      q_plate_num, q_price, q_driver_name, 
+      q_iphone)
+    values (#{qId,jdbcType=INTEGER}, #{qRId,jdbcType=INTEGER}, #{qCarName,jdbcType=VARCHAR}, 
+      #{qType,jdbcType=VARCHAR}, #{qStartTime,jdbcType=TIMESTAMP}, #{qEndTime,jdbcType=TIMESTAMP}, 
+      #{qPlateNum,jdbcType=VARCHAR}, #{qPrice,jdbcType=DOUBLE}, #{qDriverName,jdbcType=VARCHAR}, 
+      #{qIphone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdgl.pojo.onefei.CarRecord" >
+    insert into car_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        q_id,
+      </if>
+      <if test="qRId != null" >
+        q_r_id,
+      </if>
+      <if test="qCarName != null" >
+        q_car_name,
+      </if>
+      <if test="qType != null" >
+        q_type,
+      </if>
+      <if test="qStartTime != null" >
+        q_start_time,
+      </if>
+      <if test="qEndTime != null" >
+        q_end_time,
+      </if>
+      <if test="qPlateNum != null" >
+        q_plate_num,
+      </if>
+      <if test="qPrice != null" >
+        q_price,
+      </if>
+      <if test="qDriverName != null" >
+        q_driver_name,
+      </if>
+      <if test="qIphone != null" >
+        q_iphone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="qRId != null" >
+        #{qRId,jdbcType=INTEGER},
+      </if>
+      <if test="qCarName != null" >
+        #{qCarName,jdbcType=VARCHAR},
+      </if>
+      <if test="qType != null" >
+        #{qType,jdbcType=VARCHAR},
+      </if>
+      <if test="qStartTime != null" >
+        #{qStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qEndTime != null" >
+        #{qEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qPlateNum != null" >
+        #{qPlateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qPrice != null" >
+        #{qPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="qDriverName != null" >
+        #{qDriverName,jdbcType=VARCHAR},
+      </if>
+      <if test="qIphone != null" >
+        #{qIphone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sdgl.pojo.onefei.CarRecordExample" resultType="java.lang.Integer" >
+    select count(*) from car_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update car_record
+    <set >
+      <if test="record.qId != null" >
+        q_id = #{record.qId,jdbcType=INTEGER},
+      </if>
+      <if test="record.qRId != null" >
+        q_r_id = #{record.qRId,jdbcType=INTEGER},
+      </if>
+      <if test="record.qCarName != null" >
+        q_car_name = #{record.qCarName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qType != null" >
+        q_type = #{record.qType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qStartTime != null" >
+        q_start_time = #{record.qStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.qEndTime != null" >
+        q_end_time = #{record.qEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.qPlateNum != null" >
+        q_plate_num = #{record.qPlateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qPrice != null" >
+        q_price = #{record.qPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.qDriverName != null" >
+        q_driver_name = #{record.qDriverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qIphone != null" >
+        q_iphone = #{record.qIphone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update car_record
+    set q_id = #{record.qId,jdbcType=INTEGER},
+      q_r_id = #{record.qRId,jdbcType=INTEGER},
+      q_car_name = #{record.qCarName,jdbcType=VARCHAR},
+      q_type = #{record.qType,jdbcType=VARCHAR},
+      q_start_time = #{record.qStartTime,jdbcType=TIMESTAMP},
+      q_end_time = #{record.qEndTime,jdbcType=TIMESTAMP},
+      q_plate_num = #{record.qPlateNum,jdbcType=VARCHAR},
+      q_price = #{record.qPrice,jdbcType=DOUBLE},
+      q_driver_name = #{record.qDriverName,jdbcType=VARCHAR},
+      q_iphone = #{record.qIphone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdgl.pojo.onefei.CarRecord" >
+    update car_record
+    <set >
+      <if test="qRId != null" >
+        q_r_id = #{qRId,jdbcType=INTEGER},
+      </if>
+      <if test="qCarName != null" >
+        q_car_name = #{qCarName,jdbcType=VARCHAR},
+      </if>
+      <if test="qType != null" >
+        q_type = #{qType,jdbcType=VARCHAR},
+      </if>
+      <if test="qStartTime != null" >
+        q_start_time = #{qStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qEndTime != null" >
+        q_end_time = #{qEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qPlateNum != null" >
+        q_plate_num = #{qPlateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="qPrice != null" >
+        q_price = #{qPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="qDriverName != null" >
+        q_driver_name = #{qDriverName,jdbcType=VARCHAR},
+      </if>
+      <if test="qIphone != null" >
+        q_iphone = #{qIphone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where q_id = #{qId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdgl.pojo.onefei.CarRecord" >
+    update car_record
+    set q_r_id = #{qRId,jdbcType=INTEGER},
+      q_car_name = #{qCarName,jdbcType=VARCHAR},
+      q_type = #{qType,jdbcType=VARCHAR},
+      q_start_time = #{qStartTime,jdbcType=TIMESTAMP},
+      q_end_time = #{qEndTime,jdbcType=TIMESTAMP},
+      q_plate_num = #{qPlateNum,jdbcType=VARCHAR},
+      q_price = #{qPrice,jdbcType=DOUBLE},
+      q_driver_name = #{qDriverName,jdbcType=VARCHAR},
+      q_iphone = #{qIphone,jdbcType=VARCHAR}
+    where q_id = #{qId,jdbcType=INTEGER}
+  </update>
+</mapper>
