@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sdgl.mapper.one." >
+<mapper namespace="com.sdgl.mapper.one.addsgroupMapper" >
+    <insert id="insert" parameterType="com.sdgl.pojo.op.P_Team">
+         insert into djs_te(q_travel,q_tuanid,q_wtuanid,q_State,jietuanxinxi,sotuanxinxi,jietuan_date,send_date,Jietuancheci,songtuancheci,jietuandidian,songtuandidian,jietuanbeizhu,songtuanbeizhu)
+         VALUE (#{q_travel},#{q_tuanid},#{q_wtuanid},#{q_State},#{jietuanxinxi},#{sotuanxinxi},#{jietuan_date},#{send_date},#{Jietuancheci},#{songtuancheci},#{jietuandidian},#{songtuandidian},#{jietuanbeizhu},#{songtuanbeizhu})
+    </insert>
 
 </mapper>

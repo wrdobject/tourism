@@ -21,13 +21,13 @@
 				border-radius: 2px;
 			}
 		</style>
-		<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+		<!-- 注意：如果你直 接复制所有代码到本地，上述css路径需要改成你本地的 -->
 	</head>
 
 	<body>
-		<div class="info">
-			<form class="layui-form" action="">
-				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+		<div class="info add">
+			<form class="layui-form " id="aa" action="">
+				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;" value>
 					<legend>行程路线</legend>
 				</fieldset>
 
@@ -35,20 +35,21 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">路程名称</label>
 						<div class="layui-input-block" style="width: 800px;">
-							<input type="text" name="username" lay-verify="title" autocomplete="off" class="layui-input" disabled="">
+							<input type="text" name="q_travel" lay-verify="title" autocomplete="off" class="layui-input" value="asdbsahbdhsa">
+							<input type="hidden" name="q_State" value="1">
 						</div>
 					</div>
 				</div>
 
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-					<legend>团号及全陪</legend>
+					<legend>团号</legend>
 				</fieldset>
 
 				<div class="layui-form-item">
 					<div class="layui-inline">
 						<label class="layui-form-label">对方团号</label>
 						<div class="layui-input-inline">
-							<input type="text" name="number" autocomplete="off" class="layui-input">
+							<input type="text" name="q_tuanid" autocomplete="off" class="layui-input hao">
 						</div>
 					</div>
 					<div class="layui-inline">
@@ -57,7 +58,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">我方团号</label>
 						<div class="layui-input-inline">
-							<input type="text" name="number" autocomplete="off" class="layui-input">
+							<input type="text" name="q_wtuanid" autocomplete="off" class="layui-input hao">
 						</div>
 					</div>
 				</div>
@@ -70,7 +71,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">接团时间</label>
 						<div class="layui-input-block">
-							<input type="text" class="layui-input" id="date01" placeholder="选择时间">
+							<input type="text" class="layui-input hao" name="jietuan_date" id="date01" placeholder="选择时间">
 						</div>
 					</div>
 					<div class="layui-inline">
@@ -79,7 +80,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">送团时间</label>
 						<div class="layui-input-block">
-							<input type="text" class="layui-input" id="date02" placeholder="选择时间">
+							<input type="text" class="layui-input hao" name="send_date" id="date02" placeholder="选择时间">
 						</div>
 					</div>
 				</div>
@@ -88,7 +89,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">航班信息（接）</label>
 						<div class="layui-input-block">
-							<select name="interest" lay-filter="aihao">
+							<select name="jietuanxinxi" lay-filter="aihao">
 								<option value=""></option>
 								<option value="0">万里航空</option>
 								<option value="1">厦门航空</option>
@@ -104,7 +105,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">航班信息（送）</label>
 						<div class="layui-input-block">
-							<select name="interest" lay-filter="aihao">
+							<select name="sotuanxinxi" lay-filter="aihao">
 								<option value=""></option>
 								<option value="0">万里航空</option>
 								<option value="1">厦门航空</option>
@@ -120,7 +121,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">接团地点</label>
 						<div class="layui-input-inline">
-							<input type="text" name="number" autocomplete="off" class="layui-input">
+							<input type="text" name="jietuandidian" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-inline">
@@ -129,7 +130,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">送团地点</label>
 						<div class="layui-input-inline">
-							<input type="text" name="number" autocomplete="off" class="layui-input">
+							<input type="text" name="songtuandidian" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 				</div>
@@ -138,7 +139,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">车次/航班号（接）</label>
 						<div class="layui-input-inline">
-							<input type="text" name="number" autocomplete="off" class="layui-input">
+							<input type="text" name="Jietuancheci" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-inline">
@@ -147,7 +148,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">车次/航班号（送）</label>
 						<div class="layui-input-inline">
-							<input type="text" name="number" autocomplete="off" class="layui-input">
+							<input type="text" name="songtuancheci" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 				</div>
@@ -156,7 +157,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">接团备注</label>
 						<div class="layui-input-block">
-							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 450px;height: 100px;"></textarea>
+							<textarea placeholder="请输入内容" name="jietuanbeizhu" class="layui-textarea" style="width: 450px;height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="layui-inline">
@@ -165,7 +166,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">送团备注</label>
 						<div class="layui-input-block">
-							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 450px;height: 100px;"></textarea>
+							<textarea placeholder="请输入内容"  name="songtuanbeizhu" class="layui-textarea" style="width: 450px;height: 100px;"></textarea>
 						</div>
 					</div>
 				</div>
@@ -191,23 +192,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td style="text-align: center;">szx</td>
-							<td style="text-align: center;">男</td>
-							<td style="text-align: center;">13513310100</td>
-							<td style="text-align: center;">游客</td>
-							<td style="text-align: center;">身份证</td>
-							<td style="text-align: center;">1011011864101010351</td>
-							<td style="text-align: center;">
-								<a class="layui-btn layui-btn-xs" onclick="addTicketInfo()">编辑</a>
-								<button class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
-							</td>
-						</tr>
+
 					</tbody>
 				</table>
 				<div class="layui-form-item">
 					<div class="layui-input-block">
-						<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+						<button class="layui-btn tijiao" lay-submit="" lay-filter="demo1">立即提交</button>
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
@@ -217,6 +207,8 @@
 		<script src="/layui/layui.js" charset="utf-8"></script>
 		<script src="/jquery-3.3.1.min.js" charset="utf-8"></script>
 		<script src="/layui/js/one/forms.js" charset="utf-8"></script>
+		<script src="/layui/js/one/forms.js" charset="utf-8"></script>
+		<script src="/layui/js/one/addgroup.js" charset="utf-8"></script>
 		<script type="text/javascript">
 			layui.use('laydate', function() {
 				var laydate = layui.laydate;

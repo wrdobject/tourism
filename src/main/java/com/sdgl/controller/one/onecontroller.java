@@ -3,15 +3,16 @@ package com.sdgl.controller.one;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
+@RequestMapping(value = "/one")
 public class onecontroller {
 
 
-    @RequestMapping("adjustment")
+    @RequestMapping("/adjustment")
     public String ssa(){
         return "1_one/adjustment";
     }
 
-    @RequestMapping("addgroup")
+    @RequestMapping("/addgroupss")
     public String ssc(){
         return "1_one/addgroup";
     }
