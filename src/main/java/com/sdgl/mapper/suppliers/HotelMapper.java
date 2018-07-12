@@ -4,6 +4,7 @@ import com.sdgl.pojo.suppliers.Hotel;
 import com.sdgl.pojo.suppliers.HotelPrice;
 import com.sdgl.pojo.suppliers.Image;
 import com.sdgl.pojo.suppliers.Relation;
+import com.sdgl.pojo.suppliersfei.Images;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +17,6 @@ public interface HotelMapper {
     Hotel selectHotelById(@Param("hotel_id") Integer hotel_id);
 
     Integer addHotel(Hotel hotel);
-
-    Integer addHotelImg(@Param("img") Image img, @Param("files") List<File> files);
 
     Integer updateHotel(Hotel hotel);
 
@@ -38,4 +37,8 @@ public interface HotelMapper {
     Integer updateHotelPrice(HotelPrice hotelPrice);
 
     List<HotelPrice> selectHotelPrice(HotelPrice hotelPrice);
+
+    Integer selectMaxHotelId();
+
+    int addHotelImg(Images images);
 }

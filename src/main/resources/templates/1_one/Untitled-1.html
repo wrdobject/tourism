@@ -11,6 +11,7 @@
 		<script src="/layui/layui.all.js"></script>
 		<script src="/layui/js/one/Untitled-3.js"></script>
 		<script src="/bootstrap.js"></script>
+		<script src="/js/onefei/untiled.js"></script>
 		<style type="text/css">
 			body {
 				position: relative;
@@ -41,11 +42,11 @@
 				font-family: Constantia, Lucida Bright, DejaVu Serif, Georgia, serif;
 			}
 			
-			span {
-				font-weight: bolder;
-				position: absolute;
-				top: 0px;
-			}
+			/*span {*/
+				/*font-weight: bolder;*/
+				/*position: absolute;*/
+				/*top: 0px;*/
+			/*}*/
 			
 			p {
 				width: 350px;
@@ -83,48 +84,43 @@
 	</head>
 
 	<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-	<div class="row">
-		<div class="col-md-3 col-md-offset-1">
 			<div style="height: 25px;"></div>
 		<div class="layui-container">
 			<div class="a1">
-
-				<span>我团团号--线路名称</span>
+				<span class="xlmc"></span>
 				<br><br>
 				<div class="layui-row one">
 					<div class="layui-col-xs3">
 						<div class="grid-demo">
-							车队公司：
-							<br><br> 车辆类型：
-							<br><br> 车牌号：
-							<br><br><br><br><br> 接团时间：--
-							<br><br> 送团时间：--
+							车队公司：<span class="cdgs"></span>
+							<br><br> 车辆类型：<span class="cllx"></span>
+							<br><br> 车牌号：<span class="cph"></span>
+							<br><br><br><br><br> 接团时间：<span class="jtsj"></span>
+							<br><br> 送团时间：<span class="stsj"></span>
 							<br><br>
 						</div>
 					</div>
 					<div class="layui-col-xs3">
 						<div class="grid-demo">
-							总人数：50人
-							<br><br> 全陪姓名：xxx
-							<br><br> 全陪电话：
-							<br> 138888888
-							<br><br><br><br> 接团安排：--
-							<br><br> 送团安排：--
+							总人数：<span class="zrs"></span>人
+							<br><br> 全陪姓名：<span class="qpxm"></span>
+							<br><br> 全陪电话：<span class="qpdh"></span>
+							<br><br><br><br><br> 接团安排：<span class="jtap"></span>
+							<br><br> 送团安排：<span class="stap"></span>
 							<br><br>
 						</div>
 					</div>
 					<div class="layui-col-xs3">
 						<div class="grid-demo">
-							导游名称：xxx
-							<br><br>导游电话
-							<br>138888888
+							导游名称：<span class="dymc"></span>
+							<br><br>导游电话: <span class="dydh"></span>
 						</div>
 						<div style="height:100px;"></div>
 					</div>
 
 					<div class="layui-col-xs3">
 						<div class="grid-demo">
-							行程：x天
+							行程：<span class="xc"></span>天
 							<br><br>
 							<br><br>
 							<br><br>
@@ -133,91 +129,63 @@
 				</div>
 			</div>
 		</div>
-		</div>
-	</div>
 
 		<div class="container">
 			<div class="row">
 				<nav class="col-sm-3" id="myScrollspy">
 					<div class="container-fluid">
 						<div class="container-fluid">
-							<ul class="nav nav-pills nav-stacked">
-								<li class="active"><a href="#section1">第一天</a></li>
-								<li><a href="#section2">第二天</a></li>
-								<li><a href="#section3">第三天</a></li>
-								<li><a href="#section3">第四天</a></li>
+							<ul class="nav nav-pills nav-stacked tianshu">
 							</ul>
 						</div>
 					</div>
 				</nav>
-				<div class="col-md-6">
-					<div id="section1">
-						<h1>Section 1</h1>
-						<p>
-							<ul class="layui-timeline">
-								<li class="layui-timeline-item">
-									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-									<div class="layui-timeline-content layui-text">
-										<h3 class="layui-timeline-title">8月18日</h3>
-						<p>
-							layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
-							<br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
-							<br>无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 <i class="layui-icon"></i>
-						</p>
-					</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">8月16日</h3>
-							<p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
-							<ul>
-								<li>《登高》</li>
-								<li>《茅屋为秋风所破歌》</li>
-							</ul>
+
+
+				<div class="col-md-6 xlnr">
+						<div id="section1">
+							<h1>Section 1</h1>
+							<li class="layui-timeline-item">
+								<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+								<div class="layui-timeline-content layui-text">
+									<h3 class="layui-timeline-title">8月16日</h3>
+									<p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
+									<ul>
+										<li>《登高》</li>
+										<li>《茅屋为秋风所破歌》</li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="layui-timeline-item">
+								<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+								<div class="layui-timeline-content layui-text">
+									<h3 class="layui-timeline-title">8月16日</h3>
+									<p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
+									<ul>
+										<li>《登高》</li>
+										<li>《茅屋为秋风所破歌》</li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="layui-timeline-item">
+								<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+								<div class="layui-timeline-content layui-text">
+									<h3 class="layui-timeline-title">8月16日</h3>
+									<p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
+									<ul>
+										<li>《登高》</li>
+										<li>《茅屋为秋风所破歌》</li>
+									</ul>
+								</div>
+							</li>
 						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">8月15日</h3>
-							<p>
-								中国人民抗日战争胜利72周年
-								<br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
-								<br>铭记、感恩
-								<br>所有为中华民族浴血奋战的英雄将士
-								<br>永垂不朽
-							</p>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-						<div class="layui-timeline-content layui-text">
-							<div class="layui-timeline-title">过去</div>
-						</div>
-					</li>
-					</ul>
-						</p>
-					</div>
-					<!--<div id="section2">
-						<h1>Section 2</h1>
-						<p>Try to scroll this section and look at the navigation list while scrolling!</p>
-					</div>
-					<div id="section3">
-						<h1>Section 3</h1>
-						<p>Try to scroll this section and look at the navigation list while scrolling!</p>
-					</div>
-					<div id="section41">
-						<h1>Section 4-1</h1>
-						<p>Try to scroll this section and look at the navigation list while scrolling!</p>
-					</div>
-					<div id="section42">
-						<h1>Section 4-2</h1>
-						<p>Try to scroll this section and look at the navigation list while scrolling!</p>
-					</div>-->
 				</div>
 			</div>
 		</div>
+
+
 	</body>
 
 </html>

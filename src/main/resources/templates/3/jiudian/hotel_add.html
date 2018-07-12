@@ -25,36 +25,37 @@
 			<legend>酒店添加</legend>
 		</fieldset>
 		*为必填项，为方便信息的完整，其它最好填写
-		<form action="">
+		<form action="/addHotel" method="post">
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">*酒店名称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">
+					<input type="hidden" name="hotel_id" id="hotel_id">
+					<input type="text" name="hotel_name" id="hotel_name" lay-verify="title" autocomplete="off" class="layui-input">
 				</div>
 
 				<label class="layui-form-label">英文简称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
+					<input type="text" name="hotel_abbreviation" id="hotel_abbreviation" lay-verify="title" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 
 			<div class="layui-form-item">
 				<td><label class="layui-form-label">*联系电话</label>
 					<div class="layui-input-inline">
-						<input type="tel" name="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						<input type="tel" name="hotel_phone" id="hotel_phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
 					</div>
 
 					<label class="layui-form-label">传真</label>
 					<div class="layui-input-inline">
-						<input type="url" name="hotel_fax" lay-verify="url" autocomplete="off" class="layui-input">
+						<input type="url" name="hotel_fax" id="hotel_fax" lay-verify="url" autocomplete="off" class="layui-input">
 					</div>
 			</div>
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">邮箱</label>
 				<div class="layui-input-inline">
-					<input type="email" name="hotel_email" lay-verify="email" autocomplete="off" class="layui-input">
+					<input type="email" name="hotel_email" id="hotel_email" lay-verify="email" autocomplete="off" class="layui-input">
 				</div>
 
 			</div>
@@ -91,48 +92,56 @@
 
 				<label class="layui-form-label">所在区域</label>
 				<div class="layui-input-inline ">
-					<select id="cmbProvince" class="sun" lay-filter="province">
+					<select id="cmbProvince" name="hotel_province" class="sun" lay-filter="province">
 
 					</select>
 				</div>
 				<div class="layui-input-inline ">
-					<select id="cmbCity" class="sun" lay-filter="city">
+					<select id="cmbCity" class="sun" name="hotel_city" lay-filter="city">
 
 					</select>
 				</div>
 				<div class="layui-input-inline ">
-					<select id="cmbArea" class="sun" lay-filter="area">
+					<select id="cmbArea" class="sun" name="hotel_county" lay-filter="area">
 
 					</select>
 				</div>
 				<label class="layui-form-label">详细地址</label>
 				<div class="layui-input-inline">
-					<input type="text" name="hotel_address" autocomplete="off" class="layui-input" style="width: 300px;">
+					<input type="text" name="hotel_address" id="hotel_address" autocomplete="off" class="layui-input" style="width: 300px;">
 				</div>
 			</div>
 			
 			<div class="layui-form-item layui-form">
-				<label class="layui-form-label">酒店设施</label>
+				<label class="layui-form-label" >酒店设施</label>
 				<div>
-					<input type="checkbox" name="hotel_facilities[chongwu]" value="携带宠物" title="携带宠物">
-					<input type="checkbox" name="hotel_facilities[zuche]" value="租车" title="租车">
-					<input type="checkbox" name="hotel_facilities[child]" value="看护小孩" title="看护小孩">
-					<input type="checkbox" name="hotel_facilities[xingli]" value="行李寄存" title="行李寄存">
-					<input type="checkbox" name="hotel_facilities[xiyi]" value="洗衣服务" title="洗衣服务">
-					<input type="checkbox" name="hotel_facilities[yushi]" value="萨拉浴室" title="萨拉浴室">
-					<input type="checkbox" name="hotel_facilities[spa]" value="spa" title="spa">
-					<input type="checkbox" name="hotel_facilities[car]" value="停车场" title="停车场">
-					<input type="checkbox" name="hotel_facilities[jiuba]" value="酒吧" title="酒吧">
-					<input type="checkbox" name="hotel_facilities[xican]" value="西餐厅" title="西餐厅">
-					<input type="checkbox" name="hotel_facilities[zhongcan]" value="中餐厅" title="中餐厅">
-					<input type="checkbox" name="hotel_facilities[qita]" value="其他" title="其他">
+					<input type="checkbox" name="hotel_facilities" value="携带宠物" title="携带宠物">
+					<input type="checkbox" name="hotel_facilities" value="租车" title="租车">
+					<input type="checkbox" name="hotel_facilities" value="看护小孩" title="看护小孩">
+					<input type="checkbox" name="hotel_facilities" value="行李寄存" title="行李寄存">
+					<input type="checkbox" name="hotel_facilities" value="洗衣服务" title="洗衣服务">
+					<input type="checkbox" name="hotel_facilities" value="萨拉浴室" title="萨拉浴室">
+					<input type="checkbox" name="hotel_facilities" value="spa" title="spa">
+					<input type="checkbox" name="hotel_facilities" value="停车场" title="停车场">
+					<input type="checkbox" name="hotel_facilities" value="酒吧" title="酒吧">
+					<input type="checkbox" name="hotel_facilities" value="西餐厅" title="西餐厅">
+					<input type="checkbox" name="hotel_facilities" value="中餐厅" title="中餐厅">
+					<input type="checkbox" name="hotel_facilities" value="其他" title="其他">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-form">
+				<label class="layui-form-label" >支付方式</label>
+				<div>
+					<input type="checkbox" name="zhiFuFangShi" value="赊账" title="赊账">
+					<input type="checkbox" name="zhiFuFangShi" value="现金" title="现金">
 				</div>
 			</div>
 
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">酒店介绍</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_introduce"></textarea>
+					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_introduce" id="hotel_introduce"></textarea>
 				</div>
 			</div>
 
@@ -141,7 +150,7 @@
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">备注</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_notice"></textarea>
+					<textarea placeholder="请输入内容" class="layui-textarea" name="hotel_notice" id="hotel_notice"></textarea>
 				</div>
 			</div>
 
@@ -157,7 +166,7 @@
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+					<input type="submit" class="layui-btn"/>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
@@ -165,7 +174,8 @@
 
 		<script type="text/javascript" src="/jquery-3.3.1.min.js" charset="UTF-8"></script>
 		<script src="/layui/layui.js" charset="utf-8"></script>
-		<script type="text/javascript" src="/layui/lay/3js/city.js"></script>
+        <script src="/gongyingshang/jiudian/hotel_add.js"></script>
+        <script type="text/javascript" src="/layui/lay/3js/city.js"></script>
 		<script>
 			$(function() {
 				//三级联动
@@ -216,7 +226,8 @@
 				//多图片上传
 				upload.render({
 					elem: '#test2',
-					url: '/upload/',
+					url: '/addImage/',
+                    field:"image",
 					multiple: true,
 					before: function(obj) {
 						//预读本地文件示例，不支持ie8

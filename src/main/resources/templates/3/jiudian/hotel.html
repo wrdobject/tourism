@@ -79,7 +79,7 @@
 						</div>
 						<div class="layui-btn layui-btn-radius" id="sousuo">搜索</div>
 
-						<a href="javascript:;" class="layui-btn site-demo-active layui-btn-radius" data-url="hotel_add" data-id="hotel-add" data-title="酒店添加" data-type="tabAdd"><i class="layui-icon">&#xe654;添加酒店信息</i></a>
+						<a href="javascript:;" id="hotelAdd" class="layui-btn site-demo-active layui-btn-radius" data-url="hotel_add" data-id="hotel-add" data-title="酒店添加" data-type="tabAdd"><i class="layui-icon">&#xe654;添加酒店信息</i></a>
 					</div>
 
 				</div>
@@ -148,6 +148,9 @@
     $(function() {
         //三级联动
         addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+		$("#hotelAdd").click(function () {
+            window.location.href="hotel_add.do";
+        });
     })
     layui.use('element', function() {
         var $ = layui.jquery,

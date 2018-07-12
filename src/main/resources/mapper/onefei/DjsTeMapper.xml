@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdgl.mapper.onefei.DjsTeMapper" >
+
+  <select id="selectTeamAll" parameterType="int" resultMap="TeamAllMap">
+      SELECT * FROM djs_te
+    JOIN car_record ON car_record.q_id = djs_te.Che_id
+    JOIN USER ON user.userId = djs_te.tourist_id
+    JOIN basic ON djs_te.xianluid = basic.basic_id
+    where q_team_id = #{id}
+  </select>
+  
+  <resultMap id="TeamAllMap" type="TeamAll">
+    <id column="q_team_id" property="qTeamId" jdbcType="INTEGER" />
+
+    <id column="q_id" property="qId" jdbcType="INTEGER" />
+
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+
+    <id column="basic_id" property="basicId" jdbcType="INTEGER" />
+
+    <result column="num_people" property="numPeople" jdbcType="VARCHAR" />
+    <result column="hair_date" property="hairDate" jdbcType="DATE" />
+    <result column="op_id" property="opId" jdbcType="INTEGER" />
+    <result column="tourist_id" property="touristId" jdbcType="INTEGER" />
+    <result column="q_travel" property="qTravel" jdbcType="VARCHAR" />
+    <result column="q_tuanid" property="qTuanid" jdbcType="VARCHAR" />
+    <result column="q_State" property="qState" jdbcType="VARCHAR" />
+    <result column="q_total" property="qTotal" jdbcType="VARCHAR" />
+    <result column="jietuanxinxi" property="jietuanxinxi" jdbcType="VARCHAR" />
+    <result column="send_date" property="sendDate" jdbcType="TIMESTAMP" />
+    <result column="sotuanxinxi" property="sotuanxinxi" jdbcType="VARCHAR" />
+    <result column="Jietuancheci" property="jietuancheci" jdbcType="VARCHAR" />
+    <result column="songtuancheci" property="songtuancheci" jdbcType="VARCHAR" />
+    <result column="Che_id" property="cheId" jdbcType="INTEGER" />
+    <result column="Canting_id" property="cantingId" jdbcType="INTEGER" />
+    <result column="xianluid" property="xianluid" jdbcType="INTEGER" />
+    <result column="Bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="Bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="jietuandidian" property="jietuandidian" jdbcType="VARCHAR" />
+    <result column="songtuandidian" property="songtuandidian" jdbcType="VARCHAR" />
+    <result column="jietuan_date" property="jietuanDate" jdbcType="TIMESTAMP" />
+
+
+    <result column="q_r_id" property="qRId" jdbcType="INTEGER" />
+    <result column="q_car_name" property="qCarName" jdbcType="VARCHAR" />
+    <result column="q_type" property="qType" jdbcType="VARCHAR" />
+    <result column="q_start_time" property="qStartTime" jdbcType="TIMESTAMP" />
+    <result column="q_end_time" property="qEndTime" jdbcType="TIMESTAMP" />
+    <result column="q_plate_num" property="qPlateNum" jdbcType="VARCHAR" />
+    <result column="q_price" property="qPrice" jdbcType="DOUBLE" />
+    <result column="q_driver_name" property="qDriverName" jdbcType="VARCHAR" />
+    <result column="q_iphone" property="qIphone" jdbcType="VARCHAR" />
+
+
+
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userPwd" property="userpwd" jdbcType="VARCHAR" />
+    <result column="userRole" property="userrole" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="userAddress" property="useraddress" jdbcType="VARCHAR" />
+    <result column="user_QQ" property="userQq" jdbcType="VARCHAR" />
+    <result column="user_Dept" property="userDept" jdbcType="INTEGER" />
+    <result column="phoneNo" property="phoneno" jdbcType="VARCHAR" />
+    <result column="openId" property="openid" jdbcType="VARCHAR" />
+    <result column="userNum" property="usernum" jdbcType="INTEGER" />
+
+
+    <result column="basic_num" property="basicNum" jdbcType="VARCHAR" />
+    <result column="basic_name" property="basicName" jdbcType="VARCHAR" />
+    <result column="basic_fountain" property="basicFountain" jdbcType="VARCHAR" />
+    <result column="basic_days" property="basicDays" jdbcType="INTEGER" />
+    <result column="basic_creation_time" property="basicCreationTime" jdbcType="DATE" />
+    <result column="basic_creation_people" property="basicCreationPeople" jdbcType="VARCHAR" />
+    <result column="basic_modify_time" property="basicModifyTime" jdbcType="DATE" />
+    <result column="basic_modify_people" property="basicModifyPeople" jdbcType="VARCHAR" />
+    <result column="basic_one" property="basicOne" jdbcType="VARCHAR" />
+    <result column="basic_two" property="basicTwo" jdbcType="VARCHAR" />
+    <result column="basic_three" property="basicThree" jdbcType="VARCHAR" />
+
+
+  </resultMap>
+
+
+
+  <resultMap id="BaseResultMap" type="com.sdgl.pojo.onefei.DjsTe" >
+    <id column="q_team_id" property="qTeamId" jdbcType="INTEGER" />
+    <result column="num_people" property="numPeople" jdbcType="VARCHAR" />
+    <result column="hair_date" property="hairDate" jdbcType="DATE" />
+    <result column="op_id" property="opId" jdbcType="INTEGER" />
+    <result column="tourist_id" property="touristId" jdbcType="INTEGER" />
+    <result column="q_travel" property="qTravel" jdbcType="VARCHAR" />
+    <result column="q_tuanid" property="qTuanid" jdbcType="VARCHAR" />
+    <result column="q_State" property="qState" jdbcType="VARCHAR" />
+    <result column="q_total" property="qTotal" jdbcType="VARCHAR" />
+    <result column="jietuanxinxi" property="jietuanxinxi" jdbcType="VARCHAR" />
+    <result column="send_date" property="sendDate" jdbcType="TIMESTAMP" />
+    <result column="sotuanxinxi" property="sotuanxinxi" jdbcType="VARCHAR" />
+    <result column="Jietuancheci" property="jietuancheci" jdbcType="VARCHAR" />
+    <result column="songtuancheci" property="songtuancheci" jdbcType="VARCHAR" />
+    <result column="Che_id" property="cheId" jdbcType="INTEGER" />
+    <result column="Canting_id" property="cantingId" jdbcType="INTEGER" />
+    <result column="xianluid" property="xianluid" jdbcType="INTEGER" />
+    <result column="Bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="Bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="jietuandidian" property="jietuandidian" jdbcType="VARCHAR" />
+    <result column="songtuandidian" property="songtuandidian" jdbcType="VARCHAR" />
+    <result column="jietuan_date" property="jietuanDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    q_team_id, num_people, hair_date, op_id, tourist_id, q_travel, q_tuanid, q_State, 
+    q_total, jietuanxinxi, send_date, sotuanxinxi, Jietuancheci, songtuancheci, Che_id, 
+    Canting_id, xianluid, Bei2, Bei3, jietuandidian, songtuandidian, jietuan_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sdgl.pojo.onefei.DjsTeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from djs_te
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from djs_te
+    where q_team_id = #{qTeamId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from djs_te
+    where q_team_id = #{qTeamId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sdgl.pojo.onefei.DjsTeExample" >
+    delete from djs_te
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sdgl.pojo.onefei.DjsTe" >
+    insert into djs_te (q_team_id, num_people, hair_date, 
+      op_id, tourist_id, q_travel, 
+      q_tuanid, q_State, q_total, 
+      jietuanxinxi, send_date, sotuanxinxi, 
+      Jietuancheci, songtuancheci, Che_id, 
+      Canting_id, xianluid, Bei2, 
+      Bei3, jietuandidian, songtuandidian, 
+      jietuan_date)
+    values (#{qTeamId,jdbcType=INTEGER}, #{numPeople,jdbcType=VARCHAR}, #{hairDate,jdbcType=DATE}, 
+      #{opId,jdbcType=INTEGER}, #{touristId,jdbcType=INTEGER}, #{qTravel,jdbcType=VARCHAR}, 
+      #{qTuanid,jdbcType=VARCHAR}, #{qState,jdbcType=VARCHAR}, #{qTotal,jdbcType=VARCHAR}, 
+      #{jietuanxinxi,jdbcType=VARCHAR}, #{sendDate,jdbcType=TIMESTAMP}, #{sotuanxinxi,jdbcType=VARCHAR}, 
+      #{jietuancheci,jdbcType=VARCHAR}, #{songtuancheci,jdbcType=VARCHAR}, #{cheId,jdbcType=INTEGER}, 
+      #{cantingId,jdbcType=INTEGER}, #{xianluid,jdbcType=INTEGER}, #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{jietuandidian,jdbcType=VARCHAR}, #{songtuandidian,jdbcType=VARCHAR}, 
+      #{jietuanDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdgl.pojo.onefei.DjsTe" >
+    insert into djs_te
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qTeamId != null" >
+        q_team_id,
+      </if>
+      <if test="numPeople != null" >
+        num_people,
+      </if>
+      <if test="hairDate != null" >
+        hair_date,
+      </if>
+      <if test="opId != null" >
+        op_id,
+      </if>
+      <if test="touristId != null" >
+        tourist_id,
+      </if>
+      <if test="qTravel != null" >
+        q_travel,
+      </if>
+      <if test="qTuanid != null" >
+        q_tuanid,
+      </if>
+      <if test="qState != null" >
+        q_State,
+      </if>
+      <if test="qTotal != null" >
+        q_total,
+      </if>
+      <if test="jietuanxinxi != null" >
+        jietuanxinxi,
+      </if>
+      <if test="sendDate != null" >
+        send_date,
+      </if>
+      <if test="sotuanxinxi != null" >
+        sotuanxinxi,
+      </if>
+      <if test="jietuancheci != null" >
+        Jietuancheci,
+      </if>
+      <if test="songtuancheci != null" >
+        songtuancheci,
+      </if>
+      <if test="cheId != null" >
+        Che_id,
+      </if>
+      <if test="cantingId != null" >
+        Canting_id,
+      </if>
+      <if test="xianluid != null" >
+        xianluid,
+      </if>
+      <if test="bei2 != null" >
+        Bei2,
+      </if>
+      <if test="bei3 != null" >
+        Bei3,
+      </if>
+      <if test="jietuandidian != null" >
+        jietuandidian,
+      </if>
+      <if test="songtuandidian != null" >
+        songtuandidian,
+      </if>
+      <if test="jietuanDate != null" >
+        jietuan_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qTeamId != null" >
+        #{qTeamId,jdbcType=INTEGER},
+      </if>
+      <if test="numPeople != null" >
+        #{numPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="hairDate != null" >
+        #{hairDate,jdbcType=DATE},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="touristId != null" >
+        #{touristId,jdbcType=INTEGER},
+      </if>
+      <if test="qTravel != null" >
+        #{qTravel,jdbcType=VARCHAR},
+      </if>
+      <if test="qTuanid != null" >
+        #{qTuanid,jdbcType=VARCHAR},
+      </if>
+      <if test="qState != null" >
+        #{qState,jdbcType=VARCHAR},
+      </if>
+      <if test="qTotal != null" >
+        #{qTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuanxinxi != null" >
+        #{jietuanxinxi,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDate != null" >
+        #{sendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sotuanxinxi != null" >
+        #{sotuanxinxi,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuancheci != null" >
+        #{jietuancheci,jdbcType=VARCHAR},
+      </if>
+      <if test="songtuancheci != null" >
+        #{songtuancheci,jdbcType=VARCHAR},
+      </if>
+      <if test="cheId != null" >
+        #{cheId,jdbcType=INTEGER},
+      </if>
+      <if test="cantingId != null" >
+        #{cantingId,jdbcType=INTEGER},
+      </if>
+      <if test="xianluid != null" >
+        #{xianluid,jdbcType=INTEGER},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuandidian != null" >
+        #{jietuandidian,jdbcType=VARCHAR},
+      </if>
+      <if test="songtuandidian != null" >
+        #{songtuandidian,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuanDate != null" >
+        #{jietuanDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sdgl.pojo.onefei.DjsTeExample" resultType="java.lang.Integer" >
+    select count(*) from djs_te
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update djs_te
+    <set >
+      <if test="record.qTeamId != null" >
+        q_team_id = #{record.qTeamId,jdbcType=INTEGER},
+      </if>
+      <if test="record.numPeople != null" >
+        num_people = #{record.numPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hairDate != null" >
+        hair_date = #{record.hairDate,jdbcType=DATE},
+      </if>
+      <if test="record.opId != null" >
+        op_id = #{record.opId,jdbcType=INTEGER},
+      </if>
+      <if test="record.touristId != null" >
+        tourist_id = #{record.touristId,jdbcType=INTEGER},
+      </if>
+      <if test="record.qTravel != null" >
+        q_travel = #{record.qTravel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qTuanid != null" >
+        q_tuanid = #{record.qTuanid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qState != null" >
+        q_State = #{record.qState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qTotal != null" >
+        q_total = #{record.qTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jietuanxinxi != null" >
+        jietuanxinxi = #{record.jietuanxinxi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendDate != null" >
+        send_date = #{record.sendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sotuanxinxi != null" >
+        sotuanxinxi = #{record.sotuanxinxi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jietuancheci != null" >
+        Jietuancheci = #{record.jietuancheci,jdbcType=VARCHAR},
+      </if>
+      <if test="record.songtuancheci != null" >
+        songtuancheci = #{record.songtuancheci,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cheId != null" >
+        Che_id = #{record.cheId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cantingId != null" >
+        Canting_id = #{record.cantingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.xianluid != null" >
+        xianluid = #{record.xianluid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bei2 != null" >
+        Bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        Bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jietuandidian != null" >
+        jietuandidian = #{record.jietuandidian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.songtuandidian != null" >
+        songtuandidian = #{record.songtuandidian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jietuanDate != null" >
+        jietuan_date = #{record.jietuanDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update djs_te
+    set q_team_id = #{record.qTeamId,jdbcType=INTEGER},
+      num_people = #{record.numPeople,jdbcType=VARCHAR},
+      hair_date = #{record.hairDate,jdbcType=DATE},
+      op_id = #{record.opId,jdbcType=INTEGER},
+      tourist_id = #{record.touristId,jdbcType=INTEGER},
+      q_travel = #{record.qTravel,jdbcType=VARCHAR},
+      q_tuanid = #{record.qTuanid,jdbcType=VARCHAR},
+      q_State = #{record.qState,jdbcType=VARCHAR},
+      q_total = #{record.qTotal,jdbcType=VARCHAR},
+      jietuanxinxi = #{record.jietuanxinxi,jdbcType=VARCHAR},
+      send_date = #{record.sendDate,jdbcType=TIMESTAMP},
+      sotuanxinxi = #{record.sotuanxinxi,jdbcType=VARCHAR},
+      Jietuancheci = #{record.jietuancheci,jdbcType=VARCHAR},
+      songtuancheci = #{record.songtuancheci,jdbcType=VARCHAR},
+      Che_id = #{record.cheId,jdbcType=INTEGER},
+      Canting_id = #{record.cantingId,jdbcType=INTEGER},
+      xianluid = #{record.xianluid,jdbcType=INTEGER},
+      Bei2 = #{record.bei2,jdbcType=VARCHAR},
+      Bei3 = #{record.bei3,jdbcType=VARCHAR},
+      jietuandidian = #{record.jietuandidian,jdbcType=VARCHAR},
+      songtuandidian = #{record.songtuandidian,jdbcType=VARCHAR},
+      jietuan_date = #{record.jietuanDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdgl.pojo.onefei.DjsTe" >
+    update djs_te
+    <set >
+      <if test="numPeople != null" >
+        num_people = #{numPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="hairDate != null" >
+        hair_date = #{hairDate,jdbcType=DATE},
+      </if>
+      <if test="opId != null" >
+        op_id = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="touristId != null" >
+        tourist_id = #{touristId,jdbcType=INTEGER},
+      </if>
+      <if test="qTravel != null" >
+        q_travel = #{qTravel,jdbcType=VARCHAR},
+      </if>
+      <if test="qTuanid != null" >
+        q_tuanid = #{qTuanid,jdbcType=VARCHAR},
+      </if>
+      <if test="qState != null" >
+        q_State = #{qState,jdbcType=VARCHAR},
+      </if>
+      <if test="qTotal != null" >
+        q_total = #{qTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuanxinxi != null" >
+        jietuanxinxi = #{jietuanxinxi,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDate != null" >
+        send_date = #{sendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sotuanxinxi != null" >
+        sotuanxinxi = #{sotuanxinxi,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuancheci != null" >
+        Jietuancheci = #{jietuancheci,jdbcType=VARCHAR},
+      </if>
+      <if test="songtuancheci != null" >
+        songtuancheci = #{songtuancheci,jdbcType=VARCHAR},
+      </if>
+      <if test="cheId != null" >
+        Che_id = #{cheId,jdbcType=INTEGER},
+      </if>
+      <if test="cantingId != null" >
+        Canting_id = #{cantingId,jdbcType=INTEGER},
+      </if>
+      <if test="xianluid != null" >
+        xianluid = #{xianluid,jdbcType=INTEGER},
+      </if>
+      <if test="bei2 != null" >
+        Bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        Bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuandidian != null" >
+        jietuandidian = #{jietuandidian,jdbcType=VARCHAR},
+      </if>
+      <if test="songtuandidian != null" >
+        songtuandidian = #{songtuandidian,jdbcType=VARCHAR},
+      </if>
+      <if test="jietuanDate != null" >
+        jietuan_date = #{jietuanDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where q_team_id = #{qTeamId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdgl.pojo.onefei.DjsTe" >
+    update djs_te
+    set num_people = #{numPeople,jdbcType=VARCHAR},
+      hair_date = #{hairDate,jdbcType=DATE},
+      op_id = #{opId,jdbcType=INTEGER},
+      tourist_id = #{touristId,jdbcType=INTEGER},
+      q_travel = #{qTravel,jdbcType=VARCHAR},
+      q_tuanid = #{qTuanid,jdbcType=VARCHAR},
+      q_State = #{qState,jdbcType=VARCHAR},
+      q_total = #{qTotal,jdbcType=VARCHAR},
+      jietuanxinxi = #{jietuanxinxi,jdbcType=VARCHAR},
+      send_date = #{sendDate,jdbcType=TIMESTAMP},
+      sotuanxinxi = #{sotuanxinxi,jdbcType=VARCHAR},
+      Jietuancheci = #{jietuancheci,jdbcType=VARCHAR},
+      songtuancheci = #{songtuancheci,jdbcType=VARCHAR},
+      Che_id = #{cheId,jdbcType=INTEGER},
+      Canting_id = #{cantingId,jdbcType=INTEGER},
+      xianluid = #{xianluid,jdbcType=INTEGER},
+      Bei2 = #{bei2,jdbcType=VARCHAR},
+      Bei3 = #{bei3,jdbcType=VARCHAR},
+      jietuandidian = #{jietuandidian,jdbcType=VARCHAR},
+      songtuandidian = #{songtuandidian,jdbcType=VARCHAR},
+      jietuan_date = #{jietuanDate,jdbcType=TIMESTAMP}
+    where q_team_id = #{qTeamId,jdbcType=INTEGER}
+  </update>
+</mapper>
